@@ -1,0 +1,1 @@
+../../../capstone/arch/PowerPC/PPCGenRegisterInfo.inc

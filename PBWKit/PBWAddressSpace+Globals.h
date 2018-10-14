@@ -1,0 +1,4 @@
+// Location of OS globals in emulated address space
+
+#define kPBWGlobalLocaltime 0x20000
+#define kPBWGlobalGmtime    0x20040

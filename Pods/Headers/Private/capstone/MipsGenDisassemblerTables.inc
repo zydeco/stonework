@@ -1,0 +1,1 @@
+../../../capstone/arch/Mips/MipsGenDisassemblerTables.inc

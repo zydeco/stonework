@@ -1,0 +1,1 @@
+../../../capstone/arch/XCore/XCoreGenAsmWriter.inc

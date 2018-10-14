@@ -1,0 +1,1213 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2804A5EE21985E6500853871 /* app_message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5ED21985E6500853871 /* app_message.m */; };
+		2804A5EF21985E6500853871 /* app_message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5ED21985E6500853871 /* app_message.m */; };
+		2804A5F22198C26100853871 /* PBWGraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F12198C26100853871 /* PBWGraphicsContext.m */; };
+		2804A5F32198C26100853871 /* PBWGraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F12198C26100853871 /* PBWGraphicsContext.m */; };
+		2804A5F62198C59F00853871 /* UIColor+GColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F52198C59F00853871 /* UIColor+GColor.m */; };
+		2804A5F72198C59F00853871 /* UIColor+GColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F52198C59F00853871 /* UIColor+GColor.m */; };
+		2804A5FD2198DF8600853871 /* time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5FC2198DF8600853871 /* time.m */; };
+		2804A5FE2198DF8600853871 /* time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5FC2198DF8600853871 /* time.m */; };
+		28132D252190BA3500B36804 /* PBWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28132D242190BA3500B36804 /* PBWLayer.m */; };
+		28132D262190BA3500B36804 /* PBWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28132D242190BA3500B36804 /* PBWLayer.m */; };
+		28132D292190BAFB00B36804 /* PBWGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 28132D282190BAFB00B36804 /* PBWGraphics.m */; };
+		28132D2A2190BAFB00B36804 /* PBWGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 28132D282190BAFB00B36804 /* PBWGraphics.m */; };
+		28156B21218DED0800AC859A /* memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B20218DED0800AC859A /* memory.m */; };
+		28156B22218DED0800AC859A /* memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B20218DED0800AC859A /* memory.m */; };
+		28156B23218DED0800AC859A /* memory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B20218DED0800AC859A /* memory.m */; };
+		28156B2C218F0F1500AC859A /* PBWWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B2B218F0F1500AC859A /* PBWWindow.m */; };
+		28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B2B218F0F1500AC859A /* PBWWindow.m */; };
+		28156B2E218F0F1500AC859A /* PBWWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B2B218F0F1500AC859A /* PBWWindow.m */; };
+		28156B31218F112700AC859A /* PBWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B30218F112700AC859A /* PBWObject.m */; };
+		28156B32218F112700AC859A /* PBWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B30218F112700AC859A /* PBWObject.m */; };
+		28156B33218F112700AC859A /* PBWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B30218F112700AC859A /* PBWObject.m */; };
+		284C91D72174FD170080B3E1 /* PBWApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021252173E14200C556D6 /* PBWApp.m */; };
+		284C91D82174FD170080B3E1 /* PBWBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021232173E14200C556D6 /* PBWBundle.m */; };
+		284C91D92174FD170080B3E1 /* PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021222173E14200C556D6 /* PBWRuntime.m */; };
+		284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0212A2173E14200C556D6 /* PBWPlatformType.m */; };
+		284C91DE2174FDA70080B3E1 /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91DD2174FDA70080B3E1 /* cpu.c */; };
+		284C91E2217518EB0080B3E1 /* exec.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E1217518EB0080B3E1 /* exec.c */; };
+		284C91E5217535E90080B3E1 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E4217535E90080B3E1 /* memory.c */; };
+		284C91FD217C85E20080B3E1 /* PBWCPUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C91FC217C85E20080B3E1 /* PBWCPUTests.m */; };
+		284C9204217C862C0080B3E1 /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91DD2174FDA70080B3E1 /* cpu.c */; };
+		284C9205217C862C0080B3E1 /* exec.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E1217518EB0080B3E1 /* exec.c */; };
+		284C9206217C862C0080B3E1 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E4217535E90080B3E1 /* memory.c */; };
+		284C9208217C862D0080B3E1 /* cpu.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91DD2174FDA70080B3E1 /* cpu.c */; };
+		284C9209217C862D0080B3E1 /* exec.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E1217518EB0080B3E1 /* exec.c */; };
+		284C920A217C862D0080B3E1 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C91E4217535E90080B3E1 /* memory.c */; };
+		284C920D2180CE5F0080B3E1 /* thumb.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C920C2180CE5F0080B3E1 /* thumb.c */; };
+		284C920E2180CE5F0080B3E1 /* thumb.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C920C2180CE5F0080B3E1 /* thumb.c */; };
+		284C920F2180CE5F0080B3E1 /* thumb.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C920C2180CE5F0080B3E1 /* thumb.c */; };
+		284C92112180CE850080B3E1 /* thumb2.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C92102180CE850080B3E1 /* thumb2.c */; };
+		284C92122180CE850080B3E1 /* thumb2.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C92102180CE850080B3E1 /* thumb2.c */; };
+		284C92132180CE850080B3E1 /* thumb2.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C92102180CE850080B3E1 /* thumb2.c */; };
+		284C92162189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
+		284C92172189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
+		284C92182189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
+		284C924B218DD25D0080B3E1 /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
+		284C924C218DD25D0080B3E1 /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
+		284C924D218DD25D0080B3E1 /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
+		284C9251218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
+		284C9252218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
+		284C9253218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
+		287069A62197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
+		287069A72197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
+		287069A9219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
+		287069AA219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
+		2887384A2190D22D00E24DC3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288738492190D22D00E24DC3 /* Interface.storyboard */; };
+		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
+		28E020D52173E0EB00C556D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D42173E0EB00C556D6 /* ViewController.m */; };
+		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
+		28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D92173E0EC00C556D6 /* Assets.xcassets */; };
+		28E020DD2173E0EC00C556D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */; };
+		28E020E02173E0EC00C556D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020DF2173E0EC00C556D6 /* main.m */; };
+		28E020E42173E0EC00C556D6 /* Stonework WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */; };
+		28E020EC2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020EB2173E0EC00C556D6 /* Assets.xcassets */; };
+		28E020F32173E0EC00C556D6 /* Stonework WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28E020F92173E0EC00C556D6 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020F82173E0EC00C556D6 /* InterfaceController.m */; };
+		28E020FC2173E0EC00C556D6 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020FB2173E0EC00C556D6 /* ExtensionDelegate.m */; };
+		28E020FE2173E0ED00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020FD2173E0ED00C556D6 /* Assets.xcassets */; };
+		28E0212C2173E14200C556D6 /* PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021222173E14200C556D6 /* PBWRuntime.m */; };
+		28E0212E2173E14200C556D6 /* PBWBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021232173E14200C556D6 /* PBWBundle.m */; };
+		28E021302173E14200C556D6 /* PBWApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021252173E14200C556D6 /* PBWApp.m */; };
+		28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0212A2173E14200C556D6 /* PBWPlatformType.m */; };
+		28ED9E5F219B54FF00E78FBF /* string.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E5E219B54FF00E78FBF /* string.m */; };
+		28ED9E60219B54FF00E78FBF /* string.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E5E219B54FF00E78FBF /* string.m */; };
+		28ED9E62219B800600E78FBF /* wall_time.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E61219B800600E78FBF /* wall_time.m */; };
+		28ED9E63219B800600E78FBF /* wall_time.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E61219B800600E78FBF /* wall_time.m */; };
+		28ED9E65219B859B00E78FBF /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E64219B859B00E78FBF /* logging.m */; };
+		28ED9E66219B859B00E78FBF /* logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E64219B859B00E78FBF /* logging.m */; };
+		28ED9E6921A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */; };
+		28ED9E6A21A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */; };
+		28ED9E6C21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
+		28ED9E6D21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
+		345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7374FBB82FE405E74479A401 /* libPods-Stonework.a */; };
+		7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */; };
+		EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */; };
+		FE11B5D8F62A3B053EC64D3F /* libPods-PBWCPUTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		284C91FF217C85E20080B3E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28E020C52173E0EB00C556D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28E020CC2173E0EB00C556D6;
+			remoteInfo = Stonework;
+		};
+		28E020E52173E0EC00C556D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28E020C52173E0EB00C556D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28E020E22173E0EC00C556D6;
+			remoteInfo = "Stonework WatchKit App";
+		};
+		28E020F42173E0EC00C556D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28E020C52173E0EB00C556D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28E020F12173E0EC00C556D6;
+			remoteInfo = "Stonework WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		28E021052173E0ED00C556D6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				28E020F32173E0EC00C556D6 /* Stonework WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E021092173E0ED00C556D6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				28E020E42173E0EC00C556D6 /* Stonework WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		2804A5ED21985E6500853871 /* app_message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_message.m; sourceTree = "<group>"; };
+		2804A5F02198C26100853871 /* PBWGraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWGraphicsContext.h; sourceTree = "<group>"; };
+		2804A5F12198C26100853871 /* PBWGraphicsContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWGraphicsContext.m; sourceTree = "<group>"; };
+		2804A5F42198C59F00853871 /* UIColor+GColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+GColor.h"; sourceTree = "<group>"; };
+		2804A5F52198C59F00853871 /* UIColor+GColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GColor.m"; sourceTree = "<group>"; };
+		2804A5F82198D69E00853871 /* PBWScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWScreenView.h; sourceTree = "<group>"; };
+		2804A5F92198D69E00853871 /* PBWScreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWScreenView.m; sourceTree = "<group>"; };
+		2804A5FC2198DF8600853871 /* time.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = time.m; sourceTree = "<group>"; };
+		28132D232190BA3500B36804 /* PBWLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWLayer.h; sourceTree = "<group>"; };
+		28132D242190BA3500B36804 /* PBWLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWLayer.m; sourceTree = "<group>"; };
+		28132D282190BAFB00B36804 /* PBWGraphics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWGraphics.m; sourceTree = "<group>"; };
+		28132D2B2190BB0800B36804 /* PBWGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWGraphics.h; sourceTree = "<group>"; };
+		28132D2C2190BB9700B36804 /* gcolor_definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gcolor_definitions.h; sourceTree = "<group>"; };
+		28156B20218DED0800AC859A /* memory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = memory.m; sourceTree = "<group>"; };
+		28156B2A218F0F1500AC859A /* PBWWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWWindow.h; sourceTree = "<group>"; };
+		28156B2B218F0F1500AC859A /* PBWWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWWindow.m; sourceTree = "<group>"; };
+		28156B2F218F112700AC859A /* PBWObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWObject.h; sourceTree = "<group>"; };
+		28156B30218F112700AC859A /* PBWObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWObject.m; sourceTree = "<group>"; };
+		284C91DC2174FD970080B3E1 /* cpu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
+		284C91DD2174FDA70080B3E1 /* cpu.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cpu.c; sourceTree = "<group>"; };
+		284C91E0217504250080B3E1 /* cpu_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpu_priv.h; sourceTree = "<group>"; };
+		284C91E1217518EB0080B3E1 /* exec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = exec.c; sourceTree = "<group>"; };
+		284C91E4217535E90080B3E1 /* memory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = memory.c; sourceTree = "<group>"; };
+		284C91ED21766F960080B3E1 /* ops.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ops.h; sourceTree = "<group>"; };
+		284C91EE2177E82C0080B3E1 /* alu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alu.h; sourceTree = "<group>"; };
+		284C91F2217B64900080B3E1 /* decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = decode.h; sourceTree = "<group>"; };
+		284C91FA217C85E20080B3E1 /* PBWCPUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PBWCPUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		284C91FC217C85E20080B3E1 /* PBWCPUTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWCPUTests.m; sourceTree = "<group>"; };
+		284C91FE217C85E20080B3E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		284C920C2180CE5F0080B3E1 /* thumb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = thumb.c; sourceTree = "<group>"; };
+		284C92102180CE850080B3E1 /* thumb2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = thumb2.c; sourceTree = "<group>"; };
+		284C92142189053D0080B3E1 /* PBWRuntime+Disassembler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBWRuntime+Disassembler.h"; sourceTree = "<group>"; };
+		284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PBWRuntime+Disassembler.m"; sourceTree = "<group>"; };
+		284C9249218DD25D0080B3E1 /* weemalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = weemalloc.c; sourceTree = "<group>"; };
+		284C924A218DD25D0080B3E1 /* weemalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weemalloc.h; sourceTree = "<group>"; };
+		284C924F218DD4180080B3E1 /* api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = api.h; sourceTree = "<group>"; };
+		284C9250218DD4D70080B3E1 /* api.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
+		284C9254218DD5DE0080B3E1 /* PBWAddressSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWAddressSpace.h; sourceTree = "<group>"; };
+		287069A52197125300D20B89 /* storage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storage.m; sourceTree = "<group>"; };
+		287069A8219728A000D20B89 /* events.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = events.m; sourceTree = "<group>"; };
+		288738492190D22D00E24DC3 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		289F0F522199FD49008B0554 /* PBWAddressSpace+Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBWAddressSpace+Globals.h"; sourceTree = "<group>"; };
+		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		28E020D32173E0EB00C556D6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		28E020D42173E0EB00C556D6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		28E020D72173E0EB00C556D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28E020D92173E0EC00C556D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E020DC2173E0EC00C556D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		28E020DE2173E0EC00C556D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E020DF2173E0EC00C556D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stonework WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E020EB2173E0EC00C556D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E020ED2173E0EC00C556D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Stonework WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E020F72173E0EC00C556D6 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		28E020F82173E0EC00C556D6 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		28E020FA2173E0EC00C556D6 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		28E020FB2173E0EC00C556D6 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		28E020FD2173E0ED00C556D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E020FF2173E0ED00C556D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E021222173E14200C556D6 /* PBWRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWRuntime.m; sourceTree = "<group>"; };
+		28E021232173E14200C556D6 /* PBWBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWBundle.m; sourceTree = "<group>"; };
+		28E021242173E14200C556D6 /* PBWPlatformType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWPlatformType.h; sourceTree = "<group>"; };
+		28E021252173E14200C556D6 /* PBWApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWApp.m; sourceTree = "<group>"; };
+		28E021262173E14200C556D6 /* PBWKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWKit.h; sourceTree = "<group>"; };
+		28E021272173E14200C556D6 /* PBWBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWBundle.h; sourceTree = "<group>"; };
+		28E021282173E14200C556D6 /* PBWRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWRuntime.h; sourceTree = "<group>"; };
+		28E021292173E14200C556D6 /* PBWApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWApp.h; sourceTree = "<group>"; };
+		28E0212A2173E14200C556D6 /* PBWPlatformType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWPlatformType.m; sourceTree = "<group>"; };
+		28ED9E5E219B54FF00E78FBF /* string.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = string.m; sourceTree = "<group>"; };
+		28ED9E61219B800600E78FBF /* wall_time.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wall_time.m; sourceTree = "<group>"; };
+		28ED9E64219B859B00E78FBF /* logging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = logging.m; sourceTree = "<group>"; };
+		28ED9E6721A05D6A00E78FBF /* NSString+PBWRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+PBWRuntime.h"; sourceTree = "<group>"; };
+		28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+PBWRuntime.m"; sourceTree = "<group>"; };
+		28ED9E6B21A0937400E78FBF /* Faces */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Faces; sourceTree = "<group>"; };
+		2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.release.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.release.xcconfig"; sourceTree = "<group>"; };
+		42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.debug.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7374FBB82FE405E74479A401 /* libPods-Stonework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.debug.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.debug.xcconfig"; sourceTree = "<group>"; };
+		B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.release.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.release.xcconfig"; sourceTree = "<group>"; };
+		BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PBWCPUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		284C91F7217C85E20080B3E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE11B5D8F62A3B053EC64D3F /* libPods-PBWCPUTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020CA2173E0EB00C556D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020EF2173E0EC00C556D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4259EE64740C16BAEA209B84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28132D272190BAA200B36804 /* gfx */ = {
+			isa = PBXGroup;
+			children = (
+				28132D2C2190BB9700B36804 /* gcolor_definitions.h */,
+				28132D2B2190BB0800B36804 /* PBWGraphics.h */,
+				28132D282190BAFB00B36804 /* PBWGraphics.m */,
+				2804A5F02198C26100853871 /* PBWGraphicsContext.h */,
+				2804A5F12198C26100853871 /* PBWGraphicsContext.m */,
+				2804A5F42198C59F00853871 /* UIColor+GColor.h */,
+				2804A5F52198C59F00853871 /* UIColor+GColor.m */,
+			);
+			path = gfx;
+			sourceTree = "<group>";
+		};
+		28156B24218DF2BF00AC859A /* std */ = {
+			isa = PBXGroup;
+			children = (
+				28156B20218DED0800AC859A /* memory.m */,
+				284C9249218DD25D0080B3E1 /* weemalloc.c */,
+				284C924A218DD25D0080B3E1 /* weemalloc.h */,
+				2804A5FC2198DF8600853871 /* time.m */,
+				28ED9E5E219B54FF00E78FBF /* string.m */,
+				28ED9E6721A05D6A00E78FBF /* NSString+PBWRuntime.h */,
+				28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */,
+			);
+			path = std;
+			sourceTree = "<group>";
+		};
+		28156B25218DF2F300AC859A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				28156B2A218F0F1500AC859A /* PBWWindow.h */,
+				28156B2B218F0F1500AC859A /* PBWWindow.m */,
+				28132D232190BA3500B36804 /* PBWLayer.h */,
+				28132D242190BA3500B36804 /* PBWLayer.m */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		284C91DB2174FD830080B3E1 /* cpu */ = {
+			isa = PBXGroup;
+			children = (
+				284C91DC2174FD970080B3E1 /* cpu.h */,
+				284C91E0217504250080B3E1 /* cpu_priv.h */,
+				284C91ED21766F960080B3E1 /* ops.h */,
+				284C91EE2177E82C0080B3E1 /* alu.h */,
+				284C91F2217B64900080B3E1 /* decode.h */,
+				284C91DD2174FDA70080B3E1 /* cpu.c */,
+				284C91E1217518EB0080B3E1 /* exec.c */,
+				284C91E4217535E90080B3E1 /* memory.c */,
+				284C920C2180CE5F0080B3E1 /* thumb.c */,
+				284C92102180CE850080B3E1 /* thumb2.c */,
+			);
+			path = cpu;
+			sourceTree = "<group>";
+		};
+		284C91FB217C85E20080B3E1 /* PBWCPUTests */ = {
+			isa = PBXGroup;
+			children = (
+				284C91FC217C85E20080B3E1 /* PBWCPUTests.m */,
+				284C91FE217C85E20080B3E1 /* Info.plist */,
+			);
+			path = PBWCPUTests;
+			sourceTree = "<group>";
+		};
+		284C924E218DD40D0080B3E1 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				284C924F218DD4180080B3E1 /* api.h */,
+				284C9250218DD4D70080B3E1 /* api.m */,
+				287069A4219710F200D20B89 /* foundation */,
+				28132D272190BAA200B36804 /* gfx */,
+				28156B25218DF2F300AC859A /* ui */,
+				28156B24218DF2BF00AC859A /* std */,
+				28156B2F218F112700AC859A /* PBWObject.h */,
+				28156B30218F112700AC859A /* PBWObject.m */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		287069A4219710F200D20B89 /* foundation */ = {
+			isa = PBXGroup;
+			children = (
+				287069A8219728A000D20B89 /* events.m */,
+				287069A52197125300D20B89 /* storage.m */,
+				2804A5ED21985E6500853871 /* app_message.m */,
+				28ED9E61219B800600E78FBF /* wall_time.m */,
+				28ED9E64219B859B00E78FBF /* logging.m */,
+			);
+			path = foundation;
+			sourceTree = "<group>";
+		};
+		28E020C42173E0EB00C556D6 = {
+			isa = PBXGroup;
+			children = (
+				28ED9E6B21A0937400E78FBF /* Faces */,
+				284C91FB217C85E20080B3E1 /* PBWCPUTests */,
+				28E021212173E14200C556D6 /* PBWKit */,
+				28E020CF2173E0EB00C556D6 /* Stonework */,
+				28E020E72173E0EC00C556D6 /* Stonework WatchKit App */,
+				28E020F62173E0EC00C556D6 /* Stonework WatchKit Extension */,
+				28E020CE2173E0EB00C556D6 /* Products */,
+				2C1E402D43F74082565C20B2 /* Pods */,
+				3479A43CE16567273D08B6EA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		28E020CE2173E0EB00C556D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28E020CD2173E0EB00C556D6 /* Stonework.app */,
+				28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */,
+				28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */,
+				284C91FA217C85E20080B3E1 /* PBWCPUTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28E020CF2173E0EB00C556D6 /* Stonework */ = {
+			isa = PBXGroup;
+			children = (
+				28E020D02173E0EB00C556D6 /* AppDelegate.h */,
+				28E020D12173E0EB00C556D6 /* AppDelegate.m */,
+				28E020D32173E0EB00C556D6 /* ViewController.h */,
+				28E020D42173E0EB00C556D6 /* ViewController.m */,
+				28E020D62173E0EB00C556D6 /* Main.storyboard */,
+				28E020D92173E0EC00C556D6 /* Assets.xcassets */,
+				28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */,
+				28E020DE2173E0EC00C556D6 /* Info.plist */,
+				28E020DF2173E0EC00C556D6 /* main.m */,
+			);
+			path = Stonework;
+			sourceTree = "<group>";
+		};
+		28E020E72173E0EC00C556D6 /* Stonework WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				288738492190D22D00E24DC3 /* Interface.storyboard */,
+				28E020EB2173E0EC00C556D6 /* Assets.xcassets */,
+				28E020ED2173E0EC00C556D6 /* Info.plist */,
+			);
+			path = "Stonework WatchKit App";
+			sourceTree = "<group>";
+		};
+		28E020F62173E0EC00C556D6 /* Stonework WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				28E020F72173E0EC00C556D6 /* InterfaceController.h */,
+				28E020F82173E0EC00C556D6 /* InterfaceController.m */,
+				28E020FA2173E0EC00C556D6 /* ExtensionDelegate.h */,
+				28E020FB2173E0EC00C556D6 /* ExtensionDelegate.m */,
+				28E020FD2173E0ED00C556D6 /* Assets.xcassets */,
+				28E020FF2173E0ED00C556D6 /* Info.plist */,
+			);
+			path = "Stonework WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		28E021212173E14200C556D6 /* PBWKit */ = {
+			isa = PBXGroup;
+			children = (
+				284C924E218DD40D0080B3E1 /* api */,
+				284C91DB2174FD830080B3E1 /* cpu */,
+				28E021262173E14200C556D6 /* PBWKit.h */,
+				28E021242173E14200C556D6 /* PBWPlatformType.h */,
+				284C9254218DD5DE0080B3E1 /* PBWAddressSpace.h */,
+				28E021292173E14200C556D6 /* PBWApp.h */,
+				28E021252173E14200C556D6 /* PBWApp.m */,
+				28E021272173E14200C556D6 /* PBWBundle.h */,
+				28E021232173E14200C556D6 /* PBWBundle.m */,
+				28E0212A2173E14200C556D6 /* PBWPlatformType.m */,
+				28E021282173E14200C556D6 /* PBWRuntime.h */,
+				28E021222173E14200C556D6 /* PBWRuntime.m */,
+				284C92142189053D0080B3E1 /* PBWRuntime+Disassembler.h */,
+				284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */,
+				2804A5F82198D69E00853871 /* PBWScreenView.h */,
+				2804A5F92198D69E00853871 /* PBWScreenView.m */,
+				289F0F522199FD49008B0554 /* PBWAddressSpace+Globals.h */,
+			);
+			path = PBWKit;
+			sourceTree = "<group>";
+		};
+		2C1E402D43F74082565C20B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */,
+				B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */,
+				A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */,
+				2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */,
+				8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */,
+				10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */,
+				42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */,
+				A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3479A43CE16567273D08B6EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */,
+				7374FBB82FE405E74479A401 /* libPods-Stonework.a */,
+				D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */,
+				09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		284C91F9217C85E20080B3E1 /* PBWCPUTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 284C9201217C85E20080B3E1 /* Build configuration list for PBXNativeTarget "PBWCPUTests" */;
+			buildPhases = (
+				3D1CBE8EAF102A1822E1B1BF /* [CP] Check Pods Manifest.lock */,
+				284C91F6217C85E20080B3E1 /* Sources */,
+				284C91F7217C85E20080B3E1 /* Frameworks */,
+				284C91F8217C85E20080B3E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				284C9200217C85E20080B3E1 /* PBXTargetDependency */,
+			);
+			name = PBWCPUTests;
+			productName = PBWCPUTests;
+			productReference = 284C91FA217C85E20080B3E1 /* PBWCPUTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28E020CC2173E0EB00C556D6 /* Stonework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E0210A2173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework" */;
+			buildPhases = (
+				21F3EEF249C6211BB0333548 /* [CP] Check Pods Manifest.lock */,
+				28E020C92173E0EB00C556D6 /* Sources */,
+				28E020CA2173E0EB00C556D6 /* Frameworks */,
+				28E020CB2173E0EB00C556D6 /* Resources */,
+				28E021092173E0ED00C556D6 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28E020E62173E0EC00C556D6 /* PBXTargetDependency */,
+			);
+			name = Stonework;
+			productName = Stonework;
+			productReference = 28E020CD2173E0EB00C556D6 /* Stonework.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28E020E22173E0EC00C556D6 /* Stonework WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E021062173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit App" */;
+			buildPhases = (
+				CD6B770E3D87D4737F267351 /* [CP] Check Pods Manifest.lock */,
+				28E020E12173E0EC00C556D6 /* Resources */,
+				28E021052173E0ED00C556D6 /* Embed App Extensions */,
+				4259EE64740C16BAEA209B84 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28E020F52173E0EC00C556D6 /* PBXTargetDependency */,
+			);
+			name = "Stonework WatchKit App";
+			productName = "Stonework WatchKit App";
+			productReference = 28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		28E020F12173E0EC00C556D6 /* Stonework WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E021022173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit Extension" */;
+			buildPhases = (
+				0FFFF88254E87A94BDD7D064 /* [CP] Check Pods Manifest.lock */,
+				28E020EE2173E0EC00C556D6 /* Sources */,
+				28E020EF2173E0EC00C556D6 /* Frameworks */,
+				28E020F02173E0EC00C556D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stonework WatchKit Extension";
+			productName = "Stonework WatchKit Extension";
+			productReference = 28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28E020C52173E0EB00C556D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = namedfork;
+				TargetAttributes = {
+					284C91F9217C85E20080B3E1 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 28E020CC2173E0EB00C556D6;
+					};
+					28E020CC2173E0EB00C556D6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					28E020E22173E0EC00C556D6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					28E020F12173E0EC00C556D6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 28E020C82173E0EB00C556D6 /* Build configuration list for PBXProject "Stonework" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28E020C42173E0EB00C556D6;
+			productRefGroup = 28E020CE2173E0EB00C556D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28E020CC2173E0EB00C556D6 /* Stonework */,
+				28E020E22173E0EC00C556D6 /* Stonework WatchKit App */,
+				28E020F12173E0EC00C556D6 /* Stonework WatchKit Extension */,
+				284C91F9217C85E20080B3E1 /* PBWCPUTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		284C91F8217C85E20080B3E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020CB2173E0EB00C556D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E020DD2173E0EC00C556D6 /* LaunchScreen.storyboard in Resources */,
+				28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */,
+				28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */,
+				28ED9E6C21A0937400E78FBF /* Faces in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020E12173E0EC00C556D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2887384A2190D22D00E24DC3 /* Interface.storyboard in Resources */,
+				28E020EC2173E0EC00C556D6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020F02173E0EC00C556D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E020FE2173E0ED00C556D6 /* Assets.xcassets in Resources */,
+				28ED9E6D21A0937400E78FBF /* Faces in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FFFF88254E87A94BDD7D064 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stonework WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21F3EEF249C6211BB0333548 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stonework-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D1CBE8EAF102A1822E1B1BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PBWCPUTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD6B770E3D87D4737F267351 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stonework WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		284C91F6217C85E20080B3E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				284C9208217C862D0080B3E1 /* cpu.c in Sources */,
+				284C920F2180CE5F0080B3E1 /* thumb.c in Sources */,
+				284C91FD217C85E20080B3E1 /* PBWCPUTests.m in Sources */,
+				28156B23218DED0800AC859A /* memory.m in Sources */,
+				284C9253218DD4D70080B3E1 /* api.m in Sources */,
+				28156B33218F112700AC859A /* PBWObject.m in Sources */,
+				284C920A217C862D0080B3E1 /* memory.c in Sources */,
+				28156B2E218F0F1500AC859A /* PBWWindow.m in Sources */,
+				284C9209217C862D0080B3E1 /* exec.c in Sources */,
+				284C924D218DD25D0080B3E1 /* weemalloc.c in Sources */,
+				284C92182189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */,
+				284C92132180CE850080B3E1 /* thumb2.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020C92173E0EB00C556D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2804A5F62198C59F00853871 /* UIColor+GColor.m in Sources */,
+				284C9251218DD4D70080B3E1 /* api.m in Sources */,
+				28ED9E5F219B54FF00E78FBF /* string.m in Sources */,
+				28132D252190BA3500B36804 /* PBWLayer.m in Sources */,
+				28156B2C218F0F1500AC859A /* PBWWindow.m in Sources */,
+				28E020D52173E0EB00C556D6 /* ViewController.m in Sources */,
+				284C91D82174FD170080B3E1 /* PBWBundle.m in Sources */,
+				284C920D2180CE5F0080B3E1 /* thumb.c in Sources */,
+				28ED9E62219B800600E78FBF /* wall_time.m in Sources */,
+				2804A5F22198C26100853871 /* PBWGraphicsContext.m in Sources */,
+				28132D292190BAFB00B36804 /* PBWGraphics.m in Sources */,
+				284C91E5217535E90080B3E1 /* memory.c in Sources */,
+				28ED9E6921A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */,
+				284C92162189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */,
+				284C924B218DD25D0080B3E1 /* weemalloc.c in Sources */,
+				284C91E2217518EB0080B3E1 /* exec.c in Sources */,
+				284C91D72174FD170080B3E1 /* PBWApp.m in Sources */,
+				28E020E02173E0EC00C556D6 /* main.m in Sources */,
+				2804A5EE21985E6500853871 /* app_message.m in Sources */,
+				284C91D92174FD170080B3E1 /* PBWRuntime.m in Sources */,
+				287069A9219728A000D20B89 /* events.m in Sources */,
+				2804A5FD2198DF8600853871 /* time.m in Sources */,
+				287069A62197125300D20B89 /* storage.m in Sources */,
+				28ED9E65219B859B00E78FBF /* logging.m in Sources */,
+				28156B21218DED0800AC859A /* memory.m in Sources */,
+				28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */,
+				284C91DE2174FDA70080B3E1 /* cpu.c in Sources */,
+				28156B31218F112700AC859A /* PBWObject.m in Sources */,
+				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
+				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E020EE2173E0EC00C556D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2804A5FE2198DF8600853871 /* time.m in Sources */,
+				28132D2A2190BAFB00B36804 /* PBWGraphics.m in Sources */,
+				2804A5F72198C59F00853871 /* UIColor+GColor.m in Sources */,
+				28ED9E66219B859B00E78FBF /* logging.m in Sources */,
+				284C92122180CE850080B3E1 /* thumb2.c in Sources */,
+				287069A72197125300D20B89 /* storage.m in Sources */,
+				284C9252218DD4D70080B3E1 /* api.m in Sources */,
+				284C9204217C862C0080B3E1 /* cpu.c in Sources */,
+				284C92172189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */,
+				28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */,
+				28132D262190BA3500B36804 /* PBWLayer.m in Sources */,
+				28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */,
+				28E020FC2173E0EC00C556D6 /* ExtensionDelegate.m in Sources */,
+				28E0212E2173E14200C556D6 /* PBWBundle.m in Sources */,
+				287069AA219728A000D20B89 /* events.m in Sources */,
+				284C924C218DD25D0080B3E1 /* weemalloc.c in Sources */,
+				28ED9E6A21A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */,
+				284C9206217C862C0080B3E1 /* memory.c in Sources */,
+				2804A5F32198C26100853871 /* PBWGraphicsContext.m in Sources */,
+				28ED9E63219B800600E78FBF /* wall_time.m in Sources */,
+				284C9205217C862C0080B3E1 /* exec.c in Sources */,
+				28ED9E60219B54FF00E78FBF /* string.m in Sources */,
+				284C920E2180CE5F0080B3E1 /* thumb.c in Sources */,
+				28156B32218F112700AC859A /* PBWObject.m in Sources */,
+				28E0212C2173E14200C556D6 /* PBWRuntime.m in Sources */,
+				28E020F92173E0EC00C556D6 /* InterfaceController.m in Sources */,
+				28156B22218DED0800AC859A /* memory.m in Sources */,
+				28E021302173E14200C556D6 /* PBWApp.m in Sources */,
+				2804A5EF21985E6500853871 /* app_message.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		284C9200217C85E20080B3E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28E020CC2173E0EB00C556D6 /* Stonework */;
+			targetProxy = 284C91FF217C85E20080B3E1 /* PBXContainerItemProxy */;
+		};
+		28E020E62173E0EC00C556D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28E020E22173E0EC00C556D6 /* Stonework WatchKit App */;
+			targetProxy = 28E020E52173E0EC00C556D6 /* PBXContainerItemProxy */;
+		};
+		28E020F52173E0EC00C556D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28E020F12173E0EC00C556D6 /* Stonework WatchKit Extension */;
+			targetProxy = 28E020F42173E0EC00C556D6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		28E020D62173E0EB00C556D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28E020D72173E0EB00C556D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28E020DC2173E0EC00C556D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		284C9202217C85E20080B3E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = PBWCPUTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.PBWCPUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stonework.app/Stonework";
+			};
+			name = Debug;
+		};
+		284C9203217C85E20080B3E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = PBWCPUTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.PBWCPUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stonework.app/Stonework";
+			};
+			name = Release;
+		};
+		28E021002173E0ED00C556D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		28E021012173E0ED00C556D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28E021032173E0ED00C556D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = "Stonework WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "armv7k i386";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		28E021042173E0ED00C556D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = "Stonework WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "armv7k i386";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		28E021072173E0ED00C556D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				IBSC_MODULE = Stonework_WatchKit_Extension;
+				INFOPLIST_FILE = "Stonework WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "armv7k i386";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		28E021082173E0ED00C556D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				IBSC_MODULE = Stonework_WatchKit_Extension;
+				INFOPLIST_FILE = "Stonework WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALID_ARCHS = "armv7k i386";
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		28E0210B2173E0ED00C556D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Stonework/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28E0210C2173E0ED00C556D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Stonework/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		284C9201217C85E20080B3E1 /* Build configuration list for PBXNativeTarget "PBWCPUTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				284C9202217C85E20080B3E1 /* Debug */,
+				284C9203217C85E20080B3E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E020C82173E0EB00C556D6 /* Build configuration list for PBXProject "Stonework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E021002173E0ED00C556D6 /* Debug */,
+				28E021012173E0ED00C556D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E021022173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E021032173E0ED00C556D6 /* Debug */,
+				28E021042173E0ED00C556D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E021062173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E021072173E0ED00C556D6 /* Debug */,
+				28E021082173E0ED00C556D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E0210A2173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E0210B2173E0ED00C556D6 /* Debug */,
+				28E0210C2173E0ED00C556D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28E020C52173E0EB00C556D6 /* Project object */;
+}

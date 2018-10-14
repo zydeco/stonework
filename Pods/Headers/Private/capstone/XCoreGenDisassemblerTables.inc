@@ -1,0 +1,1 @@
+../../../capstone/arch/XCore/XCoreGenDisassemblerTables.inc

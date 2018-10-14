@@ -1,0 +1,48 @@
+PODS:
+  - capstone (3.0.5):
+    - capstone/AArch64 (= 3.0.5)
+    - capstone/ARM (= 3.0.5)
+    - capstone/EVM (= 3.0.5)
+    - capstone/M680X (= 3.0.5)
+    - capstone/M68K (= 3.0.5)
+    - capstone/Mips (= 3.0.5)
+    - capstone/PowerPC (= 3.0.5)
+    - capstone/Sparc (= 3.0.5)
+    - capstone/SystemZ (= 3.0.5)
+    - capstone/TMS320C64x (= 3.0.5)
+    - capstone/X86 (= 3.0.5)
+    - capstone/XCore (= 3.0.5)
+  - capstone/AArch64 (3.0.5)
+  - capstone/ARM (3.0.5)
+  - capstone/EVM (3.0.5)
+  - capstone/M680X (3.0.5)
+  - capstone/M68K (3.0.5)
+  - capstone/Mips (3.0.5)
+  - capstone/PowerPC (3.0.5)
+  - capstone/Sparc (3.0.5)
+  - capstone/SystemZ (3.0.5)
+  - capstone/TMS320C64x (3.0.5)
+  - capstone/X86 (3.0.5)
+  - capstone/XCore (3.0.5)
+  - Minizip (1.0.0)
+
+DEPENDENCIES:
+  - capstone (from `capstone.podspec`)
+  - capstone/ARM (from `capstone.podspec`)
+  - Minizip
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Minizip
+
+EXTERNAL SOURCES:
+  capstone:
+    :podspec: capstone.podspec
+
+SPEC CHECKSUMS:
+  capstone: 12ce2ff26305c3119d009b98b3d09b727f1860b7
+  Minizip: 188cb3e39a1195c283ae03bf673d182596fefd0b
+
+PODFILE CHECKSUM: e14f355c143d0a1f386d106ecb10aac1a06336a2
+
+COCOAPODS: 1.6.0.beta.1
