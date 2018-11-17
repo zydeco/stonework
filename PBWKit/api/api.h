@@ -71,6 +71,21 @@ typedef enum : int32_t {
     S_NO_ACTION_REQUIRED = 3,
 } status_t;
 
+typedef enum {
+    //! Flag to represent the "seconds" time unit
+    SECOND_UNIT = 1 << 0,
+    //! Flag to represent the "minutes" time unit
+    MINUTE_UNIT = 1 << 1,
+    //! Flag to represent the "hours" time unit
+    HOUR_UNIT = 1 << 2,
+    //! Flag to represent the "days" time unit
+    DAY_UNIT = 1 << 3,
+    //! Flag to represent the "months" time unit
+    MONTH_UNIT = 1 << 4,
+    //! Flag to represent the "years" time unit
+    YEAR_UNIT = 1 << 5
+} TimeUnits;
+
 #define PBW_API(name, ...) uint32_t pbw_api_##name(pbw_ctx ctx, ##__VA_ARGS__)
 #define PROC_ARG(n) ((n < 4) ? pbw_cpu_reg_get(ctx->cpu, n) : pbw_cpu_stack_peek(ctx->cpu, n-4))
 

@@ -14,20 +14,11 @@
 #pragma mark - Tick Timer Service
 
 uint32_t pbw_api_tick_timer_service_subscribe(pbw_ctx ctx, uint32_t units, uint32_t handler) {
-    pbw_api_tick_timer_service_unsubscribe(ctx);
-    NSTimeInterval thisTick = floor([NSDate timeIntervalSinceReferenceDate]);
-    NSDate *nextFireDate = [NSDate dateWithTimeIntervalSinceReferenceDate:thisTick + 1.0];
-    NSDictionary *userInfo = @{@"units": @(units), @"handler": @(handler)};
-    NSTimer *tickTimer = [[NSTimer alloc] initWithFireDate:nextFireDate interval:1.0 target:ctx->runtime selector:@selector(tick:) userInfo:userInfo repeats:YES];
-    ctx->runtime.tickTimer = tickTimer;
-    ctx->runtime.lastTick = thisTick;
+    [ctx->runtime startTickTimerWithUnits:units handler:handler];
     return 0;
 }
 
 uint32_t pbw_api_tick_timer_service_unsubscribe(pbw_ctx ctx) {
-    if (ctx->runtime.tickTimer) {
-        [ctx->runtime.tickTimer invalidate];
-        ctx->runtime.tickTimer = nil;
-    }
+    [ctx->runtime startTickTimerWithUnits:0 handler:0];
     return 0;
 }

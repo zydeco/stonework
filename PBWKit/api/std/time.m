@@ -71,6 +71,11 @@ static void tm_guest_to_host(const struct pebble_tm *guest_tm, struct tm *host_t
     host_tm->tm_zone = strdup(guest_tm->tm_zone);
 }
 
+void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_t handler) {
+    tm_host_to_guest(host_tm, pbw_ctx_get_pointer(ctx, kPBWGlobalTickTime));
+    pbw_cpu_call(ctx->cpu, handler, NULL, 2, kPBWGlobalTickTime, unitsChanged);
+}
+
 uint32_t pbw_api_localtime(pbw_ctx ctx, uint32_t timep) {
     struct tm host_tm;
     time_t t = pbw_cpu_mem_read(ctx->cpu, timep, PBW_MEM_READ, PBW_MEM_WORD);

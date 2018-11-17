@@ -20,7 +20,7 @@
 
 uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
     pbw_cpu_stop(ctx->cpu, PBW_ERR_OK);
-    [ctx->runtime.screenView setNeedsDisplay];
+    [ctx->runtime startEventLoop];
     return 0;
 }
 
@@ -36,12 +36,19 @@ static void PBWScreenView_drawRect(NSObject<PBWScreenView> *self, SEL _cmd, CGRe
     }
 }
 
+void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_t handler);
+
 @implementation PBWRuntime
 {
     struct pbw_ctx ctx;
     uint32_t entryPoint;
     uint8_t *jumpTableSlice;
     uint32_t nextObject;
+    NSTimer *tickTimer;
+    TimeUnits tickServiceUnits;
+    uint32_t tickSerivceHandler;
+    struct tm lastTickServiceTime;
+    time_t lastTime;
 }
 
 + (void)load {
@@ -181,8 +188,44 @@ static void PBWScreenView_drawRect(NSObject<PBWScreenView> *self, SEL _cmd, CGRe
     [[NSUserDefaults standardUserDefaults] setObject:_persistentStorage forKey:persistKey];
 }
 
-- (void)tick:(NSTimer *)timer {
+- (void)startEventLoop {
+    [_screenView setNeedsDisplay];
+}
+
+- (void)startTickTimerWithUnits:(TimeUnits)timeUnits handler:(uint32_t)handler {
+    tickServiceUnits = timeUnits;
+    tickSerivceHandler = handler;
+    if (handler == 0) {
+        [tickTimer invalidate];
+        tickTimer = nil;
+        return;
+    }
     
+    time_t now = time(NULL);
+    localtime_r(&now, &lastTickServiceTime);
+    NSTimeInterval thisTick = floor([NSDate timeIntervalSinceReferenceDate]);
+    NSDate *nextFireDate = [NSDate dateWithTimeIntervalSinceReferenceDate:thisTick + 1.05];
+    tickTimer = [[NSTimer alloc] initWithFireDate:nextFireDate interval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:tickTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)tick:(NSTimer *)timer {
+    struct tm thisTick;
+    time_t now = time(NULL);
+    
+    if (now != lastTime && tickSerivceHandler) {
+        localtime_r(&now, &thisTick);
+        TimeUnits changedUnits = 0;
+        if (thisTick.tm_sec != lastTickServiceTime.tm_sec) changedUnits |= SECOND_UNIT;
+        if (thisTick.tm_min != lastTickServiceTime.tm_min) changedUnits |= MINUTE_UNIT;
+        if (thisTick.tm_hour != lastTickServiceTime.tm_hour) changedUnits |= HOUR_UNIT;
+        if (thisTick.tm_mday != lastTickServiceTime.tm_mday) changedUnits |= DAY_UNIT;
+        if (thisTick.tm_mon != lastTickServiceTime.tm_mon) changedUnits |= MONTH_UNIT;
+        if (thisTick.tm_year != lastTickServiceTime.tm_year) changedUnits |= YEAR_UNIT;
+        lastTickServiceTime = thisTick;
+        lastTime = now;
+        PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
+    }
 }
 
 # pragma mark - Accessors

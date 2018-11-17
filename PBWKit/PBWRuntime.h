@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) pbw_ctx runtimeContext;
 - (instancetype)initWithApp:(PBWApp*)app;
 - (BOOL)run;
+- (void)startEventLoop;
 
 // Graphics
 @property (nonatomic, readonly) NSObject<PBWScreenView> *screenView;
@@ -35,9 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)savePersistentStorage;
 
 // Tick Timer Service
-@property (nonatomic, assign) NSTimeInterval lastTick;
-@property (nonatomic, retain, nullable) NSTimer *tickTimer;
-- (void)tick:(NSTimer*)timer;
+- (void)startTickTimerWithUnits:(TimeUnits)timeUnits handler:(uint32_t)handler;
 
 // AppMessage
 @property (nonatomic, assign) uint32_t appMessageContext;
