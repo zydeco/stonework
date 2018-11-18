@@ -7,7 +7,9 @@
 //
 
 #include "cpu_priv.h"
+#if defined(PRINT_DISASSEMBLY)
 #include <capstone/capstone.h>
+#endif
 #include <stdarg.h>
 
 pbw_cpu pbw_cpu_init(pbw_cpu_hook invalid_access_hook, pbw_cpu_hook invalid_instruction_hook, void *userData) {
@@ -65,8 +67,6 @@ uint32_t pbw_cpu_default_hook(pbw_cpu cpu, void *userData, uint32_t addr, pbw_me
 pbw_err pbw_cpu_resume(pbw_cpu cpu) {
     return pbw_cpu_resume_until(cpu, 0);
 }
-
-#define PRINT_DISASSEMBLY
 
 pbw_err pbw_cpu_resume_until(pbw_cpu cpu, uint32_t stop_address) {
 #if defined(PRINT_DISASSEMBLY)

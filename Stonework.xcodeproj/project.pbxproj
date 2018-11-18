@@ -1129,6 +1129,16 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
 				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Minizip\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/capstone\"",
+					"-DPRINT_DISASSEMBLY",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1152,6 +1162,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Stonework\\ WatchKit\\ Extension",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Minizip\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/capstone\"",
+					"-DPRINT_DISASSEMBLY",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
