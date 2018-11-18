@@ -24,18 +24,6 @@ uint32_t pbw_cpu_get_next_instruction(pbw_cpu cpu) {
     return ins;
 }
 
-float u32toFloat(uint32_t u) {
-#if __SIZEOF_FLOAT__ != 4
-#error float must be 4!
-#endif
-    union {
-        uint32_t u32;
-        float f;
-    } f;
-    f.u32 = u;
-    return f.f;
-}
-
 #ifdef PRINT_STATE
 void print_regs(pbw_cpu cpu) {
     printf("R0=%08x:", R[0]);
@@ -61,48 +49,6 @@ void print_regs(pbw_cpu cpu) {
 #define UNPACK_HW(arg) (int16_t)(arg & 0xffff), (int16_t)(arg >> 16)
 
 void pbw_cpu_exec(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
-    static uint32_t charWidthsPtr;
-    static uint32_t floatRet = 0;
-    static uint32_t intRet = 0;
-    if (pc == 0x109d8) {
-        printf("draw_roman_number(%d, 0x%x, {(%d,%d), (%dx%d)})\n", cpu->reg[0], cpu->reg[1], UNPACK_HW(cpu->reg[2]), UNPACK_HW(cpu->reg[3]));
-    } else if (pc == 0x10830) {
-        printf("draw_i(0x%x, {(%d,%d), (%dx%d)})\n", cpu->reg[0], UNPACK_HW(cpu->reg[1]), UNPACK_HW(cpu->reg[2]));
-    } else if (pc == 0x1060c) {
-        printf("draw_l(0x%x, {(%d,%d), (%dx%d)})\n", cpu->reg[0], UNPACK_HW(cpu->reg[1]), UNPACK_HW(cpu->reg[2]));
-    } else if (pc == 0x1068c) {
-        printf("draw_x(0x%x, {(%d,%d), (%dx%d)})\n", cpu->reg[0], UNPACK_HW(cpu->reg[1]), UNPACK_HW(cpu->reg[2]));
-    } else if (pc == 0x10754) {
-        printf("draw_v(0x%x, {(%d,%d), (%dx%d)})\n", cpu->reg[0], UNPACK_HW(cpu->reg[1]), UNPACK_HW(cpu->reg[2]));
-    } else if (pc == 0x10908) {
-        charWidthsPtr = cpu->reg[1];
-        printf("get_char_widths(%s, 0x%x, {(%dx%d)}, %d)\n", pbw_cpu_read_cstring(cpu, cpu->reg[0]), cpu->reg[1], UNPACK_HW(cpu->reg[2]), cpu->reg[3]);
-    } else if (pc == 0x10a18) {
-        printf("char widths = %d = %d,%d,%d,%d,%d\n",
-               cpu->reg[0],
-               pbw_cpu_read_halfword(cpu, charWidthsPtr),
-               pbw_cpu_read_halfword(cpu, charWidthsPtr+2),
-               pbw_cpu_read_halfword(cpu, charWidthsPtr+4),
-               pbw_cpu_read_halfword(cpu, charWidthsPtr+6),
-               pbw_cpu_read_halfword(cpu, charWidthsPtr+8));
-    } else if (pc == 0x1041c) {
-        floatRet = R[REG_LR];
-        printf("_aeabi_fdiv(%g,%g)\n", u32toFloat(R[0]), u32toFloat(R[1]));
-    } else if (pc == 0x102b4) {
-        floatRet = R[REG_LR];
-        printf("_aeabi_fmul(%g,%g)\n", u32toFloat(R[0]), u32toFloat(R[1]));
-    } else if (pc == 0x10554) {
-        intRet = R[REG_LR];
-        printf("_aeabi_f2iz(%g)\n", u32toFloat(R[0]));
-    } else if (pc == floatRet) {
-        floatRet = 0;
-        printf("float return = %g\n", u32toFloat(R[0]));
-    } else if (pc == intRet) {
-        intRet = 0;
-        printf("int return = %d\n", R[0]);
-    }
-    
-        
     if (INSTRUCTION_THUMB32(ins)) {
         INS_CALL(thumb2);
     } else {
