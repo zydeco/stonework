@@ -15,6 +15,7 @@
     uint32_t fmt_ptr = PROC_ARG(fmtArg);
     NSString *baseFormatString = @(pbw_cpu_read_cstring(ctx->cpu, fmt_ptr));
     NSScanner *scanner = [NSScanner scannerWithString:baseFormatString];
+    scanner.charactersToBeSkipped = nil;
     scanner.caseSensitive = YES;
     
     NSMutableString *string = [NSMutableString stringWithCapacity:baseFormatString.length];
@@ -25,9 +26,8 @@
         if ([baseFormatString characterAtIndex:scanner.scanLocation] != '%') {
             [scanner scanUpToString:@"%" intoString:&token];
             [string appendString:token];
-            token = nil;
+            if (scanner.atEnd) break;
         }
-        if (scanner.atEnd) break;
         scanner.scanLocation += 1;
         // scan token
         unichar nextChar = [baseFormatString characterAtIndex:scanner.scanLocation];
