@@ -34,7 +34,7 @@ uint32_t pbw_api_layer_destroy(pbw_ctx ctx, uint32_t layerTag) {
 
 uint32_t pbw_api_layer_mark_dirty(pbw_ctx ctx, uint32_t layerTag) {
     PBWLayer *layer = ctx->runtime.objects[@(layerTag)];
-    [layer.window markDirty];
+    [layer markDirty];
     return 0;
 }
 
@@ -288,6 +288,10 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
         [[UIColor colorWithGColor:_window->_backgroundColor] setFill];
         UIRectFill(CGRectFromGRect(_bounds));
     }
+}
+
+- (void)markDirty {
+    [_window markDirty];
 }
 
 @end

@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (GRect)unobstructedBounds;
 - (void)drawLayerHierarchyInContext:(PBWGraphicsContext*)ctx;
 - (void)drawInContext:(CGContextRef)ctx;
+- (void)markDirty;
 
 @end
 
