@@ -12,7 +12,13 @@
 @class PBWRuntime;
 
 @protocol PBWScreenView
+
+@property(nonatomic) CGRect frame;
+@property(nonatomic) CGRect bounds;
+@property(nonatomic) CGPoint center;
+@property(nonatomic) CGAffineTransform transform;
+
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)setNeedsDisplay;
-- (CGRect)bounds;
+
 @end

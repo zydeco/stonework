@@ -21,6 +21,7 @@
 -(id)timeLabel;
 -(id)layer;
 -(void)addSubview:(id)subview;
+-(CGPoint)center;
 @end
 
 @interface InterfaceController ()
@@ -56,7 +57,12 @@
     PBWApp *app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeAplite];
     runtime = [[PBWRuntime alloc] initWithApp:app];
     [runtime run];
-    [fullScreenView addSubview:runtime.screenView];
+    
+    // add screen view
+    id<PBWScreenView> screenView = runtime.screenView;
+    [fullScreenView addSubview:screenView];
+    CGRect bounds = [fullScreenView bounds];
+    screenView.center = CGPointMake(bounds.size.width / 2.0, bounds.size.height / 2.0);
 }
 
 - (void)willActivate {
