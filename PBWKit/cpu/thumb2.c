@@ -63,41 +63,12 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
         }
     } else if INS_MASK(0xfe400000, 0xe8400000) switch ((ins >> 20) & 0x1b) {
         // Load/store dual or exclusive, table branch
-        case 0x00:
-            // MARK: STREX T1
-            CPU_BREAK(NOT_IMPLEMENTED);
-            break;
-        case 0x01:
-            // MARK: LDREX T1
-            CPU_BREAK(NOT_IMPLEMENTED);
-            break;
-        case 0x02:
-        case 0x0A:
-        case 0x10:
-        case 0x12:
-        case 0x18:
-        case 0x1A:
-            // MARK: STRD T1
-            CPU_BREAK(NOT_IMPLEMENTED);
-            break;
-        case 0x03:
-        case 0x0B:
-        case 0x11:
-        case 0x13:
-        case 0x19:
-        case 0x1B: {
-            // MARK: LDRD (immediate) T1
-            // MARK: LDRD (literal) T1
-            CPU_BREAK(NOT_IMPLEMENTED);
-            break; }
         case 0x08: switch(ins & 0xf0) {
             case 0x40:
                 // MARK: STREXB T1
-                CPU_BREAK(NOT_IMPLEMENTED);
-                break;
             case 0x50:
                 // MARK: STREXH T1
-                CPU_BREAK(NOT_IMPLEMENTED);
+                INS_CALL(loadstore);
                 break;
             default:
                 CPU_BREAK(UNDEFINED);
@@ -132,11 +103,9 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                 break; }
             case 0x40:
                 // MARK: LDREXB T1
-                CPU_BREAK(NOT_IMPLEMENTED);
-                break;
             case 0x50:
                 // MARK: LDREXH T1
-                CPU_BREAK(NOT_IMPLEMENTED);
+                INS_CALL(loadstore);
                 break;
             default:
                 CPU_BREAK(UNDEFINED);
@@ -144,8 +113,12 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
             }
             break;
         default:
-            // Other encodings in this space are UNDEFINED
-            CPU_BREAK(UNDEFINED);
+            // MARK: STREX T1
+            // MARK: LDREX T1
+            // MARK: STRD T1
+            // MARK: LDRD (immediate) T1
+            // MARK: LDRD (literal) T1
+            INS_CALL(loadstore);
             break;
     } else if INS_MASK(0xfe000000, 0xea000000) {
         // Data processing (shifted register)

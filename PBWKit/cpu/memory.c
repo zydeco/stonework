@@ -117,14 +117,156 @@ void pbw_cpu_exec_loadstore(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
     int add = 1; // U
     int wback = 0; // W
     int immediate = 0;
+    int dual = 0;
     uint32_t m = 0;
     uint32_t n;
     uint32_t t;
+    uint32_t t2 = 0;
     uint32_t imm = 0;
     uint32_t shift_t = SRType_LSL;
     uint32_t shift_n = 0;
-    if (INSTRUCTION_THUMB32(ins)) {
-        // memory hint?
+    if (!INSTRUCTION_THUMB32(ins)) {
+        // 16-bit instruction
+        n = (ins & 0x38) >> 3;
+        t = ins & 0x07;
+        switch (ins >> 9) {
+            case 0x28:
+                // Store: STR (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = store;
+                size = PBW_MEM_WORD;
+                break;
+            case 0x29:
+                // Store Halfword: STRH (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = store;
+                size = PBW_MEM_HALFWORD;
+                break;
+            case 0x2a:
+                // Store Byte: STRB (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = store;
+                size = PBW_MEM_BYTE;
+                break;
+            case 0x2b:
+                // Load Signed Byte: LDRSB (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = load_signed;
+                size = PBW_MEM_BYTE;
+                break;
+            case 0x2c:
+                // Load: LDR (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = load;
+                size = PBW_MEM_WORD;
+                break;
+            case 0x2d:
+                // Load Halfword: LDRH (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = load;
+                size = PBW_MEM_HALFWORD;
+                break;
+            case 0x2e:
+                // Load Byte: LDRB (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = load;
+                size = PBW_MEM_BYTE;
+                break;
+            case 0x2f:
+                // Load Signed Halfword: LDRSH (register) T1
+                m = (ins & 0x01C0) >> 6;
+                ls_op = load_signed;
+                size = PBW_MEM_HALFWORD;
+                break;
+            case 0x30:
+            case 0x31:
+            case 0x32:
+            case 0x33:
+                // Store: STR (immediate) T1
+                imm = (ins & 0x07C0) >> 4;
+                immediate = 1;
+                ls_op = store;
+                size = PBW_MEM_WORD;
+                break;
+            case 0x34:
+            case 0x35:
+            case 0x36:
+            case 0x37:
+                // Load: LDR (immediate) T1
+                imm = (ins & 0x07C0) >> 4;
+                immediate = 1;
+                ls_op = load;
+                size = PBW_MEM_WORD;
+                break;
+            case 0x38:
+            case 0x39:
+            case 0x3a:
+            case 0x3b:
+                // Store Byte: STRB (immediate) T1
+                imm = (ins & 0x07C0) >> 6;
+                immediate = 1;
+                ls_op = store;
+                size = PBW_MEM_BYTE;
+                break;
+            case 0x3c:
+            case 0x3d:
+            case 0x3e:
+            case 0x3f:
+                // Load Byte: LDRB (immediate) T1
+                imm = (ins & 0x07C0) >> 6;
+                immediate = 1;
+                ls_op = load;
+                size = PBW_MEM_BYTE;
+                break;
+            case 0x40:
+            case 0x41:
+            case 0x42:
+            case 0x43:
+                // Store Halfword: STRH (immediate) T1
+                imm = (ins & 0x07C0) >> 5;
+                immediate = 1;
+                ls_op = store;
+                size = PBW_MEM_HALFWORD;
+                break;
+            case 0x44:
+            case 0x45:
+            case 0x46:
+            case 0x47:
+                // Load Halfword: LDRH (immediate) T1
+                imm = (ins & 0x07C0) >> 5;
+                immediate = 1;
+                ls_op = load;
+                size = PBW_MEM_HALFWORD;
+                break;
+            case 0x48:
+            case 0x49:
+            case 0x4a:
+            case 0x4b:
+                // Store SP-relative: STR (immediate) T2
+                t = (ins & 0x0700) >> 8;
+                n = REG_SP;
+                imm = (ins & 0xff) << 2;
+                immediate = 1;
+                ls_op = store;
+                size = PBW_MEM_WORD;
+                break;
+            case 0x4c:
+            case 0x4d:
+            case 0x4e:
+            case 0x4f:
+                // Load SP-relative: LDR (immediate) T2:
+                t = (ins & 0x0700) >> 8;
+                n = REG_SP;
+                imm = (ins & 0xff) << 2;
+                immediate = 1;
+                ls_op = load;
+                size = PBW_MEM_WORD;
+                break;
+            default:
+                CPU_BREAK(UNPREDICTABLE);
+        }
+    } else if (ins & 0x10000000) {
+        // common format for instructions starting with 0b11111
         if INS_MASK(0xfe50f000, 0xf810f000) {
             // MARK: PLI, PLD
             // Unallocated memory hints
@@ -180,144 +322,29 @@ void pbw_cpu_exec_loadstore(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
             shift_n = (ins >> 4) & 0x3;
         }
     } else {
-        // 16-bit instruction
-        n = (ins & 0x38) >> 3;
-        t = ins & 0x07;
-        switch (ins >> 9) {
-        case 0x28:
-            // Store: STR (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = store;
-            size = PBW_MEM_WORD;
-            break;
-        case 0x29:
-            // Store Halfword: STRH (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = store;
-            size = PBW_MEM_HALFWORD;
-            break;
-        case 0x2a:
-            // Store Byte: STRB (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = store;
-            size = PBW_MEM_BYTE;
-            break;
-        case 0x2b:
-            // Load Signed Byte: LDRSB (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = load_signed;
-            size = PBW_MEM_BYTE;
-            break;
-        case 0x2c:
-            // Load: LDR (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = load;
-            size = PBW_MEM_WORD;
-            break;
-        case 0x2d:
-            // Load Halfword: LDRH (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = load;
-            size = PBW_MEM_HALFWORD;
-            break;
-        case 0x2e:
-            // Load Byte: LDRB (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = load;
-            size = PBW_MEM_BYTE;
-            break;
-        case 0x2f:
-            // Load Signed Halfword: LDRSH (register) T1
-            m = (ins & 0x01C0) >> 6;
-            ls_op = load_signed;
-            size = PBW_MEM_HALFWORD;
-            break;
-        case 0x30:
-        case 0x31:
-        case 0x32:
-        case 0x33:
-            // Store: STR (immediate) T1
-            imm = (ins & 0x07C0) >> 4;
+        // common format for instructions starting with 0b11101
+        index = (ins & 0x1000000);
+        add = (ins & 0x800000);
+        wback = (ins & 0x200000);
+        ls_op = (ins & 0x100000) ? load : store;
+        size = PBW_MEM_WORD;
+        n = (ins >> 16) & 0xf;
+        t = (ins >> 12) & 0xf;
+        if (index || wback) {
+            // STRD, LDRD
+            dual = 1;
+            t2 = (ins >> 8) & 0xf;
+            if (t == t2 || t == 13 || t == 15 || t2 == 13 || t2 == 15) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
+            if (wback && (n == t || n == t2)) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
             immediate = 1;
-            ls_op = store;
-            size = PBW_MEM_WORD;
-            break;
-        case 0x34:
-        case 0x35:
-        case 0x36:
-        case 0x37:
-            // Load: LDR (immediate) T1
-            imm = (ins & 0x07C0) >> 4;
-            immediate = 1;
-            ls_op = load;
-            size = PBW_MEM_WORD;
-            break;
-        case 0x38:
-        case 0x39:
-        case 0x3a:
-        case 0x3b:
-            // Store Byte: STRB (immediate) T1
-            imm = (ins & 0x07C0) >> 6;
-            immediate = 1;
-            ls_op = store;
-            size = PBW_MEM_BYTE;
-            break;
-        case 0x3c:
-        case 0x3d:
-        case 0x3e:
-        case 0x3f:
-            // Load Byte: LDRB (immediate) T1
-            imm = (ins & 0x07C0) >> 6;
-            immediate = 1;
-            ls_op = load;
-            size = PBW_MEM_BYTE;
-            break;
-        case 0x40:
-        case 0x41:
-        case 0x42:
-        case 0x43:
-            // Store Halfword: STRH (immediate) T1
-            imm = (ins & 0x07C0) >> 5;
-            immediate = 1;
-            ls_op = store;
-            size = PBW_MEM_HALFWORD;
-            break;
-        case 0x44:
-        case 0x45:
-        case 0x46:
-        case 0x47:
-            // Load Halfword: LDRH (immediate) T1
-            imm = (ins & 0x07C0) >> 5;
-            immediate = 1;
-            ls_op = load;
-            size = PBW_MEM_HALFWORD;
-            break;
-        case 0x48:
-        case 0x49:
-        case 0x4a:
-        case 0x4b:
-            // Store SP-relative: STR (immediate) T2
-            t = (ins & 0x0700) >> 8;
-            n = REG_SP;
             imm = (ins & 0xff) << 2;
-            immediate = 1;
-            ls_op = store;
-            size = PBW_MEM_WORD;
-            break;
-        case 0x4c:
-        case 0x4d:
-        case 0x4e:
-        case 0x4f:
-            // Load SP-relative: LDR (immediate) T2:
-            t = (ins & 0x0700) >> 8;
-            n = REG_SP;
-            imm = (ins & 0xff) << 2;
-            immediate = 1;
-            ls_op = load;
-            size = PBW_MEM_WORD;
-            break;
-        default:
-            CPU_BREAK(UNPREDICTABLE);
+        } else {
+            // Exclusive access
+            CPU_BREAK(NOT_IMPLEMENTED);
         }
     }
     if (ConditionPassed()) {
@@ -332,6 +359,7 @@ void pbw_cpu_exec_loadstore(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                 data = R[t];
                 if (t == REG_PC) data = pc + 4;
                 pbw_cpu_mem_write(cpu, address, size, data);
+                if (dual) pbw_cpu_mem_write(cpu, address+4, size, R[t2]);
                 break;
             case load:
                 data = pbw_cpu_mem_read(cpu, address, PBW_MEM_READ, size);
@@ -339,6 +367,7 @@ void pbw_cpu_exec_loadstore(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                     CPU_BREAK(UNPREDICTABLE);
                 } else {
                     R[t] = data;
+                    if (dual) R[t2] = pbw_cpu_mem_read(cpu, address+4, PBW_MEM_READ, size);
                 }
                 break;
             case load_signed:
