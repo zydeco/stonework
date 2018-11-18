@@ -165,6 +165,21 @@ PBW_API(graphics_context_set_compositing_mode, uint32_t gctx, uint32_t comp_op);
 PBW_API(graphics_context_set_antialiased, uint32_t gctx, uint32_t enable);
 PBW_API(graphics_context_set_stroke_width, uint32_t gctx, uint32_t stroke_width);
 
+#pragma mark - Graphics / Graphics Types
+PBW_API(gcolor_equal, uint32_t x, uint32_t y);
+PBW_API(gcolor_legible_over, uint32_t background_color);
+PBW_API(gpoint_equal, uint32_t aptr, uint32_t bptr);
+PBW_API(gsize_equal, uint32_t aptr, uint32_t bptr);
+PBW_API(grect_equal, uint32_t aptr, uint32_t bptr);
+PBW_API(grect_is_empty, uint32_t ptr);
+PBW_API(grect_standardize, uint32_t ptr);
+PBW_API(grect_clip, uint32_t rect_ptr, uint32_t clip_ptr);
+PBW_API(grect_contains_point, uint32_t rect_ptr, uint32_t point_ptr);
+PBW_API(grect_center_point, uint32_t rect_ptr);
+PBW_API(grect_crop, uint32_t retptr, ARG_GRECT(rect), int32_t crop_size);
+PBW_API(grect_align, uint32_t rect_ptr, uint32_t inside_rect_ptr, uint32_t alignment, uint32_t clip);
+PBW_API(grect_inset, uint32_t retptr, ARG_GRECT(rect));
+
 #pragma mark - User Interface / Layer
 PBW_API(layer_create, ARG_GRECT(frame));
 PBW_API(layer_create_with_data, ARG_GRECT(frame), uint32_t data_size);

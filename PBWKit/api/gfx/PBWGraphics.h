@@ -58,6 +58,23 @@ typedef struct GRect {
 #define GRect(x, y, w, h) ((GRect){{(x), (y)}, {(w), (h)}})
 #define GRectZero GRect(0, 0, 0, 0)
 
+typedef struct {
+    int16_t top, right;
+    int16_t bottom, left;
+} GEdgeInsets;
+
+typedef enum GAlign {
+    GAlignCenter,
+    GAlignTopLeft,
+    GAlignTopRight,
+    GAlignTop,
+    GAlignLeft,
+    GAlignBottom,
+    GAlignRight,
+    GAlignBottomRight,
+    GAlignBottomLeft
+} GAlign;
+
 bool grect_equal(const GRect* const rect_a, const GRect* const rect_b);
 bool grect_is_empty(const GRect* const rect);
 void grect_standardize(GRect *rect);
@@ -65,6 +82,8 @@ void grect_clip(GRect * const rect_to_clip, const GRect * const rect_clipper);
 bool grect_contains_point(const GRect *rect, const GPoint *point);
 GPoint grect_center_point(const GRect *rect);
 GRect grect_crop(GRect rect, const int32_t crop_size_px);
+void grect_align(GRect * rect, const GRect * inside_rect, GAlign alignment, bool clip);
+GRect grect_inset(GRect rect, GEdgeInsets insets);
 
 static inline CGRect CGRectFromGRect(GRect rect) {
     return CGRectMake(rect.origin.x, rect.origin.y, rect.size.w, rect.size.h);
@@ -111,7 +130,6 @@ typedef enum {
     //!   painted white. Other parts will be left untouched.
     GCompOpSet,
 } GCompOp;
-
 
 #define PACK_POINT(p) (p.x | (p.y << 16))
 #define PACK_SIZE(s) (s.w | (s.h << 16))

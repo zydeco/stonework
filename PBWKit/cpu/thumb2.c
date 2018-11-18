@@ -646,7 +646,21 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                 break;
             case 0x1c:
                 // MARK: UBFX T1
-                CPU_BREAK(NOT_IMPLEMENTED);
+                if (d == 13 || d == 15 || n == 13 || n == 15) {
+                    CPU_BREAK(UNPREDICTABLE);
+                }
+                if (ConditionPassed()) {
+                    uint32_t lsbit = ((ins >> 10) & 0x1c) | ((ins >> 6) & 0x3);
+                    uint32_t widthminus1 = ins & 0x1f;
+                    uint32_t msbit = lsbit + widthminus1;
+                    if (msbit <= 31) {
+                        uint32_t value = R[n];
+                        uint32_t result = (value >> lsbit) & ~(0xffffffff << (widthminus1 + 1));
+                        R[d] = result;
+                    } else {
+                        CPU_BREAK(UNPREDICTABLE);
+                    }
+                }
                 break;
             default:
                 CPU_BREAK(UNDEFINED);
