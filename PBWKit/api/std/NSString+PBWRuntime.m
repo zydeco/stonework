@@ -18,11 +18,15 @@
     scanner.caseSensitive = YES;
     
     NSMutableString *string = [NSMutableString stringWithCapacity:baseFormatString.length];
-    NSString *token;
+    NSString *token = nil;
     int arg = fmtArg + 1;
     
-    while ([scanner scanUpToString:@"%" intoString:&token]) {
-        [string appendString:token];
+    while (!scanner.atEnd) {
+        if ([baseFormatString characterAtIndex:scanner.scanLocation] != '%') {
+            [scanner scanUpToString:@"%" intoString:&token];
+            [string appendString:token];
+            token = nil;
+        }
         if (scanner.atEnd) break;
         scanner.scanLocation += 1;
         // scan token
