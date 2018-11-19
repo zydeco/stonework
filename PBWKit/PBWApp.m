@@ -41,10 +41,18 @@ struct PblAppHeader {
 
 #define PblAppHeaderAtLeast(s, major, minor) ((s.struct_version_major == major && s.struct_version_minor > minor) || s.struct_version_major > major)
 
+struct ResourceEntry {
+    uint32_t resourceID;
+    uint32_t offset;
+    uint32_t length;
+};
+
 @implementation PBWApp
 {
     NSString *_basePath;
     struct PblAppHeader appHeader;
+    NSUInteger numberOfResources;
+    struct ResourceEntry *resources;
 }
 
 - (instancetype)initWithBundle:(PBWBundle *)bundle platform:(PBWPlatformType)platform {
@@ -76,8 +84,10 @@ struct PblAppHeader {
         _basePath = basePath;
         NSDictionary<NSString*,id> *appManifest = manifest[@"application"];
         _appBinary = [_bundle dataAtPath:[basePath stringByAppendingString: appManifest[@"name"]]];
-        if (appManifest[@"resources"]) {
-            _resourcePack = [_bundle dataAtPath:[basePath stringByAppendingString: appManifest[@"resources"]]];
+        NSString *resourcesName = [manifest valueForKeyPath:@"resources.name"];
+        if (resourcesName) {
+            _resourcePack = [_bundle dataAtPath:[basePath stringByAppendingString:resourcesName]];
+            [self loadResourcePack];
         } else {
             _resourcePack = nil;
         }
@@ -85,6 +95,12 @@ struct PblAppHeader {
         // TODO: check integrity of app image and resources?
     }
     return self;
+}
+
+- (void)dealloc {
+    if (resources != NULL) {
+        free(resources);
+    }
 }
 
 - (void)loadAppHeader {
@@ -135,6 +151,42 @@ struct PblAppHeader {
     _appName = [NSString stringWithUTF8String:buf];
     memcpy(buf, appHeader.company, APP_NAME_SIZE);
     _companyName = [NSString stringWithUTF8String:buf];
+}
+
+#pragma mark - Resource Manager
+
+- (void)loadResourcePack {
+    const void *data = _resourcePack.bytes;
+    numberOfResources = OSReadLittleInt32(data, 0);
+    resources = calloc(numberOfResources, sizeof(struct ResourceEntry));
+    
+    for (NSUInteger i=0; i < numberOfResources; i++) {
+        resources[i].resourceID = OSReadLittleInt32(data, 12 + (16 * i));
+        resources[i].offset = OSReadLittleInt32(data, 12 + (16 * i) + 4) + 12 + (256 * 16);
+        resources[i].length = OSReadLittleInt32(data, 12 + (16 * i) + 8);
+    }
+    
+    // they might be sorted already
+    qsort_b(resources, numberOfResources, sizeof(struct ResourceEntry), ^int(const void *a, const void *b) {
+        return ((struct ResourceEntry*)a)->resourceID - ((struct ResourceEntry*)b)->resourceID;
+    });
+}
+
+- (nullable NSData*)resourceWithID:(uint32_t)resourceID {
+    if (_resourcePack == nil) {
+        return nil;
+    }
+    
+    struct ResourceEntry keyEntry = {.resourceID = resourceID};
+    struct ResourceEntry *entry = bsearch_b(&keyEntry, resources, numberOfResources, sizeof(struct ResourceEntry), ^int(const void *a, const void *b) {
+        return ((struct ResourceEntry*)a)->resourceID - ((struct ResourceEntry*)b)->resourceID;
+    });
+    
+    if (entry) {
+        return [_resourcePack subdataWithRange:NSMakeRange(entry->offset, entry->length)];
+    }
+    
+    return nil;
 }
 
 #pragma mark - Accessors

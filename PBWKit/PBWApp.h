@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) uint32_t entryPoint, symbolTableOffset, relocTableOffset, numRelocEntries, appFlags;
 
 - (nullable instancetype)initWithBundle:(PBWBundle*)bundle platform:(PBWPlatformType)platform;
+- (nullable NSData*)resourceWithID:(uint32_t)resourceID;
 
 @end
 

@@ -235,10 +235,10 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(property_animation_legacy2_update_int16),
     PBW_API_UNIMPLEMENTED(psleep),
     PBW_API_UNIMPLEMENTED(rand),
-    PBW_API_UNIMPLEMENTED(resource_get_handle),
-    PBW_API_UNIMPLEMENTED(resource_load),
-    PBW_API_UNIMPLEMENTED(resource_load_byte_range),
-    PBW_API_UNIMPLEMENTED(resource_size),
+    PBW_API(resource_get_handle, YES, 1),
+    PBW_API(resource_load, YES, 3),
+    PBW_API(resource_load_byte_range, YES, 4),
+    PBW_API(resource_size, YES, 1),
     PBW_API_UNIMPLEMENTED(rot_bitmap_layer_create),
     PBW_API_UNIMPLEMENTED(rot_bitmap_layer_destroy),
     PBW_API_UNIMPLEMENTED(rot_bitmap_layer_increment_angle),
@@ -696,9 +696,6 @@ void* pbw_ctx_get_pointer(pbw_ctx ctx, uint32_t ptr) {
     if (ptr >= ctx->ramBase && ptr < (ctx->ramBase + ctx->ramSize)) {
         // pointer in RAM region
         return ctx->ramSlice + (ptr - ctx->ramBase);
-    } else if (ptr >= ctx->resourceBase && ptr < (ctx->resourceBase + ctx->resourceSize)) {
-        // pointer in resource region
-        return ctx->resourceSlice + (ptr - ctx->resourceBase);
     } else if (ptr >= ctx->appBase && ptr < (ctx->appBase + ctx->appSize)) {
         // pointer in app region
         return ctx->appSlice + (ptr - ctx->appBase);
@@ -712,8 +709,6 @@ void* pbw_ctx_get_pointer(pbw_ctx ctx, uint32_t ptr) {
 uint32_t pbw_ctx_make_pointer(pbw_ctx ctx, void *ptr) {
     if (ptr >= ctx->ramSlice && ptr < (ctx->ramSlice + ctx->ramSize)) {
         return ctx->ramBase + (uint32_t)(ptr - ctx->ramSlice);
-    } else if (ptr >= ctx->resourceSlice && ptr < (ctx->resourceSlice + ctx->resourceSize)) {
-        return ctx->resourceBase + (uint32_t)(ptr - ctx->resourceSlice);
     } else if (ptr >= ctx->appSlice && ptr < (ctx->appSlice + ctx->appSize)) {
         return ctx->appBase + (uint32_t)(ptr - ctx->appSlice);
     } else {

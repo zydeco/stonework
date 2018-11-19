@@ -31,9 +31,6 @@
  | API entry points | (hook_exec)
  +------------------+ 0x81000
  
- +------------------+ 0x100000
- | Resources        |
- +------------------+ 0x200000
  */
 
 #define kAppBase 0x10000
@@ -61,9 +58,6 @@
 #define kJumpTableEntries 1024
 #define kJumpTableSize (4 * kJumpTableEntries)
 #define kAPIBase 0x80000
-/* Resources (up to 1 MB) */
-#define kResourceBase 0x100000
-#define kResourceMaxSize 0x100000
 
 /* Round size up to multiple of 4K */
 #define pad4K(x) ((x + 4095) & 0xfff000)

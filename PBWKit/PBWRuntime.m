@@ -138,23 +138,10 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     _windowStack = [NSMutableArray arrayWithCapacity:1];
 }
 
-- (void)initializeResources {
-    NSData *resourcePack = _app.resourcePack;
-    ctx.resourceSize = pad4K(resourcePack.length);
-    if (ctx.resourceSize > kResourceMaxSize) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Resource pack too big" userInfo:@{@"resSize": @(resourcePack.length), @"maxSize": @(kResourceMaxSize)}];
-    }
-    ctx.resourceSlice = calloc(1, ctx.resourceSize);
-    memcpy(ctx.resourceSlice, resourcePack.bytes, resourcePack.length);
-    ctx.resourceBase = kResourceBase;
-    pbw_cpu_mem_map_ptr(ctx.cpu, ctx.resourceBase, ctx.resourceSize, PBW_MEM_READ, ctx.resourceSlice);
-}
-
 - (void)deinitializeEmulator {
     free(ctx.appSlice);
     free(ctx.ramSlice);
     free(jumpTableSlice);
-    free(ctx.resourceSlice);
     pbw_cpu_destroy(ctx.cpu);
 }
 
@@ -165,7 +152,6 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 - (BOOL)run {
     @try {
         [self initializeEmulator];
-        [self initializeResources];
         
         NSLog(@"Running...");
         pbw_cpu_reg_set(ctx.cpu, REG_SP, kStackTop);

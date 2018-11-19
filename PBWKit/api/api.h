@@ -18,8 +18,7 @@ struct pbw_ctx {
     pbw_cpu cpu;
     uint32_t appBase, appSize;
     uint32_t ramBase, ramSize;
-    uint32_t resourceBase, resourceSize;
-    void *appSlice, *ramSlice, *resourceSlice;
+    void *appSlice, *ramSlice;
     void *heapPtr;
     __weak PBWRuntime *runtime;
 };
@@ -112,6 +111,12 @@ PBW_API(tick_timer_service_unsubscribe);
 
 #pragma mark - Foundation / Logging
 PBW_API(app_log, uint32_t log_level, uint32_t filename_ptr, uint32_t line_number, uint32_t fmt_ptr);
+
+#pragma mark - Foundation / Resource Manager
+PBW_API(resource_get_handle, uint32_t resource_id);
+PBW_API(resource_size, uint32_t handle);
+PBW_API(resource_load, uint32_t handle, uint32_t buffer, uint32_t max_length);
+PBW_API(resource_load_byte_range, uint32_t handle, uint32_t start_offset, uint32_t buffer, uint32_t num_bytes);
 
 #pragma mark - Foundation / Storage
 PBW_API(persist_exists, uint32_t key);
