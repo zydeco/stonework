@@ -54,8 +54,9 @@ uint32_t pbw_api_gpath_draw_filled(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr)
     UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
     [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
     [path closePath];
-    [path fill];
-    [path stroke];
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextFillPath(cg);
     return 0;
 }
 
@@ -72,7 +73,9 @@ uint32_t pbw_api_gpath_draw_outline(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr
     UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
     [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
     [path closePath];
-    [path stroke];
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextStrokePath(cg);
     return 0;
 }
 
@@ -96,7 +99,9 @@ uint32_t pbw_api_gpath_draw_outline_open(pbw_ctx ctx, uint32_t gctx, uint32_t pa
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
     [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
-    [path stroke];
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextStrokePath(cg);
     return 0;
 }
 
@@ -144,10 +149,9 @@ uint32_t pbw_api_graphics_fill_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect),
     UIRectCorner corners = pbw_cpu_stack_peek(ctx->cpu, 0) & 0xf; // coincidentally, same format
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:CGSizeMake(corner_radius, corner_radius)];
     CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.fillColor.CGColor);
-    CGContextSetLineWidth(cg, 1.0);
-    [path fill];
-    [path stroke];
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextFillPath(cg);
     return 0;
 }
 
@@ -157,11 +161,11 @@ uint32_t pbw_api_graphics_draw_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     GPoint centerPoint = UNPACK_POINT(center);
     CGRect rect = CGRectMake(centerPoint.x - 0.5 - radius, centerPoint.y - 0.5 - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    UIGraphicsPushContext(cg);
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
-    [path stroke];
-    UIGraphicsPopContext();
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextStrokePath(cg);
     return 0;
 }
 
@@ -171,10 +175,10 @@ uint32_t pbw_api_graphics_fill_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     GPoint centerPoint = UNPACK_POINT(center);
     CGRect rect = CGRectMake(centerPoint.x - 0.5 - radius, centerPoint.y - 0.5 - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    UIGraphicsPushContext(cg);
     CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
-    [path fill];
-    UIGraphicsPopContext();
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path.CGPath);
+    CGContextFillPath(cg);
     return 0;
 }
 
