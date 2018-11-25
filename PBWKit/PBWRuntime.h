@@ -18,11 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) PBWApp *app;
 @property (nonatomic, readonly) pbw_ctx runtimeContext;
+
 - (instancetype)initWithApp:(PBWApp*)app;
 - (BOOL)run;
 - (void)startEventLoop;
 
 // Graphics
+@property (nonatomic, readonly) CGSize screenSize;
 @property (nonatomic, readonly) NSObject<PBWScreenView> *screenView;
 @property (nonatomic, readonly) PBWGraphicsContext *graphicsContext;
 @property (nonatomic, readonly) NSMutableArray<PBWWindow*> *windowStack;

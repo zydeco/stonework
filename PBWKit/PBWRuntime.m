@@ -63,8 +63,9 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 - (instancetype)initWithApp:(PBWApp *)app {
     if (self = [super init]) {
         _app = app;
+        _screenSize = CGSizeMake(144, 168);
         // screen should exist before running!
-        _screenView = [[PBWScreenView alloc] initWithFrame:CGRectMake(0, 0, 144, 168)];
+        _screenView = [[PBWScreenView alloc] initWithFrame:CGRectMake(0, 0, _screenSize.width, _screenSize.height)];
         objc_setAssociatedObject(_screenView, PBWScreenViewRuntimeKey, self, OBJC_ASSOCIATION_ASSIGN);
     }
     return self;

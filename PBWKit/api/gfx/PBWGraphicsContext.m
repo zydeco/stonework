@@ -267,10 +267,24 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
 
 
 @implementation PBWGraphicsContext
+{
+    CGSize screenSize;
+}
+
+- (instancetype)initWithRuntime:(PBWRuntime *)rt {
+    if (self = [super initWithRuntime:rt]) {
+        screenSize = rt.screenSize;
+        CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
+        cgContext = CGBitmapContextCreate(NULL, screenSize.width, screenSize.height, 5, screenSize.width * 2, cs, kCGImageByteOrder16Little | kCGImageAlphaNoneSkipFirst);
+    }
+    return self;
+}
 
 - (void)drawWindow:(PBWWindow*)window {
-    self->cgContext = UIGraphicsGetCurrentContext();
     [window.rootLayer drawLayerHierarchyInContext:self];
+    CGImageRef image = CGBitmapContextCreateImage(cgContext);
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, screenSize.width, screenSize.height), image);
+    CGImageRelease(image);
     window->dirty = NO;
 }
 
