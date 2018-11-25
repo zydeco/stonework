@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) PBWWindow *window;
 @property (nonatomic, readonly, weak) PBWLayer *parent;
 @property (nonatomic, readonly) NSArray<PBWLayer*> *children;
+@property (nonatomic, readonly) NSData *data;
 
 - (instancetype)initWithRuntime:(PBWRuntime *)rt frame:(GRect)frame dataSize:(size_t)dataSize;
 

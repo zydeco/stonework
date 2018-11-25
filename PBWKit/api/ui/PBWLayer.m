@@ -156,6 +156,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 @implementation PBWLayer
 {
     NSMutableArray<PBWLayer *> *children;
+    size_t _dataSize;
 }
 
 @synthesize children=children;
@@ -167,6 +168,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
         if (dataSize) {
             _dataPtr = pbw_api_malloc(rt.runtimeContext, (uint32_t)dataSize);
         }
+        _dataSize = dataSize;
         _updateProc = 0;
         _clips = YES;
         _hidden = NO;
@@ -282,6 +284,10 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
     CGContextRestoreGState(ctx);
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@ frame=%@ bouds=%@>", NSStringFromClass(self.class), NSStringFromGRect(_frame), NSStringFromGRect(_bounds)];
+}
+
 - (void)drawInContext:(CGContextRef)ctx {
     if (_window->_rootLayer == self) {
         [[UIColor colorWithGColor:_window->_backgroundColor] setFill];
@@ -291,6 +297,10 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 
 - (void)markDirty {
     [_window markDirty];
+}
+
+- (NSData *)data {
+    return [NSData dataWithBytes:pbw_ctx_get_pointer(_runtime.runtimeContext, _dataPtr) length:_dataSize];
 }
 
 @end

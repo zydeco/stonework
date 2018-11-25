@@ -93,6 +93,8 @@ static inline GRect GRectFromCGRect(CGRect rect) {
     return GRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 }
 
+#define NSStringFromGRect(rect) (NSStringFromCGRect(CGRectFromGRect(rect)))
+
 typedef enum {
     //! Assign the pixel values of the source image to the destination pixels,
     //! effectively replacing the previous values for those pixels. For color displays, when drawing
