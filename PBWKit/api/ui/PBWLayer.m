@@ -264,14 +264,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
     CGContextRef ctx = pbwContext->cgContext;
     CGContextSaveGState(ctx);
     CGContextTranslateCTM(ctx, _frame.origin.x, _frame.origin.y);
-    if (_clips) {
-        CGContextClipToRect(ctx, CGRectFromGRect(_frame));
-    }
-    
-    // draw children
-    for (PBWLayer *child in children) {
-        [child drawLayerHierarchyInContext:pbwContext];
-    }
+    if (_clips) CGContextClipToRect(ctx, CGRectMake(0, 0, _bounds.size.w, _bounds.size.h));
 
     // draw this layer
     if (_updateProc) {
@@ -280,6 +273,12 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
         // layer implementation
         [self drawInContext:ctx];
     }
+    
+    // draw children
+    for (PBWLayer *child in children) {
+        [child drawLayerHierarchyInContext:pbwContext];
+    }
+    
     CGContextRestoreGState(ctx);
 }
 
