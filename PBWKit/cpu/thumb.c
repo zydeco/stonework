@@ -42,7 +42,7 @@ void pbw_cpu_exec_thumb(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
             if (ConditionPassed()) {
                 ENC_333(m, n, d);
                 setflags = !InITBlock();
-                R[d] = pbw_cpu_alu_add(cpu, R[n], R[m], APSR_C, setflags);
+                R[d] = pbw_cpu_alu_add(cpu, R[n], R[m], 0, setflags);
             }
             break;
         case 0x0d:
