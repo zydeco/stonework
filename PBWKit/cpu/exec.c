@@ -24,7 +24,6 @@ uint32_t pbw_cpu_get_next_instruction(pbw_cpu cpu) {
     return ins;
 }
 
-#ifdef PRINT_STATE
 void print_regs(pbw_cpu cpu) {
     printf("R0=%08x:", R[0]);
     printf("%08x:", R[1]);
@@ -41,10 +40,14 @@ void print_regs(pbw_cpu cpu) {
     printf("IP=%08x:", R[12]);
     printf("%08x:", R[13]);
     printf("%08x:", R[14]);
-    printf("APSR=%08x:",R[REG_APSR]);
+    printf("FLAGS=%c%c%c%c%c:",
+           R[REG_APSR] & APSR_MASK_N ? 'N' : 'n',
+           R[REG_APSR] & APSR_MASK_Z ? 'Z' : 'z',
+           R[REG_APSR] & APSR_MASK_C ? 'C' : 'c',
+           R[REG_APSR] & APSR_MASK_V ? 'V' : 'v',
+           R[REG_APSR] & APSR_MASK_Q ? 'Q' : 'q');
     printf("ITSTATE=%02x\n", ITSTATE);
 }
-#endif
 
 #define UNPACK_HW(arg) (int16_t)(arg & 0xffff), (int16_t)(arg >> 16)
 
