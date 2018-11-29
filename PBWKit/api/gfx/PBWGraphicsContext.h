@@ -29,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) uint8_t strokeWidth;
 
 - (void)drawWindow:(PBWWindow*)window;
-- (UIBezierPath*)pathWithGPath:(uint32_t)ptr;
 
 @end
 

@@ -88,6 +88,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
     uint32_t appSize = pad4K(virtualSize);
     ctx.appSlice = calloc(1, appSize);
+    ctx.appSize = appSize;
     uint32_t loadSize = _app.loadSize;
     memcpy(ctx.appSlice, appImage.bytes, loadSize);
     NSLog(@"Mapping 0x%x bytes at 0x%x for app image", appSize, kAppBase);

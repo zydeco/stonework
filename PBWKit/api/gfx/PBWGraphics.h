@@ -13,6 +13,7 @@
 #import <stdbool.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <math.h>
+#import "api.h"
 
 typedef union GColor8 {
     uint8_t argb;
@@ -143,5 +144,7 @@ typedef enum {
 #define TRIG_MAX_RATIO 0xffff
 #define TRIG_MAX_ANGLE 0x10000
 #define TRIG_TO_RADIANS(t) ((2 * M_PI * t) / TRIG_MAX_ANGLE)
+
+CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr);
 
 #endif /* PBWGraphics_h */

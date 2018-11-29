@@ -51,17 +51,25 @@ uint32_t pbw_api_gpath_draw_filled(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr)
     CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
     CGContextSetStrokeColorWithColor(cg, graphicsContext.fillColor.CGColor);
     CGContextSetLineWidth(cg, 1.0);
-    UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
-    [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
-    [path closePath];
+    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
-    CGContextAddPath(cg, path.CGPath);
+    CGContextAddPath(cg, path);
+    CGContextClosePath(cg);
     CGContextFillPath(cg);
+    CGContextBeginPath(cg);
+    CGContextAddPath(cg, path);
+    CGContextClosePath(cg);
+    CGContextStrokePath(cg);
+    CGPathRelease(path);
     return 0;
 }
 
 uint32_t pbw_api_gpath_draw_filled_legacy(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr) {
+    PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
+    BOOL wasAntialiased = graphicsContext.antialiased;
+    pbw_api_graphics_context_set_antialiased(ctx, gctx, false);
     pbw_api_gpath_draw_filled(ctx, gctx, pathPtr);
+    if (wasAntialiased) pbw_api_graphics_context_set_antialiased(ctx, gctx, true);
     return 0;
 }
 
@@ -70,12 +78,12 @@ uint32_t pbw_api_gpath_draw_outline(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr
     CGContextRef cg = graphicsContext->cgContext;
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
-    UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
-    [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
-    [path closePath];
+    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
-    CGContextAddPath(cg, path.CGPath);
+    CGContextAddPath(cg, path);
+    CGContextClosePath(cg);
     CGContextStrokePath(cg);
+    CGPathRelease(path);
     return 0;
 }
 
@@ -97,11 +105,11 @@ uint32_t pbw_api_gpath_draw_outline_open(pbw_ctx ctx, uint32_t gctx, uint32_t pa
     CGContextRef cg = graphicsContext->cgContext;
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
-    UIBezierPath *path = [graphicsContext pathWithGPath:pathPtr];
-    [path applyTransform:CGAffineTransformMakeTranslation(0.5, 0.5)];
+    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
-    CGContextAddPath(cg, path.CGPath);
+    CGContextAddPath(cg, path);
     CGContextStrokePath(cg);
+    CGPathRelease(path);
     return 0;
 }
 
@@ -123,8 +131,8 @@ uint32_t pbw_api_graphics_draw_line(pbw_ctx ctx, uint32_t gctx, uint32_t p0, uin
     GPoint point0 = UNPACK_POINT(p0);
     GPoint point1 = UNPACK_POINT(p1);
     CGContextBeginPath(cg);
-    CGContextMoveToPoint(cg, point0.x + 0.5, point0.y + 0.5);
-    CGContextAddLineToPoint(cg, point1.x + 0.5, point1.y + 0.5);
+    CGContextMoveToPoint(cg, point0.x, point0.y);
+    CGContextAddLineToPoint(cg, point1.x, point1.y);
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     CGContextDrawPath(cg, kCGPathStroke);
@@ -137,14 +145,14 @@ uint32_t pbw_api_graphics_draw_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect))
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, 1.0);
     CGRect rect = CGRectFromGRect(UNPACK_GRECT(rect));
-    CGContextStrokeRect(cg, CGRectOffset(rect, 0.5, 0.5));
+    CGContextStrokeRect(cg, rect);
     return 0;
 }
 
 uint32_t pbw_api_graphics_fill_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect), uint32_t corner_radius) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
-    CGRect rect = CGRectInset(CGRectFromGRect(UNPACK_GRECT(rect)), 0.5, 0.5);
+    CGRect rect = CGRectInset(CGRectFromGRect(UNPACK_GRECT(rect)), 0.0, 0.0);
     corner_radius &= 0xffff;
     UIRectCorner corners = pbw_cpu_stack_peek(ctx->cpu, 0) & 0xf; // coincidentally, same format
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:CGSizeMake(corner_radius, corner_radius)];
@@ -269,7 +277,6 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
     return 0;
 }
 
-
 @implementation PBWGraphicsContext
 {
     CGSize screenSize;
@@ -290,29 +297,6 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, screenSize.width, screenSize.height), image);
     CGImageRelease(image);
     window->dirty = NO;
-}
-
-- (UIBezierPath*)pathWithGPath:(uint32_t)ptr {
-    pbw_ctx ctx = self->_runtime.runtimeContext;
-    void *gpath = pbw_ctx_get_pointer(ctx, ptr);
-    uint32_t numPoints = OSReadLittleInt32(gpath, 0);
-    void *points = pbw_ctx_get_pointer(ctx, OSReadLittleInt32(gpath, 4));
-    int32_t rotation = OSReadLittleInt32(gpath, 8);
-    GPoint offset = UNPACK_POINT(OSReadLittleInt32(gpath, 12));
-    UIBezierPath *path = [[UIBezierPath alloc] init];
-    CGPoint nextPoint = CGPointFromGPoint(UNPACK_POINT(OSReadLittleInt32(points, 0)));
-    [path moveToPoint:nextPoint];
-    for (int i = 1; i < numPoints; i++) {
-        nextPoint = CGPointFromGPoint(UNPACK_POINT(OSReadLittleInt32(points, 4*i)));
-        [path addLineToPoint:nextPoint];
-    }
-    if (offset.x || offset.y) {
-        [path applyTransform:CGAffineTransformMakeTranslation(offset.x, offset.y)];
-    }
-    if (rotation) {
-        [path applyTransform:CGAffineTransformMakeRotation(TRIG_TO_RADIANS(rotation))];
-    }
-    return path;
 }
 
 @end

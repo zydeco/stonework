@@ -283,3 +283,24 @@ uint32_t pbw_api_grect_inset(pbw_ctx ctx, uint32_t retptr, ARG_GRECT(rect)) {
     RETURN_GRECT(dstRect);
     return 0;
 }
+
+CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr) {
+    CGMutablePathRef path = CGPathCreateMutable();
+    void *gpath = pbw_ctx_get_pointer(ctx, ptr);
+    uint32_t numPoints = OSReadLittleInt32(gpath, 0);
+    void *points = pbw_ctx_get_pointer(ctx, OSReadLittleInt32(gpath, 4));
+    int32_t rotation = OSReadLittleInt32(gpath, 8);
+    GPoint offset = UNPACK_POINT(OSReadLittleInt32(gpath, 12));
+    GPoint nextPoint = UNPACK_POINT(OSReadLittleInt32(points, 0));
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(offset.x + 0.5, offset.y + 0.5);
+    if (rotation) {
+        transform = CGAffineTransformRotate(transform, TRIG_TO_RADIANS(rotation));
+    }
+    CGPathMoveToPoint(path, &transform, nextPoint.x, nextPoint.y);
+    for (int i = 1; i < numPoints; i++) {
+        nextPoint = UNPACK_POINT(OSReadLittleInt32(points, 4*i));
+        CGPathAddLineToPoint(path, &transform, nextPoint.x, nextPoint.y);
+    }
+    return path;
+}
+
