@@ -292,15 +292,16 @@ CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr) {
     int32_t rotation = OSReadLittleInt32(gpath, 8);
     GPoint offset = UNPACK_POINT(OSReadLittleInt32(gpath, 12));
     GPoint nextPoint = UNPACK_POINT(OSReadLittleInt32(points, 0));
-    CGAffineTransform transform = CGAffineTransformMakeTranslation(offset.x + 0.5, offset.y + 0.5);
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(offset.x, offset.y);
     if (rotation) {
         transform = CGAffineTransformRotate(transform, TRIG_TO_RADIANS(rotation));
     }
-    CGPathMoveToPoint(path, &transform, nextPoint.x, nextPoint.y);
+    CGPathMoveToPoint(path, &transform, nextPoint.x + 0.5, nextPoint.y + 0.5);
     for (int i = 1; i < numPoints; i++) {
         nextPoint = UNPACK_POINT(OSReadLittleInt32(points, 4*i));
-        CGPathAddLineToPoint(path, &transform, nextPoint.x, nextPoint.y);
+        CGPathAddLineToPoint(path, &transform, nextPoint.x + 0.5, nextPoint.y + 0.5);
     }
+    
     return path;
 }
 

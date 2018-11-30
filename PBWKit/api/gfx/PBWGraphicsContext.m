@@ -52,14 +52,9 @@ uint32_t pbw_api_gpath_draw_filled(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr)
     CGContextSetStrokeColorWithColor(cg, graphicsContext.fillColor.CGColor);
     CGContextSetLineWidth(cg, 1.0);
     CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
-    CGContextBeginPath(cg);
     CGContextAddPath(cg, path);
     CGContextClosePath(cg);
-    CGContextFillPath(cg);
-    CGContextBeginPath(cg);
-    CGContextAddPath(cg, path);
-    CGContextClosePath(cg);
-    CGContextStrokePath(cg);
+    CGContextDrawPath(cg, kCGPathFillStroke);
     CGPathRelease(path);
     return 0;
 }
@@ -167,7 +162,7 @@ uint32_t pbw_api_graphics_draw_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
     GPoint centerPoint = UNPACK_POINT(center);
-    CGRect rect = CGRectMake(centerPoint.x - 0.5 - radius, centerPoint.y - 0.5 - radius, 2*radius, 2*radius);
+    CGRect rect = CGRectMake(centerPoint.x - radius, centerPoint.y - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
     CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
@@ -181,7 +176,7 @@ uint32_t pbw_api_graphics_fill_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
     GPoint centerPoint = UNPACK_POINT(center);
-    CGRect rect = CGRectMake(centerPoint.x - 0.5 - radius, centerPoint.y - 0.5 - radius, 2*radius, 2*radius);
+    CGRect rect = CGRectMake(centerPoint.x - radius, centerPoint.y - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
     CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
     CGContextBeginPath(cg);
@@ -194,7 +189,10 @@ uint32_t pbw_api_graphics_draw_round_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(
     return 0;
 }
 
-uint32_t pbw_api_graphics_draw_bitmap_in_rect(pbw_ctx ctx, uint32_t gctx, uint32_t bitmap, ARG_GRECT(rect)) {
+uint32_t pbw_api_graphics_draw_bitmap_in_rect(pbw_ctx ctx, uint32_t gctx, uint32_t bitmapPtr, ARG_GRECT(rect)) {
+    PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
+    PBWBitmap *bitmap = ctx->runtime.objects[@(bitmapPtr)];
+    [bitmap drawInRect:UNPACK_GRECT(rect) context:graphicsContext];
     return 0;
 }
 
@@ -287,6 +285,7 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
         screenSize = rt.screenSize;
         CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
         cgContext = CGBitmapContextCreate(NULL, screenSize.width, screenSize.height, 5, screenSize.width * 2, cs, kCGImageByteOrder16Little | kCGImageAlphaNoneSkipFirst);
+        _strokeWidth = 1;
     }
     return self;
 }
