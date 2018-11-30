@@ -284,7 +284,8 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
     if (self = [super initWithRuntime:rt]) {
         screenSize = rt.screenSize;
         CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
-        cgContext = CGBitmapContextCreate(NULL, screenSize.width, screenSize.height, 5, screenSize.width * 2, cs, kCGImageByteOrder16Little | kCGImageAlphaNoneSkipFirst);
+        cgContext = CGBitmapContextCreate(NULL, screenSize.width, screenSize.height, 8, screenSize.width * 4, cs, kCGImageByteOrder32Little | kCGImageAlphaNoneSkipFirst);
+        CGColorSpaceRelease(cs);
         _strokeWidth = 1;
     }
     return self;
