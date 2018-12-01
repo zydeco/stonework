@@ -134,6 +134,15 @@ typedef enum {
     GCompOpSet,
 } GCompOp;
 
+typedef enum GBitmapFormat {
+    GBitmapFormat1Bit = 0, // 1-bit black and white. 0 = black, 1 = white.
+    GBitmapFormat8Bit,     // 6-bit color + 2 bit alpha channel. See \ref GColor8 for pixel format.
+    GBitmapFormat1BitPalette,
+    GBitmapFormat2BitPalette,
+    GBitmapFormat4BitPalette,
+    GBitmapFormat8BitCircular,
+} GBitmapFormat;
+
 #define PACK_POINT(p) (p.x | (p.y << 16))
 #define PACK_SIZE(s) (s.w | (s.h << 16))
 #define RETURN_GRECT(f) pbw_cpu_mem_write(ctx->cpu, retptr, PBW_MEM_WORD, PACK_POINT(f.origin)); pbw_cpu_mem_write(ctx->cpu, retptr+4, PBW_MEM_WORD, PACK_SIZE(f.size));

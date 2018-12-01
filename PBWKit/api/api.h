@@ -184,6 +184,24 @@ PBW_API(grect_center_point, uint32_t rect_ptr);
 PBW_API(grect_crop, uint32_t retptr, ARG_GRECT(rect), int32_t crop_size);
 PBW_API(grect_align, uint32_t rect_ptr, uint32_t inside_rect_ptr, uint32_t alignment, uint32_t clip);
 PBW_API(grect_inset, uint32_t retptr, ARG_GRECT(rect));
+PBW_API(gbitmap_get_bytes_per_row, uint32_t bitmap_ptr);
+PBW_API(gbitmap_get_format, uint32_t bitmap_ptr);
+PBW_API(gbitmap_get_data, uint32_t bitmap_ptr);
+PBW_API(gbitmap_set_data, uint32_t bitmap_ptr, uint32_t data_ptr, uint32_t format, uint32_t row_size_bytes); // stack: bool free_on_destroy
+PBW_API(gbitmap_get_bounds, uint32_t retptr, uint32_t bitmap_ptr);
+PBW_API(gbitmap_set_bounds, uint32_t bitmap_ptr, ARG_GRECT(bounds));
+PBW_API(gbitmap_get_palette, uint32_t bitmap_ptr);
+PBW_API(gbitmap_set_palette, uint32_t bitmap_ptr, uint32_t palette_ptr, uint32_t free_on_destroy);
+PBW_API(gbitmap_create_with_resource, uint32_t resource_id);
+PBW_API(gbitmap_create_with_data, uint32_t data_ptr);
+PBW_API(gbitmap_create_as_sub_bitmap, uint32_t base_bitmap_ptr, ARG_GRECT(sub_rect));
+PBW_API(gbitmap_create_from_png_data, uint32_t png_ptr, uint32_t png_size);
+PBW_API(gbitmap_create_blank, uint32_t size, uint32_t format);
+PBW_API(gbitmap_create_blank_2bit, uint32_t size, uint32_t format);
+PBW_API(gbitmap_create_blank_with_palette, uint32_t size, uint32_t format, uint32_t palette_ptr, uint32_t free_on_destroy);
+PBW_API(gbitmap_create_palettized_from_1bit, uint32_t src_bitmap_ptr);
+PBW_API(gbitmap_destroy, uint32_t bitmap_ptr);
+PBW_API(gbitmap_get_data_row_info, uint32_t retptr, uint32_t bitmap_ptr, uint32_t y);
 
 #pragma mark - User Interface / Layer
 PBW_API(layer_create, ARG_GRECT(frame));
@@ -209,6 +227,17 @@ PBW_API(layer_set_clips, uint32_t layer, uint32_t clips);
 PBW_API(layer_get_clips, uint32_t layer);
 PBW_API(layer_get_data, uint32_t layer);
 PBW_API(layer_get_unobstructed_bounds, uint32_t retptr, uint32_t layer);
+
+#pragma mark - User Interface / Layer / BitmapLayer
+PBW_API(bitmap_layer_create, ARG_GRECT(frame));
+PBW_API(bitmap_layer_destroy, uint32_t layer);
+PBW_API(bitmap_layer_get_layer, uint32_t layer);
+PBW_API(bitmap_layer_get_bitmap, uint32_t layer);
+PBW_API(bitmap_layer_set_bitmap, uint32_t layer, uint32_t bitmap);
+PBW_API(bitmap_layer_set_alignment, uint32_t layer, uint32_t alignment);
+PBW_API(bitmap_layer_set_background_color, uint32_t layer, uint32_t color);
+PBW_API(bitmap_layer_set_background_color_2bit, uint32_t layer, uint32_t color);
+PBW_API(bitmap_layer_set_compositing_mode, uint32_t layer, uint32_t mode);
 
 #pragma mark - User Interface / Window
 PBW_API(window_create);

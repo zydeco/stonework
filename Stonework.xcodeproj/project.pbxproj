@@ -88,8 +88,12 @@
 		28ED9E6A21A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */; };
 		28ED9E6C21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
 		28ED9E6D21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
+		28ED9E7121A1903600E78FBF /* PBWBitmapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */; };
+		28ED9E7221A1903600E78FBF /* PBWBitmapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */; };
 		28ED9E7421A214ED00E78FBF /* resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7321A214ED00E78FBF /* resources.m */; };
 		28ED9E7521A214ED00E78FBF /* resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7321A214ED00E78FBF /* resources.m */; };
+		28ED9F1121AB386600E78FBF /* PBWBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1021AB386600E78FBF /* PBWBitmap.m */; };
+		28ED9F1221AB386600E78FBF /* PBWBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1021AB386600E78FBF /* PBWBitmap.m */; };
 		345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7374FBB82FE405E74479A401 /* libPods-Stonework.a */; };
 		7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */; };
 		EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */; };
@@ -225,7 +229,11 @@
 		28ED9E6721A05D6A00E78FBF /* NSString+PBWRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+PBWRuntime.h"; sourceTree = "<group>"; };
 		28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+PBWRuntime.m"; sourceTree = "<group>"; };
 		28ED9E6B21A0937400E78FBF /* Faces */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Faces; sourceTree = "<group>"; };
+		28ED9E6F21A1903600E78FBF /* PBWBitmapLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWBitmapLayer.h; sourceTree = "<group>"; };
+		28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWBitmapLayer.m; sourceTree = "<group>"; };
 		28ED9E7321A214ED00E78FBF /* resources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = resources.m; sourceTree = "<group>"; };
+		28ED9F0F21AB386600E78FBF /* PBWBitmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWBitmap.h; sourceTree = "<group>"; };
+		28ED9F1021AB386600E78FBF /* PBWBitmap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWBitmap.m; sourceTree = "<group>"; };
 		2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.release.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.release.xcconfig"; sourceTree = "<group>"; };
 		42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.debug.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +292,8 @@
 				2804A5F12198C26100853871 /* PBWGraphicsContext.m */,
 				2804A5F42198C59F00853871 /* UIColor+GColor.h */,
 				2804A5F52198C59F00853871 /* UIColor+GColor.m */,
+				28ED9F0F21AB386600E78FBF /* PBWBitmap.h */,
+				28ED9F1021AB386600E78FBF /* PBWBitmap.m */,
 			);
 			path = gfx;
 			sourceTree = "<group>";
@@ -309,6 +319,8 @@
 				28156B2B218F0F1500AC859A /* PBWWindow.m */,
 				28132D232190BA3500B36804 /* PBWLayer.h */,
 				28132D242190BA3500B36804 /* PBWLayer.m */,
+				28ED9E6F21A1903600E78FBF /* PBWBitmapLayer.h */,
+				28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -764,6 +776,7 @@
 				28ED9E7421A214ED00E78FBF /* resources.m in Sources */,
 				284C9251218DD4D70080B3E1 /* api.m in Sources */,
 				28ED9E5F219B54FF00E78FBF /* string.m in Sources */,
+				28ED9F1121AB386600E78FBF /* PBWBitmap.m in Sources */,
 				28132D252190BA3500B36804 /* PBWLayer.m in Sources */,
 				28156B2C218F0F1500AC859A /* PBWWindow.m in Sources */,
 				28E020D52173E0EB00C556D6 /* ViewController.m in Sources */,
@@ -788,6 +801,7 @@
 				28156B21218DED0800AC859A /* memory.m in Sources */,
 				28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */,
 				284C91DE2174FDA70080B3E1 /* cpu.c in Sources */,
+				28ED9E7121A1903600E78FBF /* PBWBitmapLayer.m in Sources */,
 				28156B31218F112700AC859A /* PBWObject.m in Sources */,
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
@@ -810,6 +824,7 @@
 				28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */,
 				28132D262190BA3500B36804 /* PBWLayer.m in Sources */,
 				28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */,
+				28ED9F1221AB386600E78FBF /* PBWBitmap.m in Sources */,
 				28E020FC2173E0EC00C556D6 /* ExtensionDelegate.m in Sources */,
 				28E0212E2173E14200C556D6 /* PBWBundle.m in Sources */,
 				287069AA219728A000D20B89 /* events.m in Sources */,
@@ -825,6 +840,7 @@
 				28156B32218F112700AC859A /* PBWObject.m in Sources */,
 				28E0212C2173E14200C556D6 /* PBWRuntime.m in Sources */,
 				28E020F92173E0EC00C556D6 /* InterfaceController.m in Sources */,
+				28ED9E7221A1903600E78FBF /* PBWBitmapLayer.m in Sources */,
 				28156B22218DED0800AC859A /* memory.m in Sources */,
 				28E021302173E14200C556D6 /* PBWApp.m in Sources */,
 				2804A5EF21985E6500853871 /* app_message.m in Sources */,
@@ -1143,7 +1159,6 @@
 					"\"${PODS_ROOT}/Headers/Public/Minizip\"",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/capstone\"",
-					"-DPRINT_DISASSEMBLY",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1177,7 +1192,6 @@
 					"\"${PODS_ROOT}/Headers/Public/Minizip\"",
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/capstone\"",
-					"-DPRINT_DISASSEMBLY",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";

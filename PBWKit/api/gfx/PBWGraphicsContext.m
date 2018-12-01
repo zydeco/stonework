@@ -10,6 +10,7 @@
 #import "PBWWindow.h"
 #import "PBWLayer.h"
 #import "PBWRuntime.h"
+#import "PBWBitmap.h"
 #import <UIKit/UIKit.h>
 #import "UIColor+GColor.h"
 #import "weemalloc.h"
