@@ -15,6 +15,7 @@
 #import "PBWAddressSpace.h"
 #import "PBWGraphicsContext.h"
 #import "PBWWindow.h"
+#import "PBWFont.h"
 
 @import ObjectiveC.runtime;
 
@@ -49,6 +50,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     uint32_t tickSerivceHandler;
     struct tm lastTickServiceTime;
     time_t lastTime;
+    NSMutableDictionary<NSString*,PBWFont*> *systemFonts;
 }
 
 + (void)load {
@@ -134,6 +136,9 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     } else {
         _persistentStorage = persistentStorage.mutableCopy;
     }
+    
+    // system resources
+    systemFonts = [NSMutableDictionary dictionaryWithCapacity:8];
     
     // base graphics context
     _graphicsContext = [[PBWGraphicsContext alloc] initWithRuntime:self];
@@ -226,6 +231,32 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     nextObject += 4;
     _objects[@(nextObject)] = obj;
     return nextObject;
+}
+
+#pragma mark - System Resources
+
+- (nullable NSData*)systemResourceWithKey:(NSString*)key {
+    NSBundle *bundle = [NSBundle bundleForClass:self.class];
+    if ([key hasPrefix:@"FONT_KEY_"]) {
+        // font
+        NSString *resourceName = [[key substringFromIndex:9].lowercaseString stringByReplacingOccurrencesOfString:@"gothic" withString:@"renaissance"];
+        NSString *resourcePath = [bundle pathForResource:resourceName ofType:@"pbf"];
+        return resourcePath ? [NSData dataWithContentsOfFile:resourcePath] : nil;
+    }
+    return nil;
+}
+
+- (PBWFont *)systemFontWithKey:(NSString *)key {
+    PBWFont *font = systemFonts[key];
+    if (font) return font;
+    font = [[PBWFont alloc] initWithRuntime:self fontKey:key];
+    if (font) {
+        systemFonts[key] = font;
+        return font;
+    } else {
+        // fallback font
+        return [self systemFontWithKey:@"FONT_KEY_RENAISSANCE_09"];
+    }
 }
 
 @end

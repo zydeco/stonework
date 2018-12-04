@@ -10,7 +10,7 @@
 #import "api/api.h"
 #import "PBWScreenView.h"
 
-@class PBWApp, PBWObject, PBWGraphicsContext, PBWWindow;
+@class PBWApp, PBWObject, PBWGraphicsContext, PBWWindow, PBWFont;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 // OS Objects
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,__kindof PBWObject*> *objects;
 - (uint32_t)addObject:(PBWObject*)obj;
+- (nullable NSData*)systemResourceWithKey:(NSString*)key;
+- (PBWFont*)systemFontWithKey:(NSString*)key;
 
 // Persistent Storage
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,NSObject*> *persistentStorage;

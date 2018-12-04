@@ -159,6 +159,14 @@ PBW_API(graphics_fill_radial, uint32_t gctx, ARG_GRECT(rect), uint32_t scale_mod
 PBW_API(gpoint_from_polar, ARG_GRECT(rect), uint32_t scale_mode, int32_t angle);
 PBW_API(grect_centered_from_polar, uint32_t retptr, ARG_GRECT(rect), uint32_t scale_mode); // stack: int32_t angle, GSize size
 
+#pragma mark - Graphics / Drawing Text
+PBW_API(graphics_draw_text, uint32_t gctx, uint32_t textPtr, uint32_t fontTag, uint32_t box_origin); // stack: uint32_t box_size, uint32_t overflow_mode, uint32_t alignment, uint32_t text_attributes
+
+#pragma mark - Graphics / Fonts
+PBW_API(fonts_get_system_font, uint32_t font_key);
+PBW_API(fonts_load_custom_font, uint32_t res_handle);
+PBW_API(fonts_unload_custom_font, uint32_t font_handle);
+
 #pragma mark - Graphics / Graphics Context
 PBW_API(graphics_context_set_stroke_color, uint32_t gctx, uint32_t color);
 PBW_API(graphics_context_set_fill_color, uint32_t gctx, uint32_t color);
@@ -238,6 +246,24 @@ PBW_API(bitmap_layer_set_alignment, uint32_t layer, uint32_t alignment);
 PBW_API(bitmap_layer_set_background_color, uint32_t layer, uint32_t color);
 PBW_API(bitmap_layer_set_background_color_2bit, uint32_t layer, uint32_t color);
 PBW_API(bitmap_layer_set_compositing_mode, uint32_t layer, uint32_t mode);
+
+#pragma mark - User Interface / Layer / TextLayer
+PBW_API(text_layer_create, ARG_GRECT(frame));
+PBW_API(text_layer_destroy, uint32_t layer);
+PBW_API(text_layer_get_layer, uint32_t layer);
+PBW_API(text_layer_set_text, uint32_t layer, uint32_t text);
+PBW_API(text_layer_get_text, uint32_t layer);
+PBW_API(text_layer_set_background_color, uint32_t layer, uint32_t color);
+PBW_API(text_layer_set_background_color_2bit, uint32_t layer, uint32_t color);
+PBW_API(text_layer_set_text_color, uint32_t layer, uint32_t color);
+PBW_API(text_layer_set_text_color_2bit, uint32_t layer, uint32_t color);
+PBW_API(text_layer_set_overflow_mode, uint32_t layer, uint32_t line_mode);
+PBW_API(text_layer_set_font, uint32_t layer, uint32_t font);
+PBW_API(text_layer_set_text_alignment, uint32_t layer, uint32_t text_alignment);
+PBW_API(text_layer_enable_screen_text_flow_and_paging, uint32_t layer, uint32_t inset);
+PBW_API(text_layer_restore_default_text_flow_and_paging, uint32_t layer);
+PBW_API(text_layer_get_content_size, uint32_t layer);
+PBW_API(text_layer_set_size, uint32_t layer, uint32_t size);
 
 #pragma mark - User Interface / Window
 PBW_API(window_create);

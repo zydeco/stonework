@@ -1,0 +1,3 @@
+[submodule "renaissance"]
+	path = renaissance
+	url = https://github.com/pebble-dev/renaissance

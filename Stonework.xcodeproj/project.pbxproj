@@ -92,6 +92,28 @@
 		28ED9E7521A214ED00E78FBF /* resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7321A214ED00E78FBF /* resources.m */; };
 		28ED9F1121AB386600E78FBF /* PBWBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1021AB386600E78FBF /* PBWBitmap.m */; };
 		28ED9F1221AB386600E78FBF /* PBWBitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1021AB386600E78FBF /* PBWBitmap.m */; };
+		28ED9F1521B2A9DB00E78FBF /* PBWFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1421B2A9DA00E78FBF /* PBWFont.m */; };
+		28ED9F1621B2A9DB00E78FBF /* PBWFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F1421B2A9DA00E78FBF /* PBWFont.m */; };
+		28ED9F2121B2AC8B00E78FBF /* renaissance_18_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1821B2AC8B00E78FBF /* renaissance_18_bold.pbf */; };
+		28ED9F2221B2AC8B00E78FBF /* renaissance_18_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1821B2AC8B00E78FBF /* renaissance_18_bold.pbf */; };
+		28ED9F2321B2AC8B00E78FBF /* renaissance_14.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1921B2AC8B00E78FBF /* renaissance_14.pbf */; };
+		28ED9F2421B2AC8B00E78FBF /* renaissance_14.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1921B2AC8B00E78FBF /* renaissance_14.pbf */; };
+		28ED9F2521B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1A21B2AC8B00E78FBF /* renaissance_14_bold.pbf */; };
+		28ED9F2621B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1A21B2AC8B00E78FBF /* renaissance_14_bold.pbf */; };
+		28ED9F2721B2AC8B00E78FBF /* renaissance_24_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1B21B2AC8B00E78FBF /* renaissance_24_bold.pbf */; };
+		28ED9F2821B2AC8B00E78FBF /* renaissance_24_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1B21B2AC8B00E78FBF /* renaissance_24_bold.pbf */; };
+		28ED9F2921B2AC8B00E78FBF /* renaissance_24.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1C21B2AC8B00E78FBF /* renaissance_24.pbf */; };
+		28ED9F2A21B2AC8B00E78FBF /* renaissance_24.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1C21B2AC8B00E78FBF /* renaissance_24.pbf */; };
+		28ED9F2B21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1D21B2AC8B00E78FBF /* renaissance_28.pbf */; };
+		28ED9F2C21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1D21B2AC8B00E78FBF /* renaissance_28.pbf */; };
+		28ED9F2D21B2AC8B00E78FBF /* renaissance_28_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1E21B2AC8B00E78FBF /* renaissance_28_bold.pbf */; };
+		28ED9F2E21B2AC8B00E78FBF /* renaissance_28_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1E21B2AC8B00E78FBF /* renaissance_28_bold.pbf */; };
+		28ED9F2F21B2AC8B00E78FBF /* renaissance_09.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1F21B2AC8B00E78FBF /* renaissance_09.pbf */; };
+		28ED9F3021B2AC8B00E78FBF /* renaissance_09.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1F21B2AC8B00E78FBF /* renaissance_09.pbf */; };
+		28ED9F3121B2AC8B00E78FBF /* renaissance_18.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */; };
+		28ED9F3221B2AC8B00E78FBF /* renaissance_18.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */; };
+		28ED9F3521B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
+		28ED9F3621B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
 		345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7374FBB82FE405E74479A401 /* libPods-Stonework.a */; };
 		7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */; };
 		EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */; };
@@ -230,6 +252,19 @@
 		28ED9E7321A214ED00E78FBF /* resources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = resources.m; sourceTree = "<group>"; };
 		28ED9F0F21AB386600E78FBF /* PBWBitmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWBitmap.h; sourceTree = "<group>"; };
 		28ED9F1021AB386600E78FBF /* PBWBitmap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWBitmap.m; sourceTree = "<group>"; };
+		28ED9F1321B2A9DA00E78FBF /* PBWFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWFont.h; sourceTree = "<group>"; };
+		28ED9F1421B2A9DA00E78FBF /* PBWFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWFont.m; sourceTree = "<group>"; };
+		28ED9F1821B2AC8B00E78FBF /* renaissance_18_bold.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_18_bold.pbf; path = renaissance/fonts/renaissance_18_bold.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1921B2AC8B00E78FBF /* renaissance_14.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_14.pbf; path = renaissance/fonts/renaissance_14.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1A21B2AC8B00E78FBF /* renaissance_14_bold.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_14_bold.pbf; path = renaissance/fonts/renaissance_14_bold.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1B21B2AC8B00E78FBF /* renaissance_24_bold.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_24_bold.pbf; path = renaissance/fonts/renaissance_24_bold.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1C21B2AC8B00E78FBF /* renaissance_24.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_24.pbf; path = renaissance/fonts/renaissance_24.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1D21B2AC8B00E78FBF /* renaissance_28.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_28.pbf; path = renaissance/fonts/renaissance_28.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1E21B2AC8B00E78FBF /* renaissance_28_bold.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_28_bold.pbf; path = renaissance/fonts/renaissance_28_bold.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F1F21B2AC8B00E78FBF /* renaissance_09.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_09.pbf; path = renaissance/fonts/renaissance_09.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_18.pbf; path = renaissance/fonts/renaissance_18.pbf; sourceTree = SOURCE_ROOT; };
+		28ED9F3321B2E13400E78FBF /* PBWTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWTextLayer.h; sourceTree = "<group>"; };
+		28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWTextLayer.m; sourceTree = "<group>"; };
 		2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.release.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.release.xcconfig"; sourceTree = "<group>"; };
 		42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.debug.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +323,8 @@
 				2804A5F12198C26100853871 /* PBWGraphicsContext.m */,
 				28ED9F0F21AB386600E78FBF /* PBWBitmap.h */,
 				28ED9F1021AB386600E78FBF /* PBWBitmap.m */,
+				28ED9F1321B2A9DA00E78FBF /* PBWFont.h */,
+				28ED9F1421B2A9DA00E78FBF /* PBWFont.m */,
 			);
 			path = gfx;
 			sourceTree = "<group>";
@@ -315,6 +352,8 @@
 				28132D242190BA3500B36804 /* PBWLayer.m */,
 				28ED9E6F21A1903600E78FBF /* PBWBitmapLayer.h */,
 				28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */,
+				28ED9F3321B2E13400E78FBF /* PBWTextLayer.h */,
+				28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -441,6 +480,7 @@
 		28E021212173E14200C556D6 /* PBWKit */ = {
 			isa = PBXGroup;
 			children = (
+				28ED9F1721B2AC7C00E78FBF /* Resources */,
 				284C924E218DD40D0080B3E1 /* api */,
 				284C91DB2174FD830080B3E1 /* cpu */,
 				28E021262173E14200C556D6 /* PBWKit.h */,
@@ -460,6 +500,22 @@
 				289F0F522199FD49008B0554 /* PBWAddressSpace+Globals.h */,
 			);
 			path = PBWKit;
+			sourceTree = "<group>";
+		};
+		28ED9F1721B2AC7C00E78FBF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28ED9F1F21B2AC8B00E78FBF /* renaissance_09.pbf */,
+				28ED9F1A21B2AC8B00E78FBF /* renaissance_14_bold.pbf */,
+				28ED9F1921B2AC8B00E78FBF /* renaissance_14.pbf */,
+				28ED9F1821B2AC8B00E78FBF /* renaissance_18_bold.pbf */,
+				28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */,
+				28ED9F1B21B2AC8B00E78FBF /* renaissance_24_bold.pbf */,
+				28ED9F1C21B2AC8B00E78FBF /* renaissance_24.pbf */,
+				28ED9F1E21B2AC8B00E78FBF /* renaissance_28_bold.pbf */,
+				28ED9F1D21B2AC8B00E78FBF /* renaissance_28.pbf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2C1E402D43F74082565C20B2 /* Pods */ = {
@@ -624,10 +680,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28ED9F2121B2AC8B00E78FBF /* renaissance_18_bold.pbf in Resources */,
+				28ED9F2B21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */,
 				28E020DD2173E0EC00C556D6 /* LaunchScreen.storyboard in Resources */,
+				28ED9F2321B2AC8B00E78FBF /* renaissance_14.pbf in Resources */,
 				28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */,
+				28ED9F2D21B2AC8B00E78FBF /* renaissance_28_bold.pbf in Resources */,
 				28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */,
 				28ED9E6C21A0937400E78FBF /* Faces in Resources */,
+				28ED9F2F21B2AC8B00E78FBF /* renaissance_09.pbf in Resources */,
+				28ED9F3121B2AC8B00E78FBF /* renaissance_18.pbf in Resources */,
+				28ED9F2721B2AC8B00E78FBF /* renaissance_24_bold.pbf in Resources */,
+				28ED9F2521B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */,
+				28ED9F2921B2AC8B00E78FBF /* renaissance_24.pbf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +709,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28ED9F2E21B2AC8B00E78FBF /* renaissance_28_bold.pbf in Resources */,
+				28ED9F3221B2AC8B00E78FBF /* renaissance_18.pbf in Resources */,
+				28ED9F2821B2AC8B00E78FBF /* renaissance_24_bold.pbf in Resources */,
+				28ED9F3021B2AC8B00E78FBF /* renaissance_09.pbf in Resources */,
+				28ED9F2421B2AC8B00E78FBF /* renaissance_14.pbf in Resources */,
+				28ED9F2221B2AC8B00E78FBF /* renaissance_18_bold.pbf in Resources */,
+				28ED9F2A21B2AC8B00E78FBF /* renaissance_24.pbf in Resources */,
+				28ED9F2621B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */,
+				28ED9F2C21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */,
 				28E020FE2173E0ED00C556D6 /* Assets.xcassets in Resources */,
 				28ED9E6D21A0937400E78FBF /* Faces in Resources */,
 			);
@@ -791,6 +865,8 @@
 				2804A5FD2198DF8600853871 /* time.m in Sources */,
 				287069A62197125300D20B89 /* storage.m in Sources */,
 				28ED9E65219B859B00E78FBF /* logging.m in Sources */,
+				28ED9F1521B2A9DB00E78FBF /* PBWFont.m in Sources */,
+				28ED9F3521B2E13400E78FBF /* PBWTextLayer.m in Sources */,
 				28156B21218DED0800AC859A /* memory.m in Sources */,
 				28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */,
 				284C91DE2174FDA70080B3E1 /* cpu.c in Sources */,
@@ -826,6 +902,7 @@
 				2804A5F32198C26100853871 /* PBWGraphicsContext.m in Sources */,
 				28ED9E63219B800600E78FBF /* wall_time.m in Sources */,
 				284C9205217C862C0080B3E1 /* exec.c in Sources */,
+				28ED9F3621B2E13400E78FBF /* PBWTextLayer.m in Sources */,
 				28ED9E60219B54FF00E78FBF /* string.m in Sources */,
 				28ED9E7521A214ED00E78FBF /* resources.m in Sources */,
 				284C920E2180CE5F0080B3E1 /* thumb.c in Sources */,
@@ -835,6 +912,7 @@
 				28ED9E7221A1903600E78FBF /* PBWBitmapLayer.m in Sources */,
 				28156B22218DED0800AC859A /* memory.m in Sources */,
 				28E021302173E14200C556D6 /* PBWApp.m in Sources */,
+				28ED9F1621B2A9DB00E78FBF /* PBWFont.m in Sources */,
 				2804A5EF21985E6500853871 /* app_message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

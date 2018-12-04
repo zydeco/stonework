@@ -11,6 +11,7 @@
 #import "PBWLayer.h"
 #import "PBWRuntime.h"
 #import "PBWBitmap.h"
+#import "PBWFont.h"
 #import <UIKit/UIKit.h>
 #import "weemalloc.h"
 

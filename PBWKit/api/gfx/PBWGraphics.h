@@ -156,4 +156,16 @@ typedef enum GBitmapFormat {
 
 CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr);
 
+typedef enum GTextAlignment {
+    GTextAlignmentLeft = 0,
+    GTextAlignmentCenter,
+    GTextAlignmentRight,
+} GTextAlignment;
+
+typedef enum GTextOverflowMode {
+    GTextOverflowModeWordWrap = 0,
+    GTextOverflowModeTrailingEllipsis,
+    GTextOverflowModeFill
+} GTextOverflowMode;
+
 #endif /* PBWGraphics_h */
