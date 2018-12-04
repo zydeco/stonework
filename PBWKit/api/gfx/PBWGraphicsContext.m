@@ -345,10 +345,6 @@ const uint32_t PBWGraphicsNativePalette[256] = {
 
 - (void)drawWindow:(PBWWindow*)window {
     [window.rootLayer drawLayerHierarchyInContext:self];
-    CGImageRef image = CGBitmapContextCreateImage(cgContext);
-    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, screenSize.width, screenSize.height), image);
-    CGImageRelease(image);
-    window->dirty = NO;
 }
 
 - (void)setPixel:(GPoint)pixel toColor:(GColor8)color {

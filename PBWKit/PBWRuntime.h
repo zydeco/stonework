@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) PBWApp *app;
 @property (nonatomic, readonly) pbw_ctx runtimeContext;
+@property (nonatomic, readonly) BOOL running;
 
 - (instancetype)initWithApp:(PBWApp*)app;
 - (BOOL)run;

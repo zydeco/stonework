@@ -18,6 +18,7 @@
 #import "PBWFont.h"
 
 @import ObjectiveC.runtime;
+@import UIKit;
 
 uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
     pbw_cpu_stop(ctx->cpu, PBW_ERR_OK);
@@ -25,16 +26,16 @@ uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
     return 0;
 }
 
-
 static Class PBWScreenView = nil;
 static void * PBWScreenViewRuntimeKey = &PBWScreenViewRuntimeKey;
 
+@interface PBWRuntime ()
+- (void)drawScreenView;
+@end
+
 static void PBWScreenView_drawRect(NSObject<PBWScreenView> *self, SEL _cmd, CGRect rect) {
     PBWRuntime *runtime = objc_getAssociatedObject(self, PBWScreenViewRuntimeKey);
-    PBWWindow *topWindow = runtime.windowStack.lastObject;
-    if (topWindow) {
-        [runtime.graphicsContext drawWindow:topWindow];
-    }
+    [runtime drawScreenView];
 }
 
 void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_t handler);
@@ -164,8 +165,10 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         pbw_cpu_reg_set(ctx.cpu, REG_SP, kStackTop);
         pbw_cpu_reg_set(ctx.cpu, REG_PC, entryPoint);
         pbw_cpu_reg_set(ctx.cpu, REG_LR, kAPIBase + kJumpTableSize - 4); // called when main() exits
+        _running = YES;
         pbw_err err = pbw_cpu_resume(ctx.cpu);
         if (err) {
+            _running = NO;
             NSLog(@"pbw_cpu_resume: %u", err);
         } else {
             NSLog(@"pbw_cpu ran successfully");
@@ -174,6 +177,11 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     } @catch (NSException *exception) {
         return NO;
     }
+}
+
+- (void)stop {
+    _running = NO;
+    [tickTimer invalidate];
 }
 
 - (void)savePersistentStorage {
@@ -222,6 +230,19 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
             PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
         }
         lastTime = now;
+    }
+}
+
+- (void)drawScreenView {
+    PBWWindow *topWindow = _windowStack.lastObject;
+    if (topWindow) {
+        if (_running) {
+            [_graphicsContext drawWindow:topWindow];
+        }
+        CGImageRef image = CGBitmapContextCreateImage(_graphicsContext->cgContext);
+        CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, _screenSize.width, _screenSize.height), image);
+        CGImageRelease(image);
+        topWindow->dirty = NO;
     }
 }
 
