@@ -12,11 +12,12 @@
 #import "PBWRuntime.h"
 #import "PBWBitmap.h"
 #import <UIKit/UIKit.h>
-#import "UIColor+GColor.h"
 #import "weemalloc.h"
 
 #define ReadRAMPointer(p) (p ? p - ctx->ramBase : 0)
 #define MakeRAMPointer(p) (p ? p + ctx->ramBase : 0)
+
+CGColorRef PBWGraphicsCGColor[256];
 
 #pragma mark - Drawing Paths
 
@@ -49,8 +50,8 @@ uint32_t pbw_api_gpath_destroy(pbw_ctx ctx, uint32_t path) {
 uint32_t pbw_api_gpath_draw_filled(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
-    CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.fillColor.CGColor);
+    CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextSetLineWidth(cg, 1.0);
     CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextAddPath(cg, path);
@@ -72,7 +73,7 @@ uint32_t pbw_api_gpath_draw_filled_legacy(pbw_ctx ctx, uint32_t gctx, uint32_t p
 uint32_t pbw_api_gpath_draw_outline(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
@@ -99,7 +100,7 @@ uint32_t pbw_api_gpath_move_to(pbw_ctx ctx, uint32_t gpathPtr, uint32_t pointArg
 uint32_t pbw_api_gpath_draw_outline_open(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
@@ -116,7 +117,7 @@ uint32_t pbw_api_graphics_draw_pixel(pbw_ctx ctx, uint32_t gctx, uint32_t point_
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
     GPoint point = UNPACK_POINT(point_arg);
-    CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
+    CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextFillRect(cg, CGRectMake(point.x, point.y, 1, 1));
     return 0;
 }
@@ -129,7 +130,7 @@ uint32_t pbw_api_graphics_draw_line(pbw_ctx ctx, uint32_t gctx, uint32_t p0, uin
     CGContextBeginPath(cg);
     CGContextMoveToPoint(cg, point0.x, point0.y);
     CGContextAddLineToPoint(cg, point1.x, point1.y);
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     CGContextDrawPath(cg, kCGPathStroke);
     return 0;
@@ -138,7 +139,7 @@ uint32_t pbw_api_graphics_draw_line(pbw_ctx ctx, uint32_t gctx, uint32_t p0, uin
 uint32_t pbw_api_graphics_draw_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect)) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
     CGContextRef cg = graphicsContext->cgContext;
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, 1.0);
     CGRect rect = CGRectFromGRect(UNPACK_GRECT(rect));
     CGContextStrokeRect(cg, rect);
@@ -152,7 +153,7 @@ uint32_t pbw_api_graphics_fill_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect),
     corner_radius &= 0xffff;
     UIRectCorner corners = pbw_cpu_stack_peek(ctx->cpu, 0) & 0xf; // coincidentally, same format
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:CGSizeMake(corner_radius, corner_radius)];
-    CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
+    CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextBeginPath(cg);
     CGContextAddPath(cg, path.CGPath);
     CGContextFillPath(cg);
@@ -165,7 +166,7 @@ uint32_t pbw_api_graphics_draw_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     GPoint centerPoint = UNPACK_POINT(center);
     CGRect rect = CGRectMake(centerPoint.x - radius, centerPoint.y - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    CGContextSetStrokeColorWithColor(cg, graphicsContext.strokeColor.CGColor);
+    CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
     CGContextBeginPath(cg);
     CGContextAddPath(cg, path.CGPath);
@@ -179,7 +180,7 @@ uint32_t pbw_api_graphics_fill_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
     GPoint centerPoint = UNPACK_POINT(center);
     CGRect rect = CGRectMake(centerPoint.x - radius, centerPoint.y - radius, 2*radius, 2*radius);
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:rect];
-    CGContextSetFillColorWithColor(cg, graphicsContext.fillColor.CGColor);
+    CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextBeginPath(cg);
     CGContextAddPath(cg, path.CGPath);
     CGContextFillPath(cg);
@@ -220,37 +221,37 @@ uint32_t pbw_api_grect_centered_from_polar(pbw_ctx ctx, uint32_t retptr, ARG_GRE
 
 uint32_t pbw_api_graphics_context_set_stroke_color(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.strokeColor = [UIColor colorWithGColor:GColor(color & 0xff)];
+    graphicsContext.strokeColor = GColor(color & 0xff);
     return 0;
 }
 
 uint32_t pbw_api_graphics_context_set_fill_color(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.fillColor = [UIColor colorWithGColor:GColor(color & 0xff)];
+    graphicsContext.fillColor = GColor(color & 0xff);
     return 0;
 }
 
 uint32_t pbw_api_graphics_context_set_text_color(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.textColor = [UIColor colorWithGColor:GColor(color & 0xff)];
+    graphicsContext.textColor = GColor(color & 0xff);
     return 0;
 }
 
 uint32_t pbw_api_graphics_context_set_stroke_color_2bit(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.strokeColor = [UIColor colorWithGColor:GColorFrom2Bit(color & 0xff)];
+    graphicsContext.strokeColor = GColorFrom2Bit(color & 0xff);
     return 0;
 }
 
 uint32_t pbw_api_graphics_context_set_fill_color_2bit(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.fillColor = [UIColor colorWithGColor:GColorFrom2Bit(color & 0xff)];
+    graphicsContext.fillColor = GColorFrom2Bit(color & 0xff);
     return 0;
 }
 
 uint32_t pbw_api_graphics_context_set_text_color_2bit(pbw_ctx ctx, uint32_t gctx, uint32_t color) {
     PBWGraphicsContext *graphicsContext = ctx->runtime.objects[@(gctx)];
-    graphicsContext.textColor = [UIColor colorWithGColor:GColorFrom2Bit(color & 0xff)];
+    graphicsContext.textColor = GColorFrom2Bit(color & 0xff);
     return 0;
 }
 
@@ -276,9 +277,58 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
     return 0;
 }
 
+const uint32_t PBWGraphicsNativePalette[256] = {
+    0xff000000,0xff000055,0xff0000aa,0xff0000ff,0xff005500,0xff005555,0xff0055aa,0xff0055ff,
+    0xff00aa00,0xff00aa55,0xff00aaaa,0xff00aaff,0xff00ff00,0xff00ff55,0xff00ffaa,0xff00ffff,
+    0xff550000,0xff550055,0xff5500aa,0xff5500ff,0xff555500,0xff555555,0xff5555aa,0xff5555ff,
+    0xff55aa00,0xff55aa55,0xff55aaaa,0xff55aaff,0xff55ff00,0xff55ff55,0xff55ffaa,0xff55ffff,
+    0xffaa0000,0xffaa0055,0xffaa00aa,0xffaa00ff,0xffaa5500,0xffaa5555,0xffaa55aa,0xffaa55ff,
+    0xffaaaa00,0xffaaaa55,0xffaaaaaa,0xffaaaaff,0xffaaff00,0xffaaff55,0xffaaffaa,0xffaaffff,
+    0xffff0000,0xffff0055,0xffff00aa,0xffff00ff,0xffff5500,0xffff5555,0xffff55aa,0xffff55ff,
+    0xffffaa00,0xffffaa55,0xffffaaaa,0xffffaaff,0xffffff00,0xffffff55,0xffffffaa,0xffffffff,
+    0xff000000,0xff000055,0xff0000aa,0xff0000ff,0xff005500,0xff005555,0xff0055aa,0xff0055ff,
+    0xff00aa00,0xff00aa55,0xff00aaaa,0xff00aaff,0xff00ff00,0xff00ff55,0xff00ffaa,0xff00ffff,
+    0xff550000,0xff550055,0xff5500aa,0xff5500ff,0xff555500,0xff555555,0xff5555aa,0xff5555ff,
+    0xff55aa00,0xff55aa55,0xff55aaaa,0xff55aaff,0xff55ff00,0xff55ff55,0xff55ffaa,0xff55ffff,
+    0xffaa0000,0xffaa0055,0xffaa00aa,0xffaa00ff,0xffaa5500,0xffaa5555,0xffaa55aa,0xffaa55ff,
+    0xffaaaa00,0xffaaaa55,0xffaaaaaa,0xffaaaaff,0xffaaff00,0xffaaff55,0xffaaffaa,0xffaaffff,
+    0xffff0000,0xffff0055,0xffff00aa,0xffff00ff,0xffff5500,0xffff5555,0xffff55aa,0xffff55ff,
+    0xffffaa00,0xffffaa55,0xffffaaaa,0xffffaaff,0xffffff00,0xffffff55,0xffffffaa,0xffffffff,
+    0xff000000,0xff000055,0xff0000aa,0xff0000ff,0xff005500,0xff005555,0xff0055aa,0xff0055ff,
+    0xff00aa00,0xff00aa55,0xff00aaaa,0xff00aaff,0xff00ff00,0xff00ff55,0xff00ffaa,0xff00ffff,
+    0xff550000,0xff550055,0xff5500aa,0xff5500ff,0xff555500,0xff555555,0xff5555aa,0xff5555ff,
+    0xff55aa00,0xff55aa55,0xff55aaaa,0xff55aaff,0xff55ff00,0xff55ff55,0xff55ffaa,0xff55ffff,
+    0xffaa0000,0xffaa0055,0xffaa00aa,0xffaa00ff,0xffaa5500,0xffaa5555,0xffaa55aa,0xffaa55ff,
+    0xffaaaa00,0xffaaaa55,0xffaaaaaa,0xffaaaaff,0xffaaff00,0xffaaff55,0xffaaffaa,0xffaaffff,
+    0xffff0000,0xffff0055,0xffff00aa,0xffff00ff,0xffff5500,0xffff5555,0xffff55aa,0xffff55ff,
+    0xffffaa00,0xffffaa55,0xffffaaaa,0xffffaaff,0xffffff00,0xffffff55,0xffffffaa,0xffffffff,
+    0xff000000,0xff000055,0xff0000aa,0xff0000ff,0xff005500,0xff005555,0xff0055aa,0xff0055ff,
+    0xff00aa00,0xff00aa55,0xff00aaaa,0xff00aaff,0xff00ff00,0xff00ff55,0xff00ffaa,0xff00ffff,
+    0xff550000,0xff550055,0xff5500aa,0xff5500ff,0xff555500,0xff555555,0xff5555aa,0xff5555ff,
+    0xff55aa00,0xff55aa55,0xff55aaaa,0xff55aaff,0xff55ff00,0xff55ff55,0xff55ffaa,0xff55ffff,
+    0xffaa0000,0xffaa0055,0xffaa00aa,0xffaa00ff,0xffaa5500,0xffaa5555,0xffaa55aa,0xffaa55ff,
+    0xffaaaa00,0xffaaaa55,0xffaaaaaa,0xffaaaaff,0xffaaff00,0xffaaff55,0xffaaffaa,0xffaaffff,
+    0xffff0000,0xffff0055,0xffff00aa,0xffff00ff,0xffff5500,0xffff5555,0xffff55aa,0xffff55ff,
+    0xffffaa00,0xffffaa55,0xffffaaaa,0xffffaaff,0xffffff00,0xffffff55,0xffffffaa,0xffffffff
+};
+
 @implementation PBWGraphicsContext
 {
     CGSize screenSize;
+}
+
++ (void)load {
+    // I'm scared of floating point literals
+    CGFloat values[4] = {0.0, 1.0 / (CGFloat)3.0, 2.0 / (CGFloat)3.0, 1.0};
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    for (NSUInteger i=0; i < 256; i++) {
+        NSUInteger a = (i >> 6) & 3;
+        NSUInteger r = (i >> 4) & 3;
+        NSUInteger g = (i >> 2) & 3;
+        NSUInteger b = i & 3;
+        CGFloat components[4] = {values[r], values[g], values[b], values[a]};
+        PBWGraphicsCGColor[i] = CGColorCreate(colorSpace, components);
+    }
 }
 
 - (instancetype)initWithRuntime:(PBWRuntime *)rt {
@@ -298,6 +348,13 @@ uint32_t pbw_api_graphics_context_set_stroke_width(pbw_ctx ctx, uint32_t gctx, u
     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, screenSize.width, screenSize.height), image);
     CGImageRelease(image);
     window->dirty = NO;
+}
+
+- (void)setPixel:(GPoint)pixel toColor:(GColor8)color {
+    uint32_t *fbuf = CGBitmapContextGetData(cgContext);
+    uint32_t rowWidth = screenSize.width;
+    uint32_t screenHeight = screenSize.height;
+    fbuf[pixel.x + (screenHeight - pixel.y) * rowWidth] = PBWGraphicsNativePalette[color.argb | 0xc0];
 }
 
 @end

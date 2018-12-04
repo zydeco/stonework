@@ -14,7 +14,7 @@
 #import "../gfx/gcolor_definitions.h"
 #import "PBWWindow.h"
 #import "PBWGraphicsContext.h"
-#import "UIColor+GColor.h"
+@import UIKit;
 
 uint32_t pbw_api_layer_create(pbw_ctx ctx, ARG_GRECT(frame)) {
     return pbw_api_layer_create_with_data(ctx, frame_origin, frame_size, 0);
@@ -290,8 +290,8 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 
 - (void)drawInContext:(CGContextRef)ctx {
     if (_window->_rootLayer == self) {
-        [[UIColor colorWithGColor:_window->_backgroundColor] setFill];
-        UIRectFill(CGRectFromGRect(_bounds));
+        CGContextSetFillColorWithColor(ctx, PBWGraphicsCGColor[_window->_backgroundColor.argb]);
+        CGContextFillRect(ctx, CGRectFromGRect(_bounds));
     }
 }
 

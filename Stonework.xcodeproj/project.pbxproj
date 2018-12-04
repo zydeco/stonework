@@ -11,8 +11,6 @@
 		2804A5EF21985E6500853871 /* app_message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5ED21985E6500853871 /* app_message.m */; };
 		2804A5F22198C26100853871 /* PBWGraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F12198C26100853871 /* PBWGraphicsContext.m */; };
 		2804A5F32198C26100853871 /* PBWGraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F12198C26100853871 /* PBWGraphicsContext.m */; };
-		2804A5F62198C59F00853871 /* UIColor+GColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F52198C59F00853871 /* UIColor+GColor.m */; };
-		2804A5F72198C59F00853871 /* UIColor+GColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F52198C59F00853871 /* UIColor+GColor.m */; };
 		2804A5FD2198DF8600853871 /* time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5FC2198DF8600853871 /* time.m */; };
 		2804A5FE2198DF8600853871 /* time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5FC2198DF8600853871 /* time.m */; };
 		28132D252190BA3500B36804 /* PBWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28132D242190BA3500B36804 /* PBWLayer.m */; };
@@ -155,8 +153,6 @@
 		2804A5ED21985E6500853871 /* app_message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_message.m; sourceTree = "<group>"; };
 		2804A5F02198C26100853871 /* PBWGraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWGraphicsContext.h; sourceTree = "<group>"; };
 		2804A5F12198C26100853871 /* PBWGraphicsContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWGraphicsContext.m; sourceTree = "<group>"; };
-		2804A5F42198C59F00853871 /* UIColor+GColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+GColor.h"; sourceTree = "<group>"; };
-		2804A5F52198C59F00853871 /* UIColor+GColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GColor.m"; sourceTree = "<group>"; };
 		2804A5F82198D69E00853871 /* PBWScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWScreenView.h; sourceTree = "<group>"; };
 		2804A5F92198D69E00853871 /* PBWScreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWScreenView.m; sourceTree = "<group>"; };
 		2804A5FC2198DF8600853871 /* time.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = time.m; sourceTree = "<group>"; };
@@ -290,8 +286,6 @@
 				28132D282190BAFB00B36804 /* PBWGraphics.m */,
 				2804A5F02198C26100853871 /* PBWGraphicsContext.h */,
 				2804A5F12198C26100853871 /* PBWGraphicsContext.m */,
-				2804A5F42198C59F00853871 /* UIColor+GColor.h */,
-				2804A5F52198C59F00853871 /* UIColor+GColor.m */,
 				28ED9F0F21AB386600E78FBF /* PBWBitmap.h */,
 				28ED9F1021AB386600E78FBF /* PBWBitmap.m */,
 			);
@@ -772,7 +766,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2804A5F62198C59F00853871 /* UIColor+GColor.m in Sources */,
 				28ED9E7421A214ED00E78FBF /* resources.m in Sources */,
 				284C9251218DD4D70080B3E1 /* api.m in Sources */,
 				28ED9E5F219B54FF00E78FBF /* string.m in Sources */,
@@ -814,7 +807,6 @@
 			files = (
 				2804A5FE2198DF8600853871 /* time.m in Sources */,
 				28132D2A2190BAFB00B36804 /* PBWGraphics.m in Sources */,
-				2804A5F72198C59F00853871 /* UIColor+GColor.m in Sources */,
 				28ED9E66219B859B00E78FBF /* logging.m in Sources */,
 				284C92122180CE850080B3E1 /* thumb2.c in Sources */,
 				287069A72197125300D20B89 /* storage.m in Sources */,

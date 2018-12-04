@@ -14,7 +14,6 @@
 #import "PBWWindow.h"
 #import "PBWBitmap.h"
 #import "PBWGraphicsContext.h"
-#import "UIColor+GColor.h"
 
 uint32_t pbw_api_bitmap_layer_create(pbw_ctx ctx, ARG_GRECT(frame)) {
     GRect frame = UNPACK_GRECT(frame);
@@ -83,7 +82,7 @@ uint32_t pbw_api_bitmap_layer_set_compositing_mode(pbw_ctx ctx, uint32_t layerTa
 
 - (void)drawInContext:(CGContextRef)cg {
     pbw_ctx ctx = _runtime.runtimeContext;
-    CGContextSetFillColorWithColor(cg, [UIColor colorWithGColor:_backgroundColor].CGColor);
+    CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[_backgroundColor.argb]);
     CGContextFillRect(cg, CGRectFromGRect(self.bounds));
     if (_bitmap) {
         PBWBitmap *bitmap = ctx->runtime.objects[@(_bitmap)];

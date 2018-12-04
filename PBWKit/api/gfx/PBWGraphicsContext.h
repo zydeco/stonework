@@ -12,6 +12,9 @@
 
 @class PBWWindow, UIColor, UIBezierPath;
 
+extern const uint32_t PBWGraphicsNativePalette[256];
+extern CGColorRef PBWGraphicsCGColor[256];
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBWGraphicsContext : PBWObject
@@ -20,15 +23,16 @@ NS_ASSUME_NONNULL_BEGIN
     CGContextRef cgContext;
 }
 
-@property (nonatomic, retain) UIColor *fillColor;
-@property (nonatomic, retain) UIColor *strokeColor;
-@property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, assign) GColor fillColor;
+@property (nonatomic, assign) GColor strokeColor;
+@property (nonatomic, assign) GColor textColor;
 // Color screen only supports Assign and Set
 @property (nonatomic, assign) GCompOp compositingMode;
 @property (nonatomic, assign) BOOL antialiased;
 @property (nonatomic, assign) uint8_t strokeWidth;
 
 - (void)drawWindow:(PBWWindow*)window;
+- (void)setPixel:(GPoint)pixel toColor:(GColor8)color;
 
 @end
 
