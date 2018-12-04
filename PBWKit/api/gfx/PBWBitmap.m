@@ -4,6 +4,7 @@
 //
 //  Created by Jesús A. Álvarez on 25/11/2018.
 //  Copyright © 2018 namedfork. All rights reserved.
+//  Rendering adapted from neographics: https://github.com/pebble-dev/neographics
 //
 
 #import "PBWBitmap.h"
@@ -333,51 +334,6 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
 - (void)invalidateCGImage {
     CGImageRelease(_cgImage);
     _cgImage = NULL;
-}
-
-- (CGImageRef)CGImage {
-    if (_cgImage == NULL) {
-        size_t bitsPerPixel, lastColor;
-        switch (_format) {
-            case GBitmapFormat1BitPalette:
-                bitsPerPixel = 1;
-                lastColor = 1;
-                break;
-            case GBitmapFormat1Bit:
-                bitsPerPixel = 1;
-                lastColor = 1;
-                break;
-            case GBitmapFormat2BitPalette:
-                bitsPerPixel = 2;
-                lastColor = 3;
-                break;
-            case GBitmapFormat4BitPalette:
-                bitsPerPixel = 4;
-                lastColor = 15;
-                break;
-            case GBitmapFormat8Bit:
-                bitsPerPixel = 8;
-                lastColor = 255;
-                break;
-            case GBitmapFormat8BitCircular:
-                bitsPerPixel = 8;
-                lastColor = 255;
-            default:
-                __builtin_trap();
-                break;
-        }
-        uint8_t *colorTable = calloc(lastColor+1, 3);
-        memcpy(colorTable, "\0\0\0\xff\xff\xff", 6);
-        CGColorSpaceRef baseColorSpace = CGColorSpaceCreateDeviceRGB();
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateIndexed(baseColorSpace, lastColor, colorTable);
-        CGColorSpaceRelease(baseColorSpace);
-        free(colorTable);
-        CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, pbw_ctx_get_pointer(_runtime.runtimeContext, _pixelPtr), _bytesPerRow * _bounds.size.h, NULL);
-        _cgImage = CGImageCreate(_bounds.size.w, _bounds.size.h, bitsPerPixel, bitsPerPixel, _bytesPerRow, colorSpace, 0, dataProvider, NULL, false, kCGRenderingIntentDefault);
-        CGDataProviderRelease(dataProvider);
-        CGColorSpaceRelease(colorSpace);
-    }
-    return _cgImage;
 }
 
 - (void)drawInRect:(GRect)rect context:(nonnull PBWGraphicsContext *)graphicsCongext {

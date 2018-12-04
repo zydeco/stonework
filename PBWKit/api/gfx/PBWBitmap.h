@@ -29,7 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) uint32_t palettePtr;
 @property (nonatomic, assign) BOOL freeDataOnDestroy;
 @property (nonatomic, assign) BOOL freePaletteOnDestroy;
-@property (nonatomic, readonly) CGImageRef CGImage;
 
 - (instancetype)initWithRuntime:(PBWRuntime*)rt resourceID:(uint32_t)resourceID;
 - (instancetype)initWithRuntime:(PBWRuntime*)rt dataPtr:(uint32_t)dataPtr;
