@@ -200,6 +200,8 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     NSDate *nextFireDate = [NSDate dateWithTimeIntervalSinceReferenceDate:thisTick + 1.05];
     tickTimer = [[NSTimer alloc] initWithFireDate:nextFireDate interval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:tickTimer forMode:NSRunLoopCommonModes];
+    lastTime = 0;
+    [self tick:nil];
 }
 
 - (void)tick:(NSTimer *)timer {
@@ -216,8 +218,10 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         if (thisTick.tm_mon != lastTickServiceTime.tm_mon) changedUnits |= MONTH_UNIT;
         if (thisTick.tm_year != lastTickServiceTime.tm_year) changedUnits |= YEAR_UNIT;
         lastTickServiceTime = thisTick;
+        if (lastTime == 0 || changedUnits & tickServiceUnits) {
+            PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
+        }
         lastTime = now;
-        PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
     }
 }
 
