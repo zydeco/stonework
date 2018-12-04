@@ -350,7 +350,7 @@ void pbw_cpu_exec_loadstore(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
     if (ConditionPassed()) {
         uint32_t offset = immediate ? imm : pbw_cpu_alu_shift(cpu, m == REG_PC ? pc + 4 : R[m], shift_t, shift_n, APSR_C, 0);
         uint32_t reg_n = R[n];
-        if (n == REG_PC) reg_n = pc + 4; //Align(pc + 4, 4);
+        if (n == REG_PC) reg_n = Align(pc + 4, 4);
         uint32_t offset_addr = add ? reg_n + offset : reg_n - offset;
         uint32_t address = index ? offset_addr : reg_n;
         uint32_t data;
