@@ -561,15 +561,17 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
         // Data processing (plain binary immediate)
         uint32_t n = (ins >> 16) & 0xf;
         uint32_t d = (ins >> 8) & 0xf;
-        ENC_ThumbImm16(imm32);
         switch ((ins >> 20) & 0x1f) {
             case 0x00:
-                if (n == 0xf) {
-                    // MARK: ADR T3
-                    CPU_BREAK(NOT_IMPLEMENTED);
-                } else {
-                    // MARK: ADD (immediate) T4
-                    CPU_BREAK(NOT_IMPLEMENTED);
+                // MARK: ADR T3
+                // MARK: ADD (immediate) T4
+                if (d == 13 || d == 15) {
+                    CPU_BREAK(UNPREDICTABLE);
+                }
+                if (ConditionPassed()) {
+                    ENC_ThumbImm12(imm32);
+                    uint32_t val = (n == REG_PC) ? Align(pc, 4) : R[n];
+                    R[d] = val + imm32;
                 }
                 break;
             case 0x04: {
@@ -578,16 +580,20 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                     CPU_BREAK(UNPREDICTABLE);
                 }
                 if (ConditionPassed()) {
+                    ENC_ThumbImm16(imm32);
                     R[d] = imm32;
                 }
                 break; }
             case 0x0a:
-                if (n == 0xf) {
-                    // MARK: ADR T2
-                    CPU_BREAK(NOT_IMPLEMENTED);
-                } else {
-                    // MARK: SUB (immediate) T4
-                    CPU_BREAK(NOT_IMPLEMENTED);
+                // MARK: ADR T2
+                // MARK: SUB (immediate) T4
+                if (d == 13 || d == 15) {
+                    CPU_BREAK(UNPREDICTABLE);
+                }
+                if (ConditionPassed()) {
+                    ENC_ThumbImm12(imm32);
+                    uint32_t val = (n == REG_PC) ? Align(pc, 4) : R[n];
+                    R[d] = val - imm32;
                 }
                 break;
             case 0x0c:
@@ -868,7 +874,19 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
         uint32_t dLo = (ins >> 12) & 0xf;
         uint32_t dHi = (ins >> 8) & 0xf;
         uint32_t m = ins & 0xf;
-        if (op1 == 0b001 && op2 == 0b1111) {
+        if (op1 == 0 && op2 == 0) {
+            // MARK: SMULL T1
+            if (dLo == 13 || dLo == 15 || dHi == 13 || dHi == 15 || n == 13 || n == 15 || m == 13 || m == 15 || dHi == dLo) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
+            if (ConditionPassed()) {
+                int32_t m1 = R[n];
+                int32_t m2 = R[m];
+                int64_t result = (int64_t)m1 * (int64_t)m2;
+                R[dHi] = result >> 32;
+                R[dLo] = result & 0xffffffff;
+            }
+        } else if (op1 == 0b001 && op2 == 0b1111) {
             // MARK: SDIV T1
             // dHi is d, dLo is 0b1111
             if (dHi == 13 || dHi == 15 || n == 13 || n == 15 || m == 13 || m == 15) {
@@ -882,6 +900,9 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
             }
         } else if (op1 == 0b010 && op2 == 0b0000) {
             // MARK: UMULL T1
+            if (dLo == 13 || dLo == 15 || dHi == 13 || dHi == 15 || n == 13 || n == 15 || m == 13 || m == 15 || dHi == dLo) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
             if (ConditionPassed()) {
                 uint64_t result = (uint64_t)R[n] * (uint64_t)R[m];
                 R[dHi] = result >> 32;
@@ -899,6 +920,31 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                 int32_t result = mValue ? (nValue / mValue) : 0;
                 R[dHi] = result;
             }
+        } else if (op1 == 0b100 && op2 == 0b0000) {
+            // MARK: SMLAL T1
+            if (dLo == 13 || dLo == 15 || dHi == 13 || dHi == 15 || n == 13 || n == 15 || m == 13 || m == 15 || dHi == dLo) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
+            int64_t m1 = (int32_t)R[n];
+            int64_t m2 = (int32_t)R[m];
+            uint64_t hi = R[dHi];
+            uint64_t lo = R[dLo];
+            int64_t result = ((hi << 32) | lo);
+            result += m1 * m2;
+            R[dHi] = result >> 32;
+            R[dLo] = (result & 0xffffffff);
+        } else if (op1 == 0b110 && op2 == 0b0000) {
+            // MARK: UMLAL T1
+            if (dLo == 13 || dLo == 15 || dHi == 13 || dHi == 15 || n == 13 || n == 15 || m == 13 || m == 15 || dHi == dLo) {
+                CPU_BREAK(UNPREDICTABLE);
+            }
+            uint64_t m1 = R[n];
+            uint64_t m2 = R[m];
+            uint64_t hi = R[dHi];
+            uint64_t lo = R[dLo];
+            uint64_t result = m1 * m2 + ((hi << 32) | lo);
+            R[dHi] = result >> 32;
+            R[dLo] = (result & 0xffffffff);
         } else {
             CPU_BREAK(NOT_IMPLEMENTED);
         }
