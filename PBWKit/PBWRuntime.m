@@ -66,7 +66,11 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 - (instancetype)initWithApp:(PBWApp *)app {
     if (self = [super init]) {
         _app = app;
-        _screenSize = CGSizeMake(144, 168);
+        if (app.platform == PBWPlatformTypeChalk) {
+            _screenSize = CGSizeMake(180, 180);
+        } else {
+            _screenSize = CGSizeMake(144, 168);
+        }
         // screen should exist before running!
         _screenView = [[PBWScreenView alloc] initWithFrame:CGRectMake(0, 0, _screenSize.width, _screenSize.height)];
         objc_setAssociatedObject(_screenView, PBWScreenViewRuntimeKey, self, OBJC_ASSOCIATION_ASSIGN);
@@ -216,7 +220,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     struct tm thisTick;
     time_t now = time(NULL);
     
-    if (now != lastTime && tickSerivceHandler) {
+    if ((timer == nil || now != lastTime) && tickSerivceHandler) {
         localtime_r(&now, &thisTick);
         TimeUnits changedUnits = 0;
         if (thisTick.tm_sec != lastTickServiceTime.tm_sec) changedUnits |= SECOND_UNIT;
@@ -226,7 +230,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         if (thisTick.tm_mon != lastTickServiceTime.tm_mon) changedUnits |= MONTH_UNIT;
         if (thisTick.tm_year != lastTickServiceTime.tm_year) changedUnits |= YEAR_UNIT;
         lastTickServiceTime = thisTick;
-        if (lastTime == 0 || changedUnits & tickServiceUnits) {
+        if (lastTime == 0 || timer == nil || changedUnits & tickServiceUnits) {
             PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
         }
         lastTime = now;

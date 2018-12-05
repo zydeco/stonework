@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithApp:(PBWApp*)app;
 - (BOOL)run;
+- (void)stop;
 - (void)startEventLoop;
+- (void)tick:(nullable NSTimer *)timer;
 
 // Graphics
 @property (nonatomic, readonly) CGSize screenSize;
