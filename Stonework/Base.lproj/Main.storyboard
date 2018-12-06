@@ -80,8 +80,8 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="maker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-If-pNC">
-                                            <rect key="frame" x="63.5" y="106" width="33" height="14"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <rect key="frame" x="64" y="106" width="32" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
