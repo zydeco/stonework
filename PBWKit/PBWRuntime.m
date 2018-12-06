@@ -244,7 +244,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
             [_graphicsContext drawWindow:topWindow];
         }
         CGImageRef image = CGBitmapContextCreateImage(_graphicsContext->cgContext);
-        CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, _screenSize.width, _screenSize.height), image);
+        CGContextDrawImage(UIGraphicsGetCurrentContext(), _screenView.bounds, image);
         CGImageRelease(image);
         topWindow->dirty = NO;
     }

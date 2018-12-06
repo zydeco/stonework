@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isWatchFace;
 
 + (nullable instancetype)bundleWithURL:(NSURL*)url;
++ (NSArray<PBWBundle*>*)bundlesAtURL:(NSURL*)url;
 - (nullable instancetype)initWithURL:(NSURL*)url;
 - (nullable NSData*)dataAtPath:(NSString*)path;
 

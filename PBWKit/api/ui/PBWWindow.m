@@ -86,7 +86,8 @@ uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated
 
 - (instancetype)initWithRuntime:(PBWRuntime *)rt {
     if (self = [super initWithRuntime:rt]) {
-        _rootLayer = [[PBWLayer alloc] initWithRuntime:rt frame:GRectFromCGRect(rt.screenView.bounds) dataSize:0];
+        CGSize screenSize = rt.screenSize;
+        _rootLayer = [[PBWLayer alloc] initWithRuntime:rt frame:GRect(0, 0, screenSize.width, screenSize.height) dataSize:0];
         _rootLayer.window = self;
         _backgroundColor = GColorWhite;
         _loaded = NO;

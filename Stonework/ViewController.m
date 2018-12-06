@@ -40,7 +40,6 @@
     rt = [[PBWRuntime alloc] initWithApp:app];
     [self.screenView addSubview:(UIView*)rt.screenView];
     [rt run];
-    //printf("%s\n", [rt disassemble].UTF8String);
 }
 
 @end

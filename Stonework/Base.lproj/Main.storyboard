@@ -1,38 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gpr-U6-Ch9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="ust-Wl-f03">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="915-na-8sJ">
-                                <rect key="frame" x="115" y="249" width="144" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="Uee-0j-aNJ"/>
-                    </view>
+                <navigationController id="gpr-U6-Ch9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="icu-yR-x9W">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
                     <connections>
-                        <outlet property="screenView" destination="915-na-8sJ" id="etf-Ki-ITN"/>
+                        <segue destination="66d-bU-CyC" kind="relationship" relationship="rootViewController" id="YCv-RU-5vV"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2G-eB-I5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="123.68815592203899"/>
+            <point key="canvasLocation" x="-539" y="204"/>
+        </scene>
+        <!--Watchfaces-->
+        <scene sceneID="nVh-BG-Qjz">
+            <objects>
+                <collectionViewController id="66d-bU-CyC" customClass="WatchfacesViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rTV-YX-X5X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewLayout key="collectionViewLayout" id="si7-ok-shS" customClass="WatchfacesCollectionViewLayout"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="watchface" id="tZs-uX-UKE" customClass="WatchfaceCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watchface" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1j-3t-FZZ">
+                                            <rect key="frame" x="48" y="87" width="64.5" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h2x-PS-mxs">
+                                            <rect key="frame" x="52.5" y="16" width="55" height="65"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="gHk-Dj-p0a"/>
+                                                <constraint firstAttribute="height" constant="65" id="u5D-xR-6Nd"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                    <size key="value" width="0.0" height="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                    <integer key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="maker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBq-If-pNC">
+                                            <rect key="frame" x="63.5" y="106" width="33" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="h2x-PS-mxs" firstAttribute="top" secondItem="tZs-uX-UKE" secondAttribute="top" constant="16" id="AI4-rh-5zu"/>
+                                    <constraint firstItem="H1j-3t-FZZ" firstAttribute="centerX" secondItem="tZs-uX-UKE" secondAttribute="centerX" id="EOE-Rw-Bm3"/>
+                                    <constraint firstItem="H1j-3t-FZZ" firstAttribute="top" secondItem="h2x-PS-mxs" secondAttribute="bottom" constant="6" id="RxY-xj-tZg"/>
+                                    <constraint firstItem="nBq-If-pNC" firstAttribute="centerX" secondItem="tZs-uX-UKE" secondAttribute="centerX" id="T6c-Pc-SDh"/>
+                                    <constraint firstItem="h2x-PS-mxs" firstAttribute="centerX" secondItem="tZs-uX-UKE" secondAttribute="centerX" id="eVE-Ms-yu4"/>
+                                    <constraint firstItem="nBq-If-pNC" firstAttribute="top" secondItem="H1j-3t-FZZ" secondAttribute="bottom" constant="3" id="t8J-O4-DiP"/>
+                                </constraints>
+                                <size key="customSize" width="160" height="130"/>
+                                <connections>
+                                    <outlet property="imageView" destination="h2x-PS-mxs" id="BR8-s7-HA3"/>
+                                    <outlet property="subtitleLabel" destination="nBq-If-pNC" id="BR9-Q0-oGn"/>
+                                    <outlet property="titleLabel" destination="H1j-3t-FZZ" id="Wnt-HD-Yuw"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="getWatchfaces" id="f2V-EL-vX3">
+                                <rect key="frame" x="215" y="0.0" width="160" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="130"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Watchfaces" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7m-gS-r3E">
+                                            <rect key="frame" x="31.5" y="87" width="97" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Get Watchfaces" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-ZN-G8e">
+                                            <rect key="frame" x="55" y="30" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="D2s-Vq-Rhn"/>
+                                                <constraint firstAttribute="width" constant="50" id="c91-dF-YCO"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="f7m-gS-r3E" firstAttribute="top" secondItem="sOo-ZN-G8e" secondAttribute="bottom" constant="7" id="9HI-Lt-fSG"/>
+                                    <constraint firstItem="sOo-ZN-G8e" firstAttribute="top" secondItem="f2V-EL-vX3" secondAttribute="top" constant="30" id="Mi0-dc-gpA"/>
+                                    <constraint firstItem="f7m-gS-r3E" firstAttribute="top" secondItem="f2V-EL-vX3" secondAttribute="top" constant="87" id="Sb5-1n-z9C"/>
+                                    <constraint firstItem="f7m-gS-r3E" firstAttribute="centerX" secondItem="f2V-EL-vX3" secondAttribute="centerX" id="Vw5-bz-TCr"/>
+                                    <constraint firstItem="sOo-ZN-G8e" firstAttribute="centerX" secondItem="f2V-EL-vX3" secondAttribute="centerX" id="coC-Jp-43c"/>
+                                </constraints>
+                                <size key="customSize" width="160" height="130"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="66d-bU-CyC" id="WZo-i2-euB"/>
+                            <outlet property="delegate" destination="66d-bU-CyC" id="4es-93-gT0"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Watchfaces" id="ktu-rr-J0h"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdm-Cz-mbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213.59999999999999" y="203.74812593703149"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Get Watchfaces" width="50" height="50"/>
+    </resources>
 </document>

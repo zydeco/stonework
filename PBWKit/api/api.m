@@ -670,20 +670,16 @@ uint32_t pbw_api_call(pbw_cpu cpu, void *userData, uint32_t addr, pbw_mem_op op,
     PBWRuntime *runtime = (__bridge id)(userData);
     int apiNum = addr/4;
     if (apiNum == kJumpTableEntries - 1) {
-        NSLog(@"End of main()");
         pbw_cpu_stop(cpu, PBW_ERR_OK);
         return 0;
     } else if (apiNum < kNumberOfAPICalls) {
         const struct pbw_api api = pblApi[apiNum];
-        NSLog(@"API call %d: %s", apiNum, api.name);
         if (api.implementation == NULL) {
             // API not implemented
             pbw_cpu_stop(cpu, PBW_ERR_NOT_IMPLEMENTED);
         } else {
             pbw_api_call_impl(runtime.runtimeContext, api.implementation, api.numberOfArguments, api.returnsWord);
         }
-    } else {
-        NSLog(@"API call %d: out of range", apiNum);
     }
     
     // return address in link register

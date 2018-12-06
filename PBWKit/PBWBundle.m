@@ -19,6 +19,23 @@
     return [[PBWBundle alloc] initWithURL:url];
 }
 
++ (NSArray *)bundlesAtURL:(NSURL *)baseURL {
+    NSMutableArray *bundles = [NSMutableArray arrayWithCapacity:8];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    for (NSURL *fileURL in [fm contentsOfDirectoryAtURL:baseURL includingPropertiesForKeys:@[NSURLIsRegularFileKey] options:NSDirectoryEnumerationSkipsSubdirectoryDescendants | NSDirectoryEnumerationSkipsPackageDescendants | NSDirectoryEnumerationSkipsHiddenFiles error:NULL]) {
+        NSNumber *isRegularFile = nil;
+        if ([fileURL getResourceValue:&isRegularFile forKey:NSURLIsRegularFileKey error:NULL] &&
+            isRegularFile.boolValue &&
+            [fileURL.pathExtension.lowercaseString isEqualToString:@"pbw"]) {
+            PBWBundle *bundle = [PBWBundle bundleWithURL:fileURL];
+            if (bundle) {
+                [bundles addObject:bundle];
+            }
+        }
+    }
+    return bundles;
+}
+
 - (instancetype)initWithURL:(NSURL *)url {
     if (self = [super init]) {
         _bundleURL = url;

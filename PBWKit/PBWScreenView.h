@@ -20,5 +20,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)setNeedsDisplay;
+- (void)removeFromSuperview;
 
 @end
