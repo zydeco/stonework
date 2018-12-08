@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     application.statusBarStyle = UIStatusBarStyleLightContent;
-    
+    [self installBuiltInWatchfaces];
     return YES;
 }
 
@@ -58,9 +58,22 @@
 }
 
 - (NSArray<PBWBundle*>*)availableWatchfaces {
+    return [PBWBundle bundlesAtURL:self.documentsURL];
+}
+
+- (void)installBuiltInWatchfaces {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger builtInWatchfacesVersion = 1;
+    if ([userDefaults integerForKey:@"installedBuiltInWatchfaces"] >= builtInWatchfacesVersion) return;
     NSURL *builtInWatchfacesURL = [[NSBundle mainBundle].resourceURL URLByAppendingPathComponent:@"Faces" isDirectory:YES];
+    NSURL *documentsURL = self.documentsURL;
     NSFileManager *fm = [NSFileManager defaultManager];
-    return [[PBWBundle bundlesAtURL:builtInWatchfacesURL] arrayByAddingObjectsFromArray:[PBWBundle bundlesAtURL:self.documentsURL]];
+    NSArray<PBWBundle*> *builtInWatchfaces = [PBWBundle bundlesAtURL:builtInWatchfacesURL];
+    for (PBWBundle *bundle in builtInWatchfaces) {
+        NSURL *installURL = [documentsURL URLByAppendingPathComponent:bundle.bundleURL.lastPathComponent];
+        [fm copyItemAtURL:bundle.bundleURL toURL:installURL error:nil];
+    }
+    [userDefaults setInteger:builtInWatchfacesVersion forKey:@"installedBuiltInWatchfaces"];
 }
 
 @end

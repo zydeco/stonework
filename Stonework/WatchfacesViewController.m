@@ -26,21 +26,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     watchfaces = [self availableWathcfaces];
+    [self.collectionView reloadData];
 }
     
 - (NSArray<PBWBundle*>*)availableWathcfaces {
     return [AppDelegate sharedInstance].availableWatchfaces;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
