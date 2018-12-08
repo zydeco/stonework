@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,6 +134,9 @@
                                     <constraint firstItem="sOo-ZN-G8e" firstAttribute="centerX" secondItem="f2V-EL-vX3" secondAttribute="centerX" id="coC-Jp-43c"/>
                                 </constraints>
                                 <size key="customSize" width="160" height="130"/>
+                                <connections>
+                                    <segue destination="cGy-qw-pYN" kind="show" id="soQ-iB-qH1"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -146,8 +150,85 @@
             </objects>
             <point key="canvasLocation" x="213.59999999999999" y="203.74812593703149"/>
         </scene>
+        <!--Store View Controller-->
+        <scene sceneID="Tdp-2W-yjL">
+            <objects>
+                <viewController id="cGy-qw-pYN" customClass="StoreViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rih-EY-Hxb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bI-qy-0bN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="559"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKE-u6-KNI">
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                <viewLayoutGuide key="safeArea" id="Pyf-Qh-VOH"/>
+                                <items>
+                                    <barButtonItem enabled="NO" image="NavigateBack" id="1RB-v0-qmX">
+                                        <connections>
+                                            <action selector="navigateBack:" destination="cGy-qw-pYN" id="WSZ-bz-X0e"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="H51-4T-Eh0"/>
+                                    <barButtonItem enabled="NO" image="NavigateForward" id="HYD-hb-R1e">
+                                        <connections>
+                                            <action selector="navigateForward:" destination="cGy-qw-pYN" id="Cp7-GH-vkP"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RF8-tX-xMi"/>
+                                    <barButtonItem systemItem="action" id="iDF-ZA-qPc">
+                                        <connections>
+                                            <action selector="shareAction:" destination="cGy-qw-pYN" id="eSe-B0-1Ji"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RvE-HX-im6"/>
+                                    <barButtonItem image="Watchfaces" id="yx6-An-sqc">
+                                        <connections>
+                                            <action selector="goHome:" destination="cGy-qw-pYN" id="STT-qZ-7RR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="noz-h5-MiC"/>
+                                    <barButtonItem systemItem="search" id="Vut-gy-bDH">
+                                        <connections>
+                                            <action selector="search:" destination="cGy-qw-pYN" id="2b3-LP-lsv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FKE-u6-KNI" firstAttribute="leading" secondItem="z2w-aP-Tt9" secondAttribute="leading" id="3Rp-Z2-pht"/>
+                            <constraint firstItem="z2w-aP-Tt9" firstAttribute="trailing" secondItem="FKE-u6-KNI" secondAttribute="trailing" id="a7q-6f-Tiq"/>
+                            <constraint firstItem="FKE-u6-KNI" firstAttribute="width" secondItem="z2w-aP-Tt9" secondAttribute="width" id="pGr-K3-auE"/>
+                            <constraint firstItem="z2w-aP-Tt9" firstAttribute="bottom" secondItem="FKE-u6-KNI" secondAttribute="bottom" id="yj6-S0-yky"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z2w-aP-Tt9"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="1RB-v0-qmX" id="QLR-bB-qRn"/>
+                        <outlet property="forwardButton" destination="HYD-hb-R1e" id="lo4-dQ-M01"/>
+                        <outlet property="webView" destination="6bI-qy-0bN" id="IU4-tq-xQO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Akl-oj-fsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997.60000000000002" y="203.74812593703149"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Get Watchfaces" width="50" height="50"/>
+        <image name="NavigateBack" width="13" height="21"/>
+        <image name="NavigateForward" width="13" height="21"/>
+        <image name="Watchfaces" width="22" height="22"/>
     </resources>
 </document>

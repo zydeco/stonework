@@ -63,6 +63,8 @@
 		28B1D94521B8500A00BE7C1F /* WatchfacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94421B8500A00BE7C1F /* WatchfacesViewController.m */; };
 		28B1D94821B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94721B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m */; };
 		28B1D94B21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */; };
+		28B1D94E21BBEBF400BE7C1F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */; };
+		28B1D95021BBEC6900BE7C1F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1D94F21BBEC6900BE7C1F /* WebKit.framework */; };
 		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
 		28E020D52173E0EB00C556D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D42173E0EB00C556D6 /* ViewController.m */; };
 		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
@@ -221,6 +223,9 @@
 		28B1D94721B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchfaceCollectionViewCell.m; sourceTree = "<group>"; };
 		28B1D94921B9B79100BE7C1F /* WatchfacesCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchfacesCollectionViewLayout.h; sourceTree = "<group>"; };
 		28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchfacesCollectionViewLayout.m; sourceTree = "<group>"; };
+		28B1D94C21BBEBF400BE7C1F /* StoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		28B1D94F21BBEC6900BE7C1F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -299,6 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B1D95021BBEC6900BE7C1F /* WebKit.framework in Frameworks */,
 				345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,6 +471,8 @@
 				28B1D94721B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m */,
 				28B1D94921B9B79100BE7C1F /* WatchfacesCollectionViewLayout.h */,
 				28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */,
+				28B1D94C21BBEBF400BE7C1F /* StoreViewController.h */,
+				28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */,
 			);
 			path = Stonework;
 			sourceTree = "<group>";
@@ -551,6 +559,7 @@
 		3479A43CE16567273D08B6EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28B1D94F21BBEC6900BE7C1F /* WebKit.framework */,
 				BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */,
 				7374FBB82FE405E74479A401 /* libPods-Stonework.a */,
 				D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */,
@@ -883,6 +892,7 @@
 				287069A62197125300D20B89 /* storage.m in Sources */,
 				28ED9E65219B859B00E78FBF /* logging.m in Sources */,
 				28ED9F1521B2A9DB00E78FBF /* PBWFont.m in Sources */,
+				28B1D94E21BBEBF400BE7C1F /* StoreViewController.m in Sources */,
 				28ED9F3521B2E13400E78FBF /* PBWTextLayer.m in Sources */,
 				28156B21218DED0800AC859A /* memory.m in Sources */,
 				28B1D94B21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m in Sources */,

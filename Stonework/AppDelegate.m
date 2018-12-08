@@ -16,6 +16,9 @@
 
 @implementation AppDelegate
 
++ (instancetype)sharedInstance {
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -50,5 +53,14 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (NSURL*)documentsURL {
+    return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
+}
+
+- (NSArray<PBWBundle*>*)availableWatchfaces {
+    NSURL *builtInWatchfacesURL = [[NSBundle mainBundle].resourceURL URLByAppendingPathComponent:@"Faces" isDirectory:YES];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    return [[PBWBundle bundlesAtURL:builtInWatchfacesURL] arrayByAddingObjectsFromArray:[PBWBundle bundlesAtURL:self.documentsURL]];
+}
 
 @end

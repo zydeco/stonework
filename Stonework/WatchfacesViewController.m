@@ -9,6 +9,7 @@
 #import "WatchfacesViewController.h"
 #import "WatchfaceCollectionViewCell.h"
 #import "PBWBundle.h"
+#import "AppDelegate.h"
 
 @interface WatchfacesViewController ()
 
@@ -21,19 +22,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Do any additional setup after loading the view.
-    watchfaces = [self availableWathcfaces];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    watchfaces = [self availableWathcfaces];
+}
+    
 - (NSArray<PBWBundle*>*)availableWathcfaces {
-    NSURL *builtInWatchfacesURL = [[NSBundle mainBundle].resourceURL URLByAppendingPathComponent:@"Faces" isDirectory:YES];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSURL *documentsURL = [fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
-    return [[PBWBundle bundlesAtURL:builtInWatchfacesURL] arrayByAddingObjectsFromArray:[PBWBundle bundlesAtURL:documentsURL]];
+    return [AppDelegate sharedInstance].availableWatchfaces;
 }
 
 /*

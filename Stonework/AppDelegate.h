@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class PBWBundle;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, readonly) NSURL *documentsURL;
 
++ (instancetype)sharedInstance;
+- (NSArray<PBWBundle*>*)availableWatchfaces;
 
 @end
 
