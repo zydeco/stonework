@@ -69,6 +69,7 @@
         _companyName = _infoDictionary[@"companyName"];
         NSDictionary<NSString*,id> *watchApp = _infoDictionary[@"watchapp"];
         _isWatchFace = [watchApp[@"watchface"] boolValue];
+        _configurable = [_infoDictionary[@"capabilities"] containsObject:@"configurable"];
     } else {
         // legacy app
         PBWApp *app = [[PBWApp alloc] initWithBundle:self platform:PBWPlatformTypeAplite];

@@ -8,6 +8,7 @@
 
 #import "WatchfacesViewController.h"
 #import "WatchfaceCollectionViewCell.h"
+#import "WatchfaceDetailViewController.h"
 #import "PBWBundle.h"
 #import "AppDelegate.h"
 
@@ -31,6 +32,15 @@
     
 - (NSArray<PBWBundle*>*)availableWathcfaces {
     return [AppDelegate sharedInstance].availableWatchfaces;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = self.collectionView.indexPathsForSelectedItems.lastObject;
+    if ([segue.destinationViewController isKindOfClass:[WatchfaceDetailViewController class]] && selectedIndexPath) {
+        WatchfaceDetailViewController *detailViewController = (WatchfaceDetailViewController*)segue.destinationViewController;
+        PBWBundle *selectedWatchface = watchfaces[selectedIndexPath.item-1];
+        detailViewController.watchfaceBundle = selectedWatchface;
+    }
 }
 
 #pragma mark <UICollectionViewDataSource>

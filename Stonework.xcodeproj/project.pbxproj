@@ -65,6 +65,7 @@
 		28B1D94B21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */; };
 		28B1D94E21BBEBF400BE7C1F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */; };
 		28B1D95021BBEC6900BE7C1F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1D94F21BBEC6900BE7C1F /* WebKit.framework */; };
+		28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */; };
 		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
 		28E020D52173E0EB00C556D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D42173E0EB00C556D6 /* ViewController.m */; };
 		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
@@ -226,6 +227,8 @@
 		28B1D94C21BBEBF400BE7C1F /* StoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		28B1D94F21BBEC6900BE7C1F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		28B1D95121BC5C7700BE7C1F /* WatchfaceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchfaceDetailViewController.h; sourceTree = "<group>"; };
+		28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchfaceDetailViewController.m; sourceTree = "<group>"; };
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -473,6 +476,8 @@
 				28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */,
 				28B1D94C21BBEBF400BE7C1F /* StoreViewController.h */,
 				28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */,
+				28B1D95121BC5C7700BE7C1F /* WatchfaceDetailViewController.h */,
+				28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */,
 			);
 			path = Stonework;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				28ED9E7121A1903600E78FBF /* PBWBitmapLayer.m in Sources */,
 				28156B31218F112700AC859A /* PBWObject.m in Sources */,
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
+				28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
