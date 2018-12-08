@@ -23,8 +23,4 @@
     [_runtime.objects removeObjectForKey:@(_tag)];
 }
 
-- (void)dealloc {
-    NSLog(@"I (%@ 0x%05x) am being deallocated!", NSStringFromClass(self.class), _tag);
-}
-
 @end

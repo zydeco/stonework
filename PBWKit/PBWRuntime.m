@@ -91,14 +91,12 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     if (_app.virtualSize == _app.loadSize) {
         // add more scratch space? probably not needed
         virtualSize += 1024;
-        NSLog(@"Increasing virtual size from %d to %d", (int)_app.virtualSize, (int)virtualSize);
     }
     uint32_t appSize = pad4K(virtualSize);
     ctx.appSlice = calloc(1, appSize);
     ctx.appSize = appSize;
     uint32_t loadSize = _app.loadSize;
     memcpy(ctx.appSlice, appImage.bytes, loadSize);
-    NSLog(@"Mapping 0x%x bytes at 0x%x for app image", appSize, kAppBase);
     entryPoint = kAppBase + _app.entryPoint;
     pbw_cpu_mem_map_ptr(ctx.cpu, ctx.appBase, appSize, PBW_MEM_RWX, ctx.appSlice);
     
@@ -165,7 +163,6 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     @try {
         [self initializeEmulator];
         
-        NSLog(@"Running...");
         pbw_cpu_reg_set(ctx.cpu, REG_SP, kStackTop);
         pbw_cpu_reg_set(ctx.cpu, REG_PC, entryPoint);
         pbw_cpu_reg_set(ctx.cpu, REG_LR, kAPIBase + kJumpTableSize - 4); // called when main() exits
@@ -174,8 +171,6 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         if (err) {
             _running = NO;
             NSLog(@"pbw_cpu_resume: %u", err);
-        } else {
-            NSLog(@"pbw_cpu ran successfully");
         }
         return YES;
     } @catch (NSException *exception) {
