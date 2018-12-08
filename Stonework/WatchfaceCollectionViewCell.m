@@ -23,13 +23,18 @@
         runtime = nil;
     }
 }
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self clearRuntime];
+}
+
 - (void)setWatchfaceBundle:(PBWBundle *)watchfaceBundle {
     _watchfaceBundle = watchfaceBundle;
     self.titleLabel.text = watchfaceBundle.shortName;
     self.subtitleLabel.text = watchfaceBundle.companyName;
     
-    if (runtime)
-    [runtime stop];
+    [self clearRuntime];
     PBWApp *app = [[PBWApp alloc] initWithBundle:watchfaceBundle platform:PBWPlatformTypeBasalt];
     if (app == nil) app = [[PBWApp alloc] initWithBundle:watchfaceBundle platform:PBWPlatformTypeAplite];
     if (app) {
@@ -38,6 +43,7 @@
         [self.imageView addSubview:screenView];
         screenView.frame = self.imageView.bounds;
         [runtime run];
+        [runtime performSelector:@selector(stop) withObject:nil afterDelay:1.0];
     }
 }
 
