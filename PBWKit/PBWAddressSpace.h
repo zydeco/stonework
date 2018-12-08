@@ -45,7 +45,7 @@
 #define kStackBase (kStackTop - kStackSize)
 
 /* Heap grows up */
-#define kHeapBase kRAMBase + kRAMGlobalsSize
+#define kHeapBase (kRAMBase + kRAMGlobalsSize)
 #define kHeapSize (kRAMSize - (kRAMGlobalsSize + kStackSize))
 #define kHeapTop (kHeapBase + kHeapSize)
 

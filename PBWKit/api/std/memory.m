@@ -13,7 +13,7 @@
 #import "PBWAddressSpace.h"
 
 #define ReadRAMPointer(p) (p ? p - kHeapBase : 0)
-#define MakeRAMPointer(p) (p ? p + kHeapBase: 0)
+#define MakeRAMPointer(p) (p ? p + kHeapBase : 0)
 
 uint32_t pbw_api_malloc(pbw_ctx ctx, uint32_t size) {
     void *heap = ctx->heapPtr;
