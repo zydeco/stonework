@@ -19,6 +19,7 @@
 @implementation WatchfaceDetailViewController
 {
     BOOL activatingWatchface;
+    PBWRuntime *runtime;
 }
 
 - (void)viewDidLoad {
@@ -36,11 +37,27 @@
     self.longNameLabel.text = wf.longName;
     self.infoDeveloperLabel.text = wf.companyName;
     self.versionLabel.text = wf.versionLabel;
+    
+    [self startEmulator];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     activatingWatchface = NO;
+    [runtime stop];
+    [runtime.screenView removeFromSuperview];
+}
+
+- (void)startEmulator {
+    PBWApp *app = [[PBWApp alloc] initWithBundle:self.watchfaceBundle platform:PBWPlatformTypeBasalt];
+    if (app == nil) app = [[PBWApp alloc] initWithBundle:self.watchfaceBundle platform:PBWPlatformTypeAplite];
+    if (app) {
+        runtime = [[PBWRuntime alloc] initWithApp:app];
+        UIView *screenView = (UIView*)runtime.screenView;
+        [self.imageView addSubview:screenView];
+        screenView.frame = self.imageView.bounds;
+        [runtime run];
+    }
 }
 
 - (void)shareWatchface:(id)sender {
