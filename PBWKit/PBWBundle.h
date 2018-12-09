@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *companyName;
 @property (nonatomic, readonly) BOOL isWatchFace;
 @property (nonatomic, readonly, getter=isConfigurable) BOOL configurable;
+@property (nonatomic, readonly) NSArray<NSString*> *capabilities;
 
 + (nullable instancetype)bundleWithURL:(NSURL*)url;
 + (NSArray<PBWBundle*>*)bundlesAtURL:(NSURL*)url;
