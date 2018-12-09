@@ -48,7 +48,17 @@
 }
 
 - (IBAction)deleteWatchface:(id)sender {
-    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to delete this watchface?" message:@"You cannot undo this action." preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSError *deleteError = nil;
+        if ([[NSFileManager defaultManager] removeItemAtURL:self.watchfaceBundle.bundleURL error:&deleteError]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self failWithTitle:@"Error deleting watchface" message:deleteError.localizedDescription handler:nil];
+        }
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)activateWatchface:(id)sender {
