@@ -9,6 +9,7 @@
 #import "StoreViewController.h"
 #import "AppDelegate.h"
 #import "PBWKit.h"
+#import "NSFileManager+ExtendedAttributes.h"
 
 static NSArray *observedWebViewKeys = nil;
 
@@ -150,7 +151,9 @@ static NSArray *observedWebViewKeys = nil;
         [self cancelAppDownload];
     }]];
     [self presentViewController:downloadProgressController animated:YES completion:^{
-        [self downloadAppFromURL:[NSURL URLWithString:pbwURLString] withUUID:appUUID];
+        NSString *screenshotSize = app[@"screenshot_size"];
+        NSString *screenshotURL = screenshotSize ? [[app[@"screenshot_images"] firstObject] valueForKey:screenshotSize] : nil;
+        [self downloadAppFromURL:[NSURL URLWithString:pbwURLString] withUUID:appUUID screenshotURL:[NSURL URLWithString:screenshotURL]];
     }];
 }
 
@@ -158,16 +161,18 @@ static NSArray *observedWebViewKeys = nil;
     [downloadTask cancel];
 }
 
-- (void)downloadAppFromURL:(NSURL*)URL withUUID:(NSUUID*)appUUID {
+- (void)downloadAppFromURL:(NSURL*)URL withUUID:(NSUUID*)appUUID screenshotURL:(NSURL*)screenshotURL {
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *fileName = [appUUID.UUIDString stringByAppendingPathExtension:@"pbw"];
     NSURL *installURL = [[AppDelegate sharedInstance].documentsURL URLByAppendingPathComponent:fileName];
     downloadTask = [session downloadTaskWithURL:URL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error == nil && location) {
+            NSData *screenshotData = [NSData dataWithContentsOfURL:screenshotURL];
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSFileManager *fm = [NSFileManager defaultManager];
                 NSError *installError = nil;
                 if ([fm moveItemAtURL:location toURL:installURL error:&installError]) {
+                    [fm setExtendedAttribute:@"net.namedfork.stonework.preview" value:screenshotData atPath:installURL.path traverseLink:NO mode:XAAnyMode error:NULL];
                     [self->downloadProgressController dismissViewControllerAnimated:YES completion:^{
                         [self.navigationController popViewControllerAnimated:YES];
                     }];

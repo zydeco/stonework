@@ -10,6 +10,7 @@
 #import "PBWBundle.h"
 #import "PBWApp.h"
 #import "PBWRuntime.h"
+#import "NSFileManager+ExtendedAttributes.h"
 
 @implementation WatchfaceCollectionViewCell
 {
@@ -26,7 +27,7 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    [self clearRuntime];
+    self.imageView.image = nil;
 }
 
 - (void)setWatchfaceBundle:(PBWBundle *)watchfaceBundle {
@@ -34,17 +35,8 @@
     self.titleLabel.text = watchfaceBundle.shortName;
     self.subtitleLabel.text = watchfaceBundle.companyName;
     
-    [self clearRuntime];
-    PBWApp *app = [[PBWApp alloc] initWithBundle:watchfaceBundle platform:PBWPlatformTypeBasalt];
-    if (app == nil) app = [[PBWApp alloc] initWithBundle:watchfaceBundle platform:PBWPlatformTypeAplite];
-    if (app) {
-        runtime = [[PBWRuntime alloc] initWithApp:app];
-        UIView *screenView = (UIView*)runtime.screenView;
-        [self.imageView addSubview:screenView];
-        screenView.frame = self.imageView.bounds;
-        [runtime run];
-        [runtime performSelector:@selector(stop) withObject:nil afterDelay:1.0];
-    }
+    NSData *previewData = [[NSFileManager defaultManager] extendedAttribute:@"net.namedfork.stonework.preview" atPath:_watchfaceBundle.bundleURL.path traverseLink:NO error:NULL];
+    self.imageView.image = [UIImage imageWithData:previewData];
 }
 
 @end
