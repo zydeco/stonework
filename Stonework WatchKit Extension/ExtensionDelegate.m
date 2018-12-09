@@ -7,16 +7,18 @@
 //
 
 #import "ExtensionDelegate.h"
+#import "InterfaceController.h"
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching {
     // Perform any final initialization of your application.
-
+    [WCSession defaultSession].delegate = self;
 }
 
 - (void)applicationDidBecomeActive {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[WCSession defaultSession] activateSession];
 }
 
 - (void)applicationWillResignActive {
@@ -58,5 +60,26 @@
         }
     }
 }
+
+#pragma mark - <WCSessionDelegate>
+
+- (void)session:(WCSession *)session didReceiveFile:(WCSessionFile *)file {
+    // move file
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *documentsURL = [fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
+    NSURL *watchfaceURL = [documentsURL URLByAppendingPathComponent:@"watchface.pbw" isDirectory:NO];
+    [fm removeItemAtURL:watchfaceURL error:NULL];
+    [fm moveItemAtURL:file.fileURL toURL:watchfaceURL error:NULL];
+    [[NSUserDefaults standardUserDefaults] setObject:watchfaceURL.absoluteString forKey:@"WatchfaceURL"];
+    
+    // reload
+    InterfaceController *interfaceController = (InterfaceController*)[WKExtension sharedExtension].rootInterfaceController;
+    [interfaceController loadWatchface];
+}
+
+- (void)session:(nonnull WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error {
+    
+}
+
 
 @end

@@ -12,4 +12,6 @@
 
 @interface InterfaceController : WKInterfaceController
 
+- (void)loadWatchface;
+
 @end

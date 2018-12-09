@@ -35,31 +35,47 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
+}
 
-    // Configure interface objects here.
+- (void)hideTimeLabel {
+    /* Hack to make the digital time overlay disappear */
+    id fullScreenView = [self fullScreenView];
+    [[[fullScreenView timeLabel] layer] setOpacity:0];
+}
+
+- (id)fullScreenView {
+    NSArray *views = [[[[[[[NSClassFromString(@"UIApplication") sharedApplication] keyWindow] rootViewController] viewControllers] firstObject] view] subviews];
+    for (NSObject *view in views) {
+        if ([view isKindOfClass:NSClassFromString(@"SPFullScreenView")]) {
+            return view;
+        }
+    }
+    return nil;
 }
 
 - (void)didAppear {
-    /* Hack to make the digital time overlay disappear */
-    NSArray *views = [[[[[[[NSClassFromString(@"UIApplication") sharedApplication] keyWindow] rootViewController] viewControllers] firstObject] view] subviews];
-    id fullScreenView = nil;
-    for (NSObject *view in views) {
-        if ([view isKindOfClass:NSClassFromString(@"SPFullScreenView")]) {
-            fullScreenView = view;
-            break;
-        }
+    [self hideTimeLabel];
+    [self loadWatchface];
+}
+
+- (void)loadWatchface {
+    if (runtime) {
+        [runtime stop];
+        [runtime.screenView removeFromSuperview];
     }
-    [[[fullScreenView timeLabel] layer] setOpacity:0];
     
-    // run pebble watchface
-    NSString *appName = [NSProcessInfo processInfo].environment[@"PBWAppBundle"] ?: @"hello-pebble";
-    PBWBundle *bundle = [PBWBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:appName withExtension:@"pbw" subdirectory:@"Faces"]];
-    PBWApp *app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeAplite];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    PBWBundle *bundle = [PBWBundle bundleWithURL:[NSURL URLWithString:[defaults stringForKey:@"WatchfaceURL"]]];
+    if (bundle == nil) return;
+    PBWApp *app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeBasalt];
+    if (app == nil) app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeAplite];
+    if (app == nil) return;
     runtime = [[PBWRuntime alloc] initWithApp:app];
     [runtime run];
     
     // add screen view
     id<PBWScreenView> screenView = runtime.screenView;
+    id fullScreenView = [self fullScreenView];
     [fullScreenView addSubview:screenView];
     CGRect bounds = [fullScreenView bounds];
     screenView.center = CGPointMake(bounds.size.width / 2.0, bounds.size.height / 2.0);

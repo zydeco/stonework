@@ -91,7 +91,6 @@
 		28ED9E6921A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */; };
 		28ED9E6A21A05D6A00E78FBF /* NSString+PBWRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E6821A05D6A00E78FBF /* NSString+PBWRuntime.m */; };
 		28ED9E6C21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
-		28ED9E6D21A0937400E78FBF /* Faces in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9E6B21A0937400E78FBF /* Faces */; };
 		28ED9E7121A1903600E78FBF /* PBWBitmapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */; };
 		28ED9E7221A1903600E78FBF /* PBWBitmapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7021A1903600E78FBF /* PBWBitmapLayer.m */; };
 		28ED9E7421A214ED00E78FBF /* resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E7321A214ED00E78FBF /* resources.m */; };
@@ -748,7 +747,6 @@
 				28ED9F2621B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */,
 				28ED9F2C21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */,
 				28E020FE2173E0ED00C556D6 /* Assets.xcassets in Resources */,
-				28ED9E6D21A0937400E78FBF /* Faces in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

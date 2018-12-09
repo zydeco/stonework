@@ -8,10 +8,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--watchface-->
         <scene sceneID="T5s-0O-weS">
             <objects>
-                <controller spacing="0.0" fullScreen="YES" id="OkN-RN-cDt" customClass="InterfaceController">
+                <controller identifier="watchface" spacing="0.0" fullScreen="YES" id="OkN-RN-cDt" customClass="InterfaceController">
                     <items>
                         <group width="1" alignment="left" spacing="0.0" id="r4w-8v-T2Z">
                             <items>
