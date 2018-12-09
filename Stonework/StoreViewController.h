@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) IBOutlet WKWebView *webView;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backButton, *forwardButton, *actionButton;
+@property (nonatomic, retain) NSURL *landingURL;
 
 @end
 

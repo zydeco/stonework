@@ -7,6 +7,7 @@
 //
 
 #import "WatchfaceDetailViewController.h"
+#import "StoreViewController.h"
 #import "PBWKit.h"
 
 @import WatchConnectivity;
@@ -87,6 +88,14 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:handler]];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[StoreViewController class]]) {
+        StoreViewController *storeViewController = (StoreViewController*)segue.destinationViewController;
+        NSString *stringURL = [@"https://apps.rebble.io/en_US/search/watchfaces/?query=" stringByAppendingString:_watchfaceBundle.UUID.UUIDString.lowercaseString];
+        storeViewController.landingURL = [NSURL URLWithString:stringURL];
+    }
 }
 
 #pragma mark <WCSessionDelegate>

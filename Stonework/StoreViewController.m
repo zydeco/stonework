@@ -41,7 +41,7 @@ static NSArray *observedWebViewKeys = nil;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSURLRequest *request = [NSURLRequest requestWithURL:watchfacesURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:_landingURL ?: watchfacesURL];
     [self.webView loadRequest:request];
     for (NSString *key in observedWebViewKeys) {
         [self.webView addObserver:self forKeyPath:key options:0 context:NULL];
