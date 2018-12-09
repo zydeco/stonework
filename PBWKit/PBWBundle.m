@@ -37,9 +37,13 @@
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
+    unzFile zfile = unzOpen(url.path.fileSystemRepresentation);
+    if (zfile == NULL) {
+        return nil;
+    }
     if (self = [super init]) {
         _bundleURL = url;
-        zf = unzOpen(url.path.fileSystemRepresentation);
+        zf = zfile;
         [self loadAppInfo];
     }
     return self;
