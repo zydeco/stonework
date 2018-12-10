@@ -280,8 +280,10 @@ PBW_API(window_set_background_color_2bit, uint32_t window, uint32_t color);
 #pragma mark - User Interface / Window Stack
 PBW_API(window_stack_push, uint32_t window, uint32_t animated);
 
-#pragma mark - Standard C / Memory
+#pragma mark - Standard C / Locale
+PBW_API(setlocale, uint32_t category, uint32_t namePtr);
 
+#pragma mark - Standard C / Memory
 PBW_API(malloc, uint32_t size);
 PBW_API(calloc, uint32_t count, uint32_t size);
 PBW_API(realloc, uint32_t ptr, uint32_t size);

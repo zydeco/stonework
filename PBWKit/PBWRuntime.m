@@ -16,6 +16,7 @@
 #import "PBWGraphicsContext.h"
 #import "PBWWindow.h"
 #import "PBWFont.h"
+#import "PBWAddressSpace+Globals.h"
 
 @import ObjectiveC.runtime;
 @import UIKit;
@@ -24,6 +25,13 @@ uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
     pbw_cpu_stop(ctx->cpu, PBW_ERR_OK);
     [ctx->runtime startEventLoop];
     return 0;
+}
+
+uint32_t pbw_api_setlocale(pbw_ctx ctx, uint32_t category, uint32_t namePtr) {
+    const char *name = pbw_ctx_get_pointer(ctx, namePtr);
+    int mask = category ? (1 << category) : LC_ALL_MASK;
+    ctx->runtime.locale = newlocale(mask, name, LC_GLOBAL_LOCALE);
+    return kPBWGlobalLocale;
 }
 
 static Class PBWScreenView = nil;
@@ -146,6 +154,18 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     // base graphics context
     _graphicsContext = [[PBWGraphicsContext alloc] initWithRuntime:self];
     _windowStack = [NSMutableArray arrayWithCapacity:1];
+    
+    // locale
+    self.locale = newlocale(LC_ALL_MASK, [NSLocale currentLocale].localeIdentifier.UTF8String, LC_GLOBAL_LOCALE);
+}
+
+- (void)setLocale:(locale_t)locale {
+    if (_locale && _locale != LC_GLOBAL_LOCALE) {
+        freelocale(_locale);
+    }
+    _locale = locale;
+    const char *localeName = querylocale(LC_TIME_MASK, _locale);
+    pbw_cpu_mem_write_block(ctx.cpu, kPBWGlobalLocale, 1+strlen(localeName), localeName);
 }
 
 - (void)deinitializeEmulator {

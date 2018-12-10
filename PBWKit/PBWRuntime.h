@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <xlocale.h>
 #import "api/api.h"
 #import "PBWScreenView.h"
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) PBWApp *app;
 @property (nonatomic, readonly) pbw_ctx runtimeContext;
 @property (nonatomic, readonly) BOOL running;
+@property (nonatomic) locale_t locale;
 
 - (instancetype)initWithApp:(PBWApp*)app;
 - (BOOL)run;

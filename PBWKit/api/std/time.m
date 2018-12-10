@@ -127,8 +127,9 @@ uint32_t pbw_api_time_start_of_today(pbw_ctx ctx) {
 uint32_t pbw_api_strftime(pbw_ctx ctx, uint32_t s, uint32_t maxsize, uint32_t format, uint32_t tb) {
     struct pebble_tm *guest_tm = pbw_ctx_get_pointer(ctx, tb);
     struct tm host_tm;
+    
     tm_guest_to_host(guest_tm, &host_tm);
-    size_t result = strftime(pbw_ctx_get_pointer(ctx, s), (size_t)maxsize, pbw_ctx_get_pointer(ctx, format), &host_tm);
+    size_t result = strftime_l(pbw_ctx_get_pointer(ctx, s), (size_t)maxsize, pbw_ctx_get_pointer(ctx, format), &host_tm, ctx->runtime.locale);
     free(host_tm.tm_zone);
     return (uint32_t)result;
 }

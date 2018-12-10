@@ -391,7 +391,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(clock_is_timezone_set),
     PBW_API_UNIMPLEMENTED(i18n_get_system_locale),
     PBW_API_UNIMPLEMENTED(_localeconv_r),
-    PBW_API_UNIMPLEMENTED(setlocale),
+    PBW_API(setlocale, YES, 2),
     PBW_API(mktime, YES, 1),
     PBW_API_UNIMPLEMENTED(gcolor_equal__deprecated), // gcolor_equal on aplite
     PBW_API_UNIMPLEMENTED(__profiler_init),
