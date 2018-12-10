@@ -64,13 +64,15 @@
 - (void)installBuiltInWatchfaces {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger builtInWatchfacesVersion = 1;
-    if ([userDefaults integerForKey:@"installedBuiltInWatchfaces"] >= builtInWatchfacesVersion) return;
+    NSInteger installedBuiltInWatchfaces = [userDefaults integerForKey:@"installedBuiltInWatchfaces"];
+    if (installedBuiltInWatchfaces >= builtInWatchfacesVersion) return;
     NSURL *builtInWatchfacesURL = [[NSBundle mainBundle].resourceURL URLByAppendingPathComponent:@"Faces" isDirectory:YES];
     NSURL *documentsURL = self.documentsURL;
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray<PBWBundle*> *builtInWatchfaces = [PBWBundle bundlesAtURL:builtInWatchfacesURL];
     for (PBWBundle *bundle in builtInWatchfaces) {
         NSURL *installURL = [documentsURL URLByAppendingPathComponent:bundle.bundleURL.lastPathComponent];
+        if (installedBuiltInWatchfaces == -1) [fm removeItemAtURL:installURL error:nil];
         [fm copyItemAtURL:bundle.bundleURL toURL:installURL error:nil];
     }
     [userDefaults setInteger:builtInWatchfacesVersion forKey:@"installedBuiltInWatchfaces"];
