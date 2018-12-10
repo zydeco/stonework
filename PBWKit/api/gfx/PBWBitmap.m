@@ -383,7 +383,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
     
     // Blit the bitmap
     size_t bytesPerScreenRow = CGBitmapContextGetBytesPerRow(cg);
-    uint32_t *fb_line = fbuf + rect.origin.x + (rect.origin.y + rect.size.h - 1) * (bytesPerScreenRow/4);
+    uint32_t *fb_line = fbuf + rect.origin.x + (CGBitmapContextGetHeight(cg) - rect.origin.y) * (bytesPerScreenRow/4);
     uint8_t* bm_first_line = pbw_ctx_get_pointer(ctx, _pixelPtr) + _bounds.origin.y * _bytesPerRow;
     GPoint src_offset = {
         .x = (rect.origin.x - rect.origin.x) % _bounds.size.w,

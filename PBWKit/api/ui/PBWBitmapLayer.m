@@ -89,6 +89,7 @@ uint32_t pbw_api_bitmap_layer_set_compositing_mode(pbw_ctx ctx, uint32_t layerTa
         GRect dstRect = bitmap.bounds;
         GRect outerBounds = self.bounds;
         grect_align(&dstRect, &outerBounds, self.alignment, false);
+        dstRect.origin = [self convertPointToScreen:dstRect.origin];
         [bitmap drawInRect:dstRect context:_runtime.graphicsContext];
     }
 }
