@@ -281,7 +281,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
     uint8_t *nextPixel = imageData;
     for (int y=0; y < height; y++) {
         for (int x=0; x < width; x++) {
-            *nextPixel = 0xc0 | ((pngData[1] & 0xc0) >> 2) | ((pngData[2] & 0xc0) >> 4) | ((pngData[3] & 0xc0) >> 6);
+            *nextPixel = (~pngData[0] & 0xc0) | ((pngData[1] & 0xc0) >> 2) | ((pngData[2] & 0xc0) >> 4) | ((pngData[3] & 0xc0) >> 6);
             nextPixel += 1;
             pngData += 4;
         }
