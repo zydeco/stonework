@@ -29,7 +29,7 @@
 #define SetAPSR_Q(_q) cpu->reg[REG_APSR] = ((_q) << 27) | (cpu->reg[REG_APSR] & 0xF7FFFFFF)
 #define SetAPSR_GE(_ge) cpu->reg[REG_APSR] = ((_ge) << 16) | (cpu->reg[REG_APSR] & 0xFFF0FFFF)
 
-#define CPU_BREAK(error, ...) { __builtin_trap(); cpu->running = 0; cpu->err = PBW_ERR_ ## error; R[REG_PC] = pc; return __VA_ARGS__; };
+#define CPU_BREAK(error, ...) { cpu->running = 0; cpu->err = PBW_ERR_ ## error; R[REG_PC] = pc; return __VA_ARGS__; };
 
 #define ITSTATE (((cpu->reg[REG_EPSR] & 0x6000000) >> 25) | ((cpu->reg[REG_EPSR] & 0xFC00) >> 8))
 #define SetITSTATE(value) SetITSTATEImpl(cpu, value)
