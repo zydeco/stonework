@@ -20,9 +20,13 @@ uint32_t pbw_api_strncmp(pbw_ctx ctx, uint32_t s1, uint32_t s2, uint32_t n) {
     return strncmp(pbw_ctx_get_pointer(ctx, s1), pbw_ctx_get_pointer(ctx, s2), n);
 }
 
-uint32_t pbw_api_strcpy(pbw_ctx ctx, uint32_t dst, uint32_t src) {
-    strcpy(pbw_ctx_get_pointer(ctx, dst), pbw_ctx_get_pointer(ctx, src));
-    return dst;
+uint32_t pbw_api_strcpy(pbw_ctx ctx, uint32_t dstPtr, uint32_t srcPtr) {
+    if (dstPtr == srcPtr) {
+        return dstPtr;
+    }
+    const char *src = pbw_ctx_get_pointer(ctx, srcPtr);
+    memmove(pbw_ctx_get_pointer(ctx, dstPtr), src, 1+strlen(src));
+    return dstPtr;
 }
 
 uint32_t pbw_api_strncpy(pbw_ctx ctx, uint32_t dst, uint32_t src, uint32_t n) {
