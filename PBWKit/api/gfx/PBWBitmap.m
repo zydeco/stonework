@@ -119,20 +119,6 @@ uint32_t pbw_api_gbitmap_get_data_row_info(pbw_ctx ctx, uint32_t retptr, uint32_
     return 0;
 }
 
-uint8_t BlendColor(uint16_t src, uint8_t dst) {
-    unsigned int srcR = (src >> 12) & 3;
-    unsigned int srcG = (src >> 7) & 3;
-    unsigned int srcB = (src >> 2) & 3;
-    unsigned int dstR = (dst >> 4) & 3;
-    unsigned int dstG = (dst >> 2) & 3;
-    unsigned int dstB = dst & 3;
-    unsigned int alpha = (dst >> 6) & 3;
-    dstR = (alpha * srcR + (3 - alpha) * dstR) / 3;
-    dstG = (alpha * srcG + (3 - alpha) * dstG) / 3;
-    dstB = (alpha * srcB + (3 - alpha) * dstB) / 3;
-    return 0b11000000 | (dstR << 4) | (dstG << 2) | dstB;
-}
-
 static const uint8_t PBWBitmapIdentityPalette[256] = {
     0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,
     0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d,0x1e,0x1f,
@@ -390,6 +376,23 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
         .y = (rect.origin.y - rect.origin.y) % _bounds.size.h
     };
     
+    BOOL isAplite = (_runtime.app.platform == PBWPlatformTypeAplite);
+    uint8_t (^blendColor)(uint32_t,uint8_t) = isAplite ?
+    ^uint8_t(uint32_t src, uint8_t dst) { return dst; } :
+    ^uint8_t(uint32_t src, uint8_t dst) {
+        unsigned int srcR = (src >> 22) & 3;
+        unsigned int srcG = (src >> 14) & 3;
+        unsigned int srcB = (src >> 6) & 3;
+        unsigned int dstR = (dst >> 4) & 3;
+        unsigned int dstG = (dst >> 2) & 3;
+        unsigned int dstB = dst & 3;
+        unsigned int alpha = (dst >> 6) & 3;
+        dstR = (alpha * srcR + (3 - alpha) * dstR) / 3;
+        dstG = (alpha * srcG + (3 - alpha) * dstG) / 3;
+        dstB = (alpha * srcB + (3 - alpha) * dstB) / 3;
+        return 0b11000000 | (dstR << 4) | (dstG << 2) | dstB;
+    };
+    
     for (int y = 0; y < rect.size.h; y++) {
         uint32_t *fb_pixel = fb_line;
         uint8_t *bm_line = bm_first_line + ((src_offset.y + y) % _bounds.size.h) * _bytesPerRow;
@@ -399,7 +402,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
             uint8_t src_pixel_byte = bm_line[src_x / pixels_per_byte];
             int src_pixel_bit = (src_x % pixels_per_byte) * bits_per_pixel;
             int src_color_index = (src_pixel_byte >> src_pixel_bit) & index_mask;
-            uint8_t color = comp_op == GCompOpAssign ? palette[src_color_index] : BlendColor(*fb_pixel, palette[src_color_index]);
+            uint8_t color = blendColor(*fb_pixel, palette[src_color_index]);
             *fb_pixel = PBWGraphicsNativePalette[color];
             fb_pixel++;
         }
