@@ -273,7 +273,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API(strcat, YES, 2),
     PBW_API(strcmp, YES, 2),
     PBW_API(strcpy, YES, 2),
-    PBW_API_UNIMPLEMENTED(strftime),
+    PBW_API(strftime, YES, 4),
     PBW_API(strlen, YES, 1),
     PBW_API(strncat, YES, 3),
     PBW_API(strncmp, YES, 3),

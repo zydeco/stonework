@@ -310,5 +310,6 @@ PBW_API(gmtime, uint32_t timep);
 PBW_API(mktime, uint32_t tb);
 PBW_API(time_ms, uint32_t timep, uint32_t msp);
 PBW_API(time_start_of_today);
+PBW_API(strftime, uint32_t s, uint32_t maxsize, uint32_t format, uint32_t tb);
 
 #endif /* api_h */
