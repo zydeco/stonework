@@ -78,7 +78,7 @@ uint32_t pbw_cpu_mem_read(pbw_cpu cpu, uint32_t addr, pbw_mem_op op, pbw_mem_siz
 uint32_t pbw_cpu_mem_write(pbw_cpu cpu, uint32_t addr, pbw_mem_size size, uint32_t value);
 // must be within block, ignores permissions
 pbw_err pbw_cpu_mem_read_block(pbw_cpu cpu, uint32_t address, size_t size, void *data);
-pbw_err pbw_cpu_mem_write_block(pbw_cpu cpu, uint32_t address, size_t size, void *data);
+pbw_err pbw_cpu_mem_write_block(pbw_cpu cpu, uint32_t address, size_t size, const void *data);
 uint32_t pbw_cpu_read_word(pbw_cpu cpu, uint32_t ptr);
 uint16_t pbw_cpu_read_halfword(pbw_cpu cpu, uint32_t ptr);
 uint8_t pbw_cpu_read_byte(pbw_cpu cpu, uint32_t ptr);

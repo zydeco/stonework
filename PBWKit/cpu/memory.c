@@ -463,7 +463,7 @@ pbw_err pbw_cpu_mem_read_block(pbw_cpu cpu, uint32_t addr, size_t size, void *da
     return PBW_ERR_OK;
 }
 
-pbw_err pbw_cpu_mem_write_block(pbw_cpu cpu, uint32_t addr, size_t size, void *data) {
+pbw_err pbw_cpu_mem_write_block(pbw_cpu cpu, uint32_t addr, size_t size, const void *data) {
     struct pbw_mem_region *rgn = pbw_cpu_mem_region(cpu, addr, PBW_MEM_RWX);
     if (rgn == NULL || addr + size > rgn->end) {
         // out of range
