@@ -29,7 +29,7 @@ void* pbw_ctx_get_pointer(pbw_ctx ctx, uint32_t ptr);
 uint32_t pbw_ctx_make_pointer(pbw_ctx ctx, void *ptr);
 
 uint32_t pbw_api_call(pbw_cpu cpu, void *userData, uint32_t addr, pbw_mem_op op, pbw_mem_size size, uint32_t value);
-typedef uint32_t (*pbw_api_impl)(pbw_ctx, ...);
+typedef uint32_t (*pbw_api_impl)(pbw_ctx, uint32_t arg1, uint32_t arg2, uint32_t arg3, uint32_t arg4);
 
 #pragma mark - Pebble API
 
