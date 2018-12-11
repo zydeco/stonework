@@ -191,6 +191,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (void)addChild:(PBWLayer *)childLayer {
+    if (childLayer == nil) return;
     [childLayer removeFromParent];
     [children addObject:childLayer];
     childLayer->_parent = self;
@@ -217,6 +218,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (void)insertLayer:(PBWLayer *)childLayer atIndex:(NSUInteger)index {
+    if (childLayer == nil) return;
     [childLayer removeFromParent];
     [children insertObject:childLayer atIndex:index];
     childLayer->_parent = self;
@@ -225,6 +227,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (void)insertLayer:(PBWLayer *)childLayer belowSibling:(PBWLayer *)siblingLayer {
+    if (childLayer == nil || siblingLayer == nil) return;
     NSUInteger index = [children indexOfObject:siblingLayer];
     if (index != NSNotFound) {
         [self insertLayer:childLayer atIndex:index];
@@ -232,6 +235,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (void)insertLayer:(PBWLayer *)childLayer aboveSibling:(PBWLayer *)siblingLayer {
+    if (childLayer == nil || siblingLayer == nil) return;
     NSUInteger index = [children indexOfObject:siblingLayer];
     if (index != NSNotFound) {
         [self insertLayer:childLayer atIndex:index+1];
@@ -255,6 +259,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (GRect)unobstructedBounds {
+    // TODO: implement this
     return GRectZero;
 }
 
