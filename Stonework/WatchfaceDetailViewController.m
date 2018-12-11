@@ -146,14 +146,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger result = [super tableView:tableView numberOfRowsInSection:section];
-    if (section == 1 && !self.watchfaceBundle.configurable) {
+    if (section == 1 /*&& !self.watchfaceBundle.configurable*/) {
         result -= 1;
     }
     return result;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.watchfaceBundle.configurable && indexPath.section == 1) {
+    if (/*!self.watchfaceBundle.configurable &&*/ indexPath.section == 1) {
         indexPath = [NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section];
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
