@@ -68,7 +68,6 @@
 		28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */; };
 		28B1D95821BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D95721BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m */; };
 		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
-		28E020D52173E0EB00C556D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D42173E0EB00C556D6 /* ViewController.m */; };
 		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
 		28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D92173E0EC00C556D6 /* Assets.xcassets */; };
 		28E020DD2173E0EC00C556D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */; };
@@ -234,8 +233,6 @@
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		28E020D32173E0EB00C556D6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		28E020D42173E0EB00C556D6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		28E020D72173E0EB00C556D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28E020D92173E0EC00C556D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28E020DC2173E0EC00C556D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -463,8 +460,6 @@
 			children = (
 				28E020D02173E0EB00C556D6 /* AppDelegate.h */,
 				28E020D12173E0EB00C556D6 /* AppDelegate.m */,
-				28E020D32173E0EB00C556D6 /* ViewController.h */,
-				28E020D42173E0EB00C556D6 /* ViewController.m */,
 				28E020D62173E0EB00C556D6 /* Main.storyboard */,
 				28E020D92173E0EC00C556D6 /* Assets.xcassets */,
 				28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */,
@@ -879,7 +874,6 @@
 				28132D252190BA3500B36804 /* PBWLayer.m in Sources */,
 				28B1D94821B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m in Sources */,
 				28156B2C218F0F1500AC859A /* PBWWindow.m in Sources */,
-				28E020D52173E0EB00C556D6 /* ViewController.m in Sources */,
 				284C91D82174FD170080B3E1 /* PBWBundle.m in Sources */,
 				284C920D2180CE5F0080B3E1 /* thumb.c in Sources */,
 				28ED9E62219B800600E78FBF /* wall_time.m in Sources */,

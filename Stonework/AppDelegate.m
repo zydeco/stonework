@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "PBWKit.h"
-#import "ViewController.h"
 
 @interface AppDelegate ()
 
