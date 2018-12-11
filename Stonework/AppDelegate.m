@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PBWKit.h"
+#import "WatchfaceDetailViewController.h"
 
 @interface AppDelegate ()
 
@@ -75,6 +76,94 @@
         [fm copyItemAtURL:bundle.bundleURL toURL:installURL error:nil];
     }
     [userDefaults setInteger:builtInWatchfacesVersion forKey:@"installedBuiltInWatchfaces"];
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showAlertWithTitle:title message:message];
+        });
+        return;
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    UIViewController *controller = self.window.rootViewController;
+    while (controller.presentedViewController) {
+        controller = controller.presentedViewController;
+    }
+    [controller presentViewController:alert animated:YES completion:nil];
+}
+
+- (BOOL)importFileToDocuments:(NSURL *)url copy:(BOOL)copy {
+    if (url.fileURL) {
+        // opening file
+        NSString *documentsPath = self.documentsURL.path;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *fileName = url.path.lastPathComponent;
+        NSString *destinationPath = [documentsPath stringByAppendingPathComponent:fileName];
+        NSError *error = NULL;
+        NSInteger tries = 1;
+        while ([fileManager fileExistsAtPath:destinationPath]) {
+            NSString *newFileName;
+            if (fileName.pathExtension.length > 0) {
+                newFileName = [NSString stringWithFormat:@"%@ %d.%@", fileName.stringByDeletingPathExtension, (int)tries, fileName.pathExtension];
+            } else {
+                newFileName = [NSString stringWithFormat:@"%@ %d", fileName, (int)tries];
+            }
+            destinationPath = [documentsPath stringByAppendingPathComponent:newFileName];
+            tries++;
+        }
+        if (copy) {
+            [fileManager copyItemAtPath:url.path toPath:destinationPath error:&error];
+        } else {
+            [fileManager moveItemAtPath:url.path toPath:destinationPath error:&error];
+        }
+        if (error) {
+            [self showAlertWithTitle:fileName message:error.localizedFailureReason];
+        } else {
+            PBWBundle *watchfaceBundle = [PBWBundle bundleWithURL:[NSURL fileURLWithPath:destinationPath]];
+            [self showDetailForBundle:watchfaceBundle];
+        }
+    }
+    return YES;
+}
+
+- (void)showDetailForBundle:(PBWBundle*)watchfaceBundle {
+    UINavigationController *controller = (UINavigationController*)self.window.rootViewController;
+    WatchfaceDetailViewController *detailViewController = [controller.storyboard instantiateViewControllerWithIdentifier:@"watchfaceDetail"];
+    detailViewController.watchfaceBundle = watchfaceBundle;
+    [controller popToRootViewControllerAnimated:NO];
+    [controller pushViewController:detailViewController animated:YES];
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if (url.fileURL) {
+        // opening file
+        NSString *documentsPath = self.documentsURL.path;
+        NSString *inboxPath = [documentsPath stringByAppendingPathComponent:@"Inbox"];
+        if ([url.path.stringByStandardizingPath hasPrefix:inboxPath]) {
+            // pre-iOS 11 import through inbox
+            [url startAccessingSecurityScopedResource];
+            [self importFileToDocuments:url copy:NO];
+            [url stopAccessingSecurityScopedResource];
+        } else if ([url.path.stringByStandardizingPath hasPrefix:documentsPath]) {
+            // already in documents - show
+            PBWBundle *watchfaceBundle = [PBWBundle bundleWithURL:url];
+            if (watchfaceBundle.isWatchFace) {
+                [self showDetailForBundle:watchfaceBundle];
+            } else {
+                [self showAlertWithTitle:@"Unsupported Application Type" message:@"Only watchface applications are supported."];
+            }
+        } else if ([options[UIApplicationOpenURLOptionsOpenInPlaceKey] boolValue]) {
+            // not in documents - copy
+            [url startAccessingSecurityScopedResource];
+            [self importFileToDocuments:url copy:YES];
+            [url stopAccessingSecurityScopedResource];
+        } else {
+            return [self importFileToDocuments:url copy:NO];
+        }
+    }
+    return YES;
 }
 
 @end

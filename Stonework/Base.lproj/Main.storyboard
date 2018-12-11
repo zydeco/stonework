@@ -154,7 +154,7 @@
         <!--Watchface Detail View Controller-->
         <scene sceneID="eda-ca-v3d">
             <objects>
-                <tableViewController id="VY4-UU-4Tr" customClass="WatchfaceDetailViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="watchfaceDetail" id="VY4-UU-4Tr" customClass="WatchfaceDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="C0S-rY-zYc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="eIY-T6-vGQ">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="eIY-T6-vGQ">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -341,7 +341,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnq-3d-KXo">
-                                                    <rect key="frame" x="104" y="7" width="166" height="30"/>
+                                                    <rect key="frame" x="104.5" y="7" width="166" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eb7-aV-fdw"/>
                                                     </constraints>
