@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) uint32_t clickConfigProviderContext;
 
 - (void)markDirty;
+- (void)didLoad;
+- (void)didAppear;
+- (void)didDisappear;
+- (void)didUnload;
 
 @end
 

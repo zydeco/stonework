@@ -76,8 +76,17 @@ uint32_t pbw_api_window_set_background_color_2bit(pbw_ctx ctx, uint32_t wtag, ui
 }
 
 uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated) {
+    PBWWindow *oldWindow = ctx->runtime.windowStack.lastObject;
     PBWWindow *window = ctx->runtime.objects[@(wtag)];
     [ctx->runtime.windowStack addObject:window];
+    if (window.loaded) {
+        [window didAppear];
+    } else {
+        [window didLoad];
+    }
+    if (oldWindow) {
+        [oldWindow didDisappear];
+    }
     [ctx->runtime.screenView setNeedsDisplay];
     return 0;
 }
@@ -102,7 +111,32 @@ uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated
     return self;
 }
 
+- (void)didLoad {
+    if (_loadHandler) {
+        pbw_cpu_call(_runtime.runtimeContext->cpu, _loadHandler, NULL, 1, _tag);
+    }
+}
+
+- (void)didAppear {
+    if (_appearHandler) {
+        pbw_cpu_call(_runtime.runtimeContext->cpu, _appearHandler, NULL, 1, _tag);
+    }
+}
+
+- (void)didDisappear {
+    if (_disapperHandler) {
+        pbw_cpu_call(_runtime.runtimeContext->cpu, _disapperHandler, NULL, 1, _tag);
+    }
+}
+
+- (void)didUnload {
+    if (_unloadHandler) {
+        pbw_cpu_call(_runtime.runtimeContext->cpu, _unloadHandler, NULL, 1, _tag);
+    }
+}
+
 - (void)destroy {
+    if (_loaded) [self didUnload];
     [_rootLayer destroy];
     [super destroy];
 }
