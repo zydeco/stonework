@@ -10,8 +10,11 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 
+@class WCSession;
+
 @interface InterfaceController : WKInterfaceController
 
 - (void)loadWatchface;
+- (void)sessionReachabilityDidChange:(WCSession *)session;
 
 @end

@@ -10,6 +10,7 @@
 #import "PBWKit.h"
 
 @import ObjectiveC.runtime;
+@import WatchConnectivity;
 
 @interface NSObject (fs_override)
 +(id)sharedApplication;
@@ -92,6 +93,22 @@
 - (void)didDeactivate {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+}
+
+- (void)sessionReachabilityDidChange:(WCSession *)session {
+    uint32_t connected = session.activationState == WCSessionActivationStateActivated && session.reachable;
+    if (runtime.running) {
+        pbw_ctx ctx = runtime.runtimeContext;
+        if (runtime.connAppHandler) {
+            pbw_cpu_call(ctx->cpu, runtime.connAppHandler, NULL, 1, connected);
+        }
+        if (runtime.connPebbleKitHandler) {
+            pbw_cpu_call(ctx->cpu, runtime.connPebbleKitHandler, NULL, 1, connected);
+        };
+        if (runtime.connBluetoothHandler) {
+            pbw_cpu_call(ctx->cpu, runtime.connBluetoothHandler, NULL, 1, connected);
+        };
+    }
 }
 
 @end

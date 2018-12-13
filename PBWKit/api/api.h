@@ -111,7 +111,16 @@ PBW_API(app_message_outbox_size_maximum);
 PBW_API(app_message_outbox_begin, uint32_t iterator);
 PBW_API(app_message_outbox_send);
 
-#pragma mark - Foundation / Event Service
+#pragma mark - Foundation / Event Service / ConnectionService
+PBW_API(connection_service_peek_pebble_app_connection);
+PBW_API(connection_service_peek_pebblekit_connection);
+PBW_API(connection_service_subscribe, uint32_t app_connection_handler, uint32_t pebblekit_connection_handler);
+PBW_API(connection_service_unsubscribe);
+PBW_API(bluetooth_connection_service_peek);
+PBW_API(bluetooth_connection_service_subscribe, uint32_t handler);
+PBW_API(bluetooth_connection_service_unsubscribe);
+
+#pragma mark - Foundation / Event Service / TickTimerService
 PBW_API(tick_timer_service_subscribe, uint32_t units, uint32_t handler);
 PBW_API(tick_timer_service_unsubscribe);
 

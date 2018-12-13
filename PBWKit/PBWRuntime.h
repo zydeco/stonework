@@ -44,6 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,NSObject*> *persistentStorage;
 - (void)savePersistentStorage;
 
+// Connection Service
+@property (nonatomic, assign) uint32_t connPebbleKitHandler;
+@property (nonatomic, assign) uint32_t connAppHandler;
+@property (nonatomic, assign) uint32_t connBluetoothHandler;
+
 // Tick Timer Service
 - (void)startTickTimerWithUnits:(TimeUnits)timeUnits handler:(uint32_t)handler;
 

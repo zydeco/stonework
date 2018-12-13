@@ -81,5 +81,12 @@
     
 }
 
+- (void)sessionReachabilityDidChange:(WCSession *)session {
+    // pass change to runtime
+    dispatch_async(dispatch_get_main_queue(), ^{
+        InterfaceController *interfaceController = (InterfaceController*)[WKExtension sharedExtension].rootInterfaceController;
+        [interfaceController sessionReachabilityDidChange:session];
+    });
+}
 
 @end
