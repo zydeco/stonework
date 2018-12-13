@@ -25,7 +25,10 @@ struct pbw_api {
 void pbw_api_call_impl(pbw_ctx ctx, pbw_api_impl implementation, int8_t numberOfArguments, BOOL returnsWord);
 
 #undef PBW_API
-#define PBW_API(name, returnsWord, nargs) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## name)}
+#define GET_PBW_API(_1,_2,_3,_4,NAME,...) NAME
+#define PBW_API3(name, returnsWord, nargs) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## name)}
+#define PBW_API4(name, returnsWord, nargs, implName) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## implName)}
+#define PBW_API(...) GET_PBW_API(__VA_ARGS__, PBW_API4, PBW_API3)(__VA_ARGS__)
 #define PBW_API_UNIMPLEMENTED(name) {#name, YES, 0, NULL}
 
 static const struct pbw_api pblApi[] = {
@@ -278,18 +281,18 @@ static const struct pbw_api pblApi[] = {
     PBW_API(strncat, YES, 3),
     PBW_API(strncmp, YES, 3),
     PBW_API(strncpy, YES, 3),
-    PBW_API(text_layer_create, YES, 2), // legacy2
-    PBW_API(text_layer_destroy, NO, 1), // legacy2
-    PBW_API(text_layer_get_content_size, YES, 1), // legacy2
-    PBW_API(text_layer_get_layer, YES, 1), // legacy2
-    PBW_API(text_layer_get_text, YES, 1), // legacy2
-    PBW_API(text_layer_set_background_color_2bit, NO, 2), // legacy2
-    PBW_API(text_layer_set_font, NO, 2), // legacy2
-    PBW_API(text_layer_set_overflow_mode, NO, 2), // legacy2
-    PBW_API(text_layer_set_size, NO, 2), // legacy2
-    PBW_API(text_layer_set_text, NO, 2), // legacy2
-    PBW_API(text_layer_set_text_alignment, NO, 2), // legacy2
-    PBW_API(text_layer_set_text_color_2bit, NO, 2), // legacy2
+    PBW_API(text_layer_legacy2_create, YES, 2, text_layer_create),
+    PBW_API(text_layer_legacy2_destroy, NO, 1, text_layer_destroy),
+    PBW_API(text_layer_legacy2_get_content_size, YES, 1, text_layer_get_content_size),
+    PBW_API(text_layer_legacy2_get_layer, YES, 1, text_layer_get_layer),
+    PBW_API(text_layer_legacy2_get_text, YES, 1, text_layer_get_text),
+    PBW_API(text_layer_legacy2_set_background_color_2bit, NO, 2, text_layer_set_background_color_2bit),
+    PBW_API(text_layer_legacy2_set_font, NO, 2, text_layer_set_font),
+    PBW_API(text_layer_legacy2_set_overflow_mode, NO, 2, text_layer_set_overflow_mode),
+    PBW_API(text_layer_legacy2_set_size, NO, 2, text_layer_set_size),
+    PBW_API(text_layer_legacy2_set_text, NO, 2, text_layer_set_text),
+    PBW_API(text_layer_legacy2_set_text_alignment, NO, 2, text_layer_set_text_alignment),
+    PBW_API(text_layer_legacy2_set_text_color_2bit, NO, 2, text_layer_set_text_color_2bit),
     PBW_API_UNIMPLEMENTED(_unknown261),
     PBW_API(tick_timer_service_subscribe, NO, 2),
     PBW_API(tick_timer_service_unsubscribe, NO, 0),
