@@ -26,9 +26,11 @@ void pbw_api_call_impl(pbw_ctx ctx, pbw_api_impl implementation, int8_t numberOf
 
 #undef PBW_API
 #define GET_PBW_API(_1,_2,_3,_4,NAME,...) NAME
+#define PBW_API1(name) {#name, YES, 0, (pbw_api_impl)(pbw_api_ ## name)}
+#define PBW_API2(name, returnsWord) {#name, returnsWord, 0, (pbw_api_impl)(pbw_api_ ## name)}
 #define PBW_API3(name, returnsWord, nargs) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## name)}
 #define PBW_API4(name, returnsWord, nargs, implName) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## implName)}
-#define PBW_API(...) GET_PBW_API(__VA_ARGS__, PBW_API4, PBW_API3)(__VA_ARGS__)
+#define PBW_API(...) GET_PBW_API(__VA_ARGS__, PBW_API4, PBW_API3, PBW_API2, PBW_API1)(__VA_ARGS__)
 #define PBW_API_UNIMPLEMENTED(name) {#name, YES, 0, NULL}
 
 static const struct pbw_api pblApi[] = {
@@ -63,11 +65,11 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(animation_legacy2_unschedule_all),
     PBW_API_UNIMPLEMENTED(app_comm_get_sniff_interval),
     PBW_API_UNIMPLEMENTED(app_comm_set_sniff_interval),
-    PBW_API(app_event_loop, NO, 0),
+    PBW_API(app_event_loop, NO),
     PBW_API_UNIMPLEMENTED(_unknown32),
     PBW_API_UNIMPLEMENTED(_unknown33),
     PBW_API(app_log, NO, 4),
-    PBW_API(app_message_deregister_callbacks, NO, 0),
+    PBW_API(app_message_deregister_callbacks, NO),
     PBW_API(app_message_open, YES, 2),
     PBW_API_UNIMPLEMENTED(_unknown37),
     PBW_API_UNIMPLEMENTED(_unknown38),
@@ -89,7 +91,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(battery_state_service_subscribe),
     PBW_API_UNIMPLEMENTED(battery_state_service_unsubscribe),
     PBW_API(bitmap_layer_create, YES, 2),
-    PBW_API(bitmap_layer_destroy, NO, 0),
+    PBW_API(bitmap_layer_destroy, NO),
     PBW_API(bitmap_layer_get_layer, YES, 1),
     PBW_API(bitmap_layer_set_alignment, NO, 2),
     PBW_API(bitmap_layer_set_background_color_2bit, NO, 2),
@@ -101,7 +103,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(click_number_of_clicks_counted),
     PBW_API_UNIMPLEMENTED(click_recognizer_get_button_id),
     PBW_API_UNIMPLEMENTED(clock_copy_time_string),
-    PBW_API(clock_is_24h_style, YES, 0),
+    PBW_API(clock_is_24h_style),
     PBW_API(cos_lookup, YES, 1),
     PBW_API_UNIMPLEMENTED(data_logging_create),
     PBW_API_UNIMPLEMENTED(data_logging_finish),
@@ -295,7 +297,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API(text_layer_legacy2_set_text_color_2bit, NO, 2, text_layer_set_text_color_2bit),
     PBW_API_UNIMPLEMENTED(_unknown261),
     PBW_API(tick_timer_service_subscribe, NO, 2),
-    PBW_API(tick_timer_service_unsubscribe, NO, 0),
+    PBW_API(tick_timer_service_unsubscribe, NO),
     PBW_API(time__deprecated, YES, 1),
     PBW_API_UNIMPLEMENTED(time_ms_deprecated),
     PBW_API_UNIMPLEMENTED(vibes_cancel),
@@ -303,7 +305,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(vibes_enqueue_custom_pattern),
     PBW_API_UNIMPLEMENTED(vibes_long_pulse),
     PBW_API_UNIMPLEMENTED(vibes_short_pulse),
-    PBW_API(window_create, YES, 0),
+    PBW_API(window_create),
     PBW_API(window_destroy, NO, 1),
     PBW_API(window_get_click_config_provider, YES, 1),
     PBW_API_UNIMPLEMENTED(window_get_fullscreen),
@@ -325,11 +327,11 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(app_focus_service_unsubscribe),
     PBW_API_UNIMPLEMENTED(window_get_user_data),
     PBW_API_UNIMPLEMENTED(window_set_user_data),
-    PBW_API(app_message_get_context, YES, 0),
-    PBW_API(app_message_inbox_size_maximum, YES, 0),
+    PBW_API(app_message_get_context),
+    PBW_API(app_message_inbox_size_maximum),
     PBW_API(app_message_outbox_begin, YES, 1),
-    PBW_API(app_message_outbox_send, YES, 0),
-    PBW_API(app_message_outbox_size_maximum, YES, 0),
+    PBW_API(app_message_outbox_send),
+    PBW_API(app_message_outbox_size_maximum),
     PBW_API(app_message_register_inbox_dropped, YES, 1),
     PBW_API(app_message_register_inbox_received, YES, 1),
     PBW_API(app_message_register_outbox_failed, YES, 1),
@@ -640,7 +642,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(health_service_peek_current_activities),
     PBW_API_UNIMPLEMENTED(health_service_sum),
     PBW_API_UNIMPLEMENTED(health_service_sum_today),
-    PBW_API(time_start_of_today, YES, 0),
+    PBW_API(time_start_of_today),
     PBW_API_UNIMPLEMENTED(health_service_metric_averaged_accessible),
     PBW_API_UNIMPLEMENTED(health_service_sum_averaged),
     PBW_API_UNIMPLEMENTED(health_service_get_measurement_system_for_display),
