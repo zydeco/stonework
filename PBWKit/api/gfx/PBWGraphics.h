@@ -150,10 +150,6 @@ typedef enum GBitmapFormat {
 #define UNPACK_POINT(arg) GPoint(arg & 0xffff, arg >> 16)
 #define UNPACK_SIZE(arg) GSize(arg & 0xffff, arg >> 16)
 
-#define TRIG_MAX_RATIO 0xffff
-#define TRIG_MAX_ANGLE 0x10000
-#define TRIG_TO_RADIANS(t) ((2 * M_PI * t) / TRIG_MAX_ANGLE)
-
 CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr);
 
 typedef enum GTextAlignment {

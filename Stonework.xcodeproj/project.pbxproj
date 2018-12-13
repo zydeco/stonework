@@ -55,6 +55,8 @@
 		284C9251218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
 		284C9252218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
 		284C9253218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
+		28600D9221C2E2DA00375CB6 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9121C2E2DA00375CB6 /* math.m */; };
+		28600D9321C2E32400375CB6 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9121C2E2DA00375CB6 /* math.m */; };
 		287069A62197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A72197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A9219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
@@ -213,6 +215,7 @@
 		284C924F218DD4180080B3E1 /* api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = api.h; sourceTree = "<group>"; };
 		284C9250218DD4D70080B3E1 /* api.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
 		284C9254218DD5DE0080B3E1 /* PBWAddressSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWAddressSpace.h; sourceTree = "<group>"; };
+		28600D9121C2E2DA00375CB6 /* math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = math.m; sourceTree = "<group>"; };
 		287069A52197125300D20B89 /* storage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storage.m; sourceTree = "<group>"; };
 		287069A8219728A000D20B89 /* events.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = events.m; sourceTree = "<group>"; };
 		288738492190D22D00E24DC3 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
@@ -419,12 +422,13 @@
 		287069A4219710F200D20B89 /* foundation */ = {
 			isa = PBXGroup;
 			children = (
-				287069A8219728A000D20B89 /* events.m */,
-				287069A52197125300D20B89 /* storage.m */,
 				2804A5ED21985E6500853871 /* app_message.m */,
-				28ED9E61219B800600E78FBF /* wall_time.m */,
+				287069A8219728A000D20B89 /* events.m */,
 				28ED9E64219B859B00E78FBF /* logging.m */,
+				28600D9121C2E2DA00375CB6 /* math.m */,
 				28ED9E7321A214ED00E78FBF /* resources.m */,
+				287069A52197125300D20B89 /* storage.m */,
+				28ED9E61219B800600E78FBF /* wall_time.m */,
 			);
 			path = foundation;
 			sourceTree = "<group>";
@@ -902,6 +906,7 @@
 				284C91DE2174FDA70080B3E1 /* cpu.c in Sources */,
 				28ED9E7121A1903600E78FBF /* PBWBitmapLayer.m in Sources */,
 				28156B31218F112700AC859A /* PBWObject.m in Sources */,
+				28600D9221C2E2DA00375CB6 /* math.m in Sources */,
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
 				28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
@@ -920,6 +925,7 @@
 				287069A72197125300D20B89 /* storage.m in Sources */,
 				284C9252218DD4D70080B3E1 /* api.m in Sources */,
 				284C9204217C862C0080B3E1 /* cpu.c in Sources */,
+				28600D9321C2E32400375CB6 /* math.m in Sources */,
 				284C92172189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */,
 				28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */,
 				28132D262190BA3500B36804 /* PBWLayer.m in Sources */,

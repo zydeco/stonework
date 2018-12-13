@@ -85,6 +85,12 @@ typedef enum {
     YEAR_UNIT = 1 << 5
 } TimeUnits;
 
+#define TRIG_MAX_RATIO 0xffff
+#define TRIG_MAX_ANGLE 0x10000
+#define TRIG_TO_RADIANS(t) ((2 * M_PI * t) / TRIG_MAX_ANGLE)
+#define TRIGANGLE_TO_DEG(trig_angle) (((trig_angle) * 360) / TRIG_MAX_ANGLE)
+#define DEG_TO_TRIGANGLE(angle) (((angle) * TRIG_MAX_ANGLE) / 360)
+
 #define PBW_API(name, ...) uint32_t pbw_api_##name(pbw_ctx ctx, ##__VA_ARGS__)
 #define PROC_ARG(n) ((n < 4) ? pbw_cpu_reg_get(ctx->cpu, n) : pbw_cpu_stack_peek(ctx->cpu, n-4))
 
@@ -111,6 +117,11 @@ PBW_API(tick_timer_service_unsubscribe);
 
 #pragma mark - Foundation / Logging
 PBW_API(app_log, uint32_t log_level, uint32_t filename_ptr, uint32_t line_number, uint32_t fmt_ptr);
+
+#pragma mark - Foundation / Math
+PBW_API(sin_lookup, uint32_t r_angle);
+PBW_API(cos_lookup, uint32_t r_angle);
+PBW_API(atan2_lookup, uint32_t ry, uint32_t rx);
 
 #pragma mark - Foundation / Resource Manager
 PBW_API(resource_get_handle, uint32_t resource_id);
