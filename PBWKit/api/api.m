@@ -17,7 +17,10 @@ struct pbw_api {
     const char *name;
     BOOL returnsWord;
     int8_t numberOfArguments;
-    pbw_api_impl implementation;
+    union {
+        pbw_api_impl implementation;
+        uint32_t returnValue;
+    };
 };
 
 #define PBW_API_VARARGS -1
@@ -26,11 +29,17 @@ void pbw_api_call_impl(pbw_ctx ctx, pbw_api_impl implementation, int8_t numberOf
 
 #undef PBW_API
 #define GET_PBW_API(_1,_2,_3,_4,NAME,...) NAME
-#define PBW_API1(name) {#name, YES, 0, (pbw_api_impl)(pbw_api_ ## name)}
-#define PBW_API2(name, returnsWord) {#name, returnsWord, 0, (pbw_api_impl)(pbw_api_ ## name)}
-#define PBW_API3(name, returnsWord, nargs) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## name)}
-#define PBW_API4(name, returnsWord, nargs, implName) {#name, returnsWord, nargs, (pbw_api_impl)(pbw_api_ ## implName)}
+#define PBW_API1(name) {#name, YES, 0, .implementation = (pbw_api_impl)(pbw_api_ ## name)}
+#define PBW_API2(name, returnsWord) {#name, returnsWord, 0, .implementation = (pbw_api_impl)(pbw_api_ ## name)}
+#define PBW_API3(name, returnsWord, nargs) {#name, returnsWord, nargs, .implementation = (pbw_api_impl)(pbw_api_ ## name)}
+#define PBW_API4(name, returnsWord, nargs, implName) {#name, returnsWord, nargs, .implementation = (pbw_api_impl)(pbw_api_ ## implName)}
 #define PBW_API(...) GET_PBW_API(__VA_ARGS__, PBW_API4, PBW_API3, PBW_API2, PBW_API1)(__VA_ARGS__)
+
+#define GET_PBW_API_STUB(_1,_2,NAME,...) NAME
+#define PBW_API_STUB(...) GET_PBW_API_STUB(__VA_ARGS__, PBW_API_STUB2, PBW_API_STUB1)(__VA_ARGS__)
+#define PBW_API_STUB1(name) {#name, NO, -1, .returnValue = 0}
+#define PBW_API_STUB2(name, _returnValue) {#name, YES, -1, .returnValue = _returnValue}
+
 #define PBW_API_UNIMPLEMENTED(name) {#name, YES, 0, NULL}
 
 static const struct pbw_api pblApi[] = {
@@ -679,7 +688,10 @@ uint32_t pbw_api_call(pbw_cpu cpu, void *userData, uint32_t addr, pbw_mem_op op,
         return 0;
     } else if (apiNum < kNumberOfAPICalls) {
         const struct pbw_api api = pblApi[apiNum];
-        if (api.implementation == NULL) {
+        if (api.numberOfArguments == -1) {
+            // API stub
+            if (api.returnsWord) pbw_cpu_reg_set(cpu, 0, api.returnValue);
+        } else if (api.implementation == NULL) {
             // API not implemented
             pbw_cpu_stop(cpu, PBW_ERR_NOT_IMPLEMENTED);
         } else {
