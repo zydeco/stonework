@@ -167,7 +167,11 @@ PBW_API(app_timer_reschedule, uint32_t timer, uint32_t new_timeout_ms);
 PBW_API(app_timer_cancel, uint32_t timer);
 
 #pragma mark - Foundation / Wall Time
+PBW_API(clock_copy_time_string, uint32_t buffer, uint32_t size);
 PBW_API(clock_is_24h_style);
+PBW_API(clock_to_timestamp, uint32_t weekday, uint32_t hour, uint32_t minute);
+PBW_API(clock_is_timezone_set);
+PBW_API(clock_get_timezone, uint32_t buffer, uint32_t size);
 
 #pragma mark - Graphics / Drawing Paths
 PBW_API(gpath_create, uint32_t init);
