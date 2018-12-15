@@ -40,7 +40,7 @@ void pbw_api_call_impl(pbw_ctx ctx, pbw_api_impl implementation, int8_t numberOf
 #define PBW_API_STUB1(name) {#name, NO, -1, .returnValue = 0}
 #define PBW_API_STUB2(name, _returnValue) {#name, YES, -1, .returnValue = _returnValue}
 
-#define PBW_API_UNIMPLEMENTED(name) {#name, YES, 0, NULL}
+#define PBW_API_UNIMPLEMENTED(name, ...) {#name, YES, 0, NULL}
 
 static const struct pbw_api pblApi[] = {
     PBW_API_STUB(accel_data_service_subscribe__deprecated),
@@ -164,7 +164,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API(graphics_draw_line, NO, 3),
     PBW_API(graphics_draw_pixel, NO, 2),
     PBW_API(graphics_draw_rect, NO, 3),
-    PBW_API(graphics_draw_round_rect, NO, 4),
+    PBW_API_UNIMPLEMENTED(graphics_draw_round_rect, NO, 4),
     PBW_API(graphics_fill_circle, NO, 3),
     PBW_API(graphics_fill_rect, NO, 4),
     PBW_API_UNIMPLEMENTED(_unknown124),
@@ -624,10 +624,10 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(menu_layer_get_center_focused),
     PBW_API_UNIMPLEMENTED(menu_layer_set_center_focused),
     PBW_API(grect_inset, NO, 3),
-    PBW_API(gpoint_from_polar, YES, 4),
-    PBW_API(graphics_draw_arc, NO, 4),
-    PBW_API(graphics_fill_radial, NO, 4),
-    PBW_API(grect_centered_from_polar, NO, 4),
+    PBW_API_UNIMPLEMENTED(gpoint_from_polar, YES, 4),
+    PBW_API_UNIMPLEMENTED(graphics_draw_arc, NO, 4),
+    PBW_API_UNIMPLEMENTED(graphics_fill_radial, NO, 4),
+    PBW_API_UNIMPLEMENTED(grect_centered_from_polar, NO, 4),
     PBW_API_UNIMPLEMENTED(graphics_text_attributes_create),
     PBW_API_UNIMPLEMENTED(graphics_text_attributes_destroy),
     PBW_API_UNIMPLEMENTED(graphics_text_attributes_enable_paging),

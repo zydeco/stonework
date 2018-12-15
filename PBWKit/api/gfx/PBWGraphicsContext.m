@@ -189,6 +189,7 @@ uint32_t pbw_api_graphics_fill_circle(pbw_ctx ctx, uint32_t gctx, uint32_t cente
 }
 
 uint32_t pbw_api_graphics_draw_round_rect(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect), uint32_t corner_radius) {
+    // TODO: implement
     return 0;
 }
 
@@ -201,20 +202,24 @@ uint32_t pbw_api_graphics_draw_bitmap_in_rect(pbw_ctx ctx, uint32_t gctx, uint32
 
 uint32_t pbw_api_graphics_draw_arc(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect), uint32_t scale_mode) {
     // stack: int32_t angle_start, int32_t angle_end
+    // TODO: implement
     return 0;
 }
 
 uint32_t pbw_api_graphics_fill_radial(pbw_ctx ctx, uint32_t gctx, ARG_GRECT(rect), uint32_t scale_mode) {
     // stack: uint16_t inset_thickness, int32_t angle_start, int32_t angle_end
+    // TODO: implement
     return 0;
 }
 
 uint32_t pbw_api_gpoint_from_polar(pbw_ctx ctx, ARG_GRECT(rect), uint32_t scale_mode, int32_t angle) {
+    // TODO: implement
     return 0;
 }
 
 uint32_t pbw_api_grect_centered_from_polar(pbw_ctx ctx, uint32_t retptr, ARG_GRECT(rect), uint32_t scale_mode) {
     // stack: int32_t angle, GSize size
+    // TODO: implement
     return 0;
 }
 
