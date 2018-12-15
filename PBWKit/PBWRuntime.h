@@ -35,7 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGSize screenSize;
 @property (nonatomic, readonly) NSObject<PBWScreenView> *screenView;
 @property (nonatomic, readonly) PBWGraphicsContext *graphicsContext;
-@property (nonatomic, readonly) NSMutableArray<PBWWindow*> *windowStack;
+
+// Window Stack
+- (void)pushWindow:(nullable PBWWindow*)window animated:(BOOL)animated;
+- (nullable PBWWindow*)popWindow:(BOOL)animated;
+- (void)popAllWindows:(BOOL)animated;
+- (BOOL)removeWindow:(nullable PBWWindow*)window animated:(BOOL)animated;
+- (BOOL)containsWindow:(nullable PBWWindow*)window;
+- (nullable PBWWindow*)topWindow;
 
 // OS Objects
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,__kindof PBWObject*> *objects;

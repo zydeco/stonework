@@ -98,20 +98,34 @@ uint32_t pbw_api_window_get_user_data(pbw_ctx ctx, uint32_t wtag) {
 }
 
 uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated) {
-    PBWWindow *oldWindow = ctx->runtime.windowStack.lastObject;
     PBWWindow *window = ctx->runtime.objects[@(wtag)];
-    [ctx->runtime.windowStack addObject:window];
-    if (window.loaded) {
-        [window didAppear];
-    } else {
-        [window didLoad];
-    }
-    if (oldWindow) {
-        [oldWindow didDisappear];
-    }
-    [ctx->runtime.screenView setNeedsDisplay];
+    [ctx->runtime pushWindow:window animated:!!animated];
     return 0;
 }
+
+uint32_t pbw_api_window_stack_pop(pbw_ctx ctx, uint32_t animated) {
+    return [ctx->runtime popWindow:!!animated].tag;
+}
+
+uint32_t pbw_api_window_stack_pop_all(pbw_ctx ctx, uint32_t animated) {
+    [ctx->runtime popAllWindows:!!animated];
+    return 0;
+}
+
+uint32_t pbw_api_window_stack_remove(pbw_ctx ctx, uint32_t wtag, uint32_t animated) {
+    PBWWindow *window = ctx->runtime.objects[@(wtag)];
+    return [ctx->runtime removeWindow:window animated:!!animated];
+}
+
+uint32_t pbw_api_window_stack_get_top_window(pbw_ctx ctx) {
+    return ctx->runtime.topWindow.tag;
+}
+
+uint32_t pbw_api_window_stack_contains_window(pbw_ctx ctx, uint32_t wtag) {
+    PBWWindow *window = ctx->runtime.objects[@(wtag)];
+    return [ctx->runtime containsWindow:window];
+}
+
 
 @implementation PBWWindow
 
@@ -167,7 +181,7 @@ uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated
 
 - (void)markDirty {
     dirty = YES;
-    if (_runtime.windowStack.lastObject == self) {
+    if (_runtime.topWindow == self) {
         [_runtime.screenView setNeedsDisplay];
     }
 }

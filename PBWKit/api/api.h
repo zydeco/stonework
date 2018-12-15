@@ -317,6 +317,11 @@ PBW_API(window_get_user_data, uint32_t window);
 
 #pragma mark - User Interface / Window Stack
 PBW_API(window_stack_push, uint32_t window, uint32_t animated);
+PBW_API(window_stack_pop, uint32_t animated);
+PBW_API(window_stack_pop_all, uint32_t animated);
+PBW_API(window_stack_remove, uint32_t window, uint32_t animated);
+PBW_API(window_stack_get_top_window);
+PBW_API(window_stack_contains_window, uint32_t window);
 
 #pragma mark - Standard C / Locale
 PBW_API(setlocale, uint32_t category, uint32_t namePtr);

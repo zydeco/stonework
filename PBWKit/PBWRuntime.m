@@ -54,6 +54,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     struct tm lastTickServiceTime;
     time_t lastTime;
     NSMutableDictionary<NSString*,PBWFont*> *systemFonts;
+    NSMutableArray<PBWWindow*> *windowStack;
 }
 
 + (void)load {
@@ -147,7 +148,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     
     // base graphics context
     _graphicsContext = [[PBWGraphicsContext alloc] initWithRuntime:self];
-    _windowStack = [NSMutableArray arrayWithCapacity:1];
+    windowStack = [NSMutableArray arrayWithCapacity:1];
     
     // locale
     self.locale = newlocale(LC_ALL_MASK, [NSLocale currentLocale].localeIdentifier.UTF8String, LC_GLOBAL_LOCALE);
@@ -274,7 +275,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 }
 
 - (void)drawScreenView {
-    PBWWindow *topWindow = _windowStack.lastObject;
+    PBWWindow *topWindow = self.topWindow;
     if (topWindow) {
         if (_running) {
             [_graphicsContext drawWindow:topWindow];
@@ -343,6 +344,64 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     if (_running && _batteryServiceHandler) {
         pbw_cpu_call(ctx.cpu, _batteryServiceHandler, NULL, 1, self.batteryChargeState);
     }
+}
+
+#pragma mark - Window Stack
+
+- (void)pushWindow:(PBWWindow*)window animated:(BOOL)animated {
+    if (window == nil) return;
+    PBWWindow *previousTopWindow = self.topWindow;
+    [windowStack addObject:window];
+    if (window.loaded) {
+        [window didAppear];
+    } else {
+        [window didLoad];
+    }
+    if (previousTopWindow) {
+        [previousTopWindow didDisappear];
+    }
+    [window markDirty];
+    [_screenView setNeedsDisplay];
+}
+
+- (nullable PBWWindow*)popWindow:(BOOL)animated {
+    PBWWindow *window = self.topWindow;
+    if (window) {
+        [windowStack removeLastObject];
+        [window didDisappear];
+        [self.topWindow markDirty];
+        [self.topWindow didAppear];
+    }
+    [_screenView setNeedsDisplay];
+    return window;
+}
+
+- (void)popAllWindows:(BOOL)animated {
+    [windowStack makeObjectsPerformSelector:@selector(didDisappear)];
+    [windowStack removeAllObjects];
+    [_screenView setNeedsDisplay];
+}
+
+- (BOOL)removeWindow:(PBWWindow*)window animated:(BOOL)animated {
+    if (window == nil) {
+        return NO;
+    } else if (self.topWindow == window) {
+        [self popWindow:animated];
+        return YES;
+    } else if ([self containsWindow:window]) {
+        [windowStack removeObject:window];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)containsWindow:(PBWWindow*)window {
+    return window ? [windowStack containsObject:window] : NO;
+}
+
+- (nullable PBWWindow*)topWindow {
+    return windowStack.lastObject;
 }
 
 @end
