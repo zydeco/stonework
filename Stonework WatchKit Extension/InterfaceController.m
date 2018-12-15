@@ -75,7 +75,7 @@
     if (app == nil) app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeAplite];
     if (app == nil) return;
     runtime = [[PBWRuntime alloc] initWithApp:app];
-    [runtime run];
+    [runtime performSelector:@selector(run) withObject:nil afterDelay:0.0];
     
     // add screen view
     id<PBWScreenView> screenView = runtime.screenView;
