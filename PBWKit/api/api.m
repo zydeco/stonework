@@ -593,7 +593,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(action_menu_open),
     PBW_API_UNIMPLEMENTED(action_menu_set_result_window),
     PBW_API_UNIMPLEMENTED(action_menu_unfreeze),
-    PBW_API_UNIMPLEMENTED(dictation_session_create),
+    PBW_API_STUB(dictation_session_create, 0),
     PBW_API_UNIMPLEMENTED(dictation_session_destroy),
     PBW_API_UNIMPLEMENTED(dictation_session_enable_confirmation),
     PBW_API_UNIMPLEMENTED(dictation_session_start),
