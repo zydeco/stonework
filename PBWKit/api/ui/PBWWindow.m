@@ -75,6 +75,22 @@ uint32_t pbw_api_window_set_background_color_2bit(pbw_ctx ctx, uint32_t wtag, ui
     return 0;
 }
 
+uint32_t pbw_api_window_is_loaded(pbw_ctx ctx, uint32_t wtag) {
+    PBWWindow *window = ctx->runtime.objects[@(wtag)];
+    return window.loaded;
+}
+
+uint32_t pbw_api_window_set_user_data(pbw_ctx ctx, uint32_t wtag, uint32_t data) {
+    PBWWindow *window = ctx->runtime.objects[@(wtag)];
+    window.userData = data;
+    return 0;
+}
+
+uint32_t pbw_api_window_get_user_data(pbw_ctx ctx, uint32_t wtag) {
+    PBWWindow *window = ctx->runtime.objects[@(wtag)];
+    return window.userData;
+}
+
 uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated) {
     PBWWindow *oldWindow = ctx->runtime.windowStack.lastObject;
     PBWWindow *window = ctx->runtime.objects[@(wtag)];
@@ -112,6 +128,7 @@ uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated
 }
 
 - (void)didLoad {
+    _loaded = YES;
     if (_loadHandler) {
         pbw_cpu_call(_runtime.runtimeContext->cpu, _loadHandler, NULL, 1, _tag);
     }
@@ -130,6 +147,7 @@ uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated
 }
 
 - (void)didUnload {
+    _loaded = NO;
     if (_unloadHandler) {
         pbw_cpu_call(_runtime.runtimeContext->cpu, _unloadHandler, NULL, 1, _tag);
     }

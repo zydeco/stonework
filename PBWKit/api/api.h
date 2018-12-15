@@ -305,6 +305,9 @@ PBW_API(window_set_window_handlers, uint32_t window);
 PBW_API(window_get_root_layer, uint32_t window);
 PBW_API(window_set_background_color, uint32_t window, uint32_t color);
 PBW_API(window_set_background_color_2bit, uint32_t window, uint32_t color);
+PBW_API(window_is_loaded, uint32_t window);
+PBW_API(window_set_user_data, uint32_t window, uint32_t data);
+PBW_API(window_get_user_data, uint32_t window);
 
 #pragma mark - User Interface / Window Stack
 PBW_API(window_stack_push, uint32_t window, uint32_t animated);
