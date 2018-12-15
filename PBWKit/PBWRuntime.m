@@ -303,6 +303,16 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
 }
 
+#pragma mark - Battery State Service
 
+- (void)batteryLevelOrStateDidChange:(NSNotification *)notification {
+    if (![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:_cmd withObject:notification waitUntilDone:NO];
+        return;
+    }
+    if (_running && _batteryServiceHandler) {
+        pbw_cpu_call(ctx.cpu, _batteryServiceHandler, NULL, 1, self.batteryChargeState);
+    }
+}
 
 @end

@@ -57,6 +57,8 @@
 		284C9253218DD4D70080B3E1 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C9250218DD4D70080B3E1 /* api.m */; };
 		28600D9221C2E2DA00375CB6 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9121C2E2DA00375CB6 /* math.m */; };
 		28600D9321C2E32400375CB6 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9121C2E2DA00375CB6 /* math.m */; };
+		28600D9621C30FF700375CB6 /* PBWRuntime+WatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9521C30FF700375CB6 /* PBWRuntime+WatchOS.m */; };
+		28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9821C3100C00375CB6 /* PBWRuntime+iOS.m */; };
 		287069A62197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A72197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A9219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
@@ -216,6 +218,8 @@
 		284C9250218DD4D70080B3E1 /* api.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
 		284C9254218DD5DE0080B3E1 /* PBWAddressSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWAddressSpace.h; sourceTree = "<group>"; };
 		28600D9121C2E2DA00375CB6 /* math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = math.m; sourceTree = "<group>"; };
+		28600D9521C30FF700375CB6 /* PBWRuntime+WatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PBWRuntime+WatchOS.m"; path = "PBWKit/PBWRuntime+WatchOS.m"; sourceTree = SOURCE_ROOT; };
+		28600D9821C3100C00375CB6 /* PBWRuntime+iOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PBWRuntime+iOS.m"; sourceTree = "<group>"; };
 		287069A52197125300D20B89 /* storage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storage.m; sourceTree = "<group>"; };
 		287069A8219728A000D20B89 /* events.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = events.m; sourceTree = "<group>"; };
 		288738492190D22D00E24DC3 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
@@ -524,6 +528,8 @@
 				28E0212A2173E14200C556D6 /* PBWPlatformType.m */,
 				28E021282173E14200C556D6 /* PBWRuntime.h */,
 				28E021222173E14200C556D6 /* PBWRuntime.m */,
+				28600D9821C3100C00375CB6 /* PBWRuntime+iOS.m */,
+				28600D9521C30FF700375CB6 /* PBWRuntime+WatchOS.m */,
 				284C92142189053D0080B3E1 /* PBWRuntime+Disassembler.h */,
 				284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */,
 				2804A5F82198D69E00853871 /* PBWScreenView.h */,
@@ -909,6 +915,7 @@
 				28600D9221C2E2DA00375CB6 /* math.m in Sources */,
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
 				28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */,
+				28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
 				28B1D95821BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m in Sources */,
 			);
@@ -944,6 +951,7 @@
 				28ED9E60219B54FF00E78FBF /* string.m in Sources */,
 				28ED9E7521A214ED00E78FBF /* resources.m in Sources */,
 				284C920E2180CE5F0080B3E1 /* thumb.c in Sources */,
+				28600D9621C30FF700375CB6 /* PBWRuntime+WatchOS.m in Sources */,
 				28156B32218F112700AC859A /* PBWObject.m in Sources */,
 				28E0212C2173E14200C556D6 /* PBWRuntime.m in Sources */,
 				28E020F92173E0EC00C556D6 /* InterfaceController.m in Sources */,

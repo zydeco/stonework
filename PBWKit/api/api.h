@@ -111,6 +111,11 @@ PBW_API(app_message_outbox_size_maximum);
 PBW_API(app_message_outbox_begin, uint32_t iterator);
 PBW_API(app_message_outbox_send);
 
+#pragma mark - Foundation / Event Service / BatteryStateService
+PBW_API(battery_state_service_subscribe, uint32_t handler);
+PBW_API(battery_state_service_unsubscribe);
+PBW_API(battery_state_service_peek);
+
 #pragma mark - Foundation / Event Service / ConnectionService
 PBW_API(connection_service_peek_pebble_app_connection);
 PBW_API(connection_service_peek_pebblekit_connection);

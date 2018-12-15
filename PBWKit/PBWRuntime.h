@@ -16,6 +16,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PBWRuntime : NSObject
+{
+    uint32_t _batteryServiceHandler;
+}
 
 @property (nonatomic, readonly) PBWApp *app;
 @property (nonatomic, readonly) pbw_ctx runtimeContext;
@@ -43,6 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
 // Persistent Storage
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,NSObject*> *persistentStorage;
 - (void)savePersistentStorage;
+
+// Battery Service
+@property (nonatomic, readonly) uint32_t batteryChargeState;
+@property (nonatomic, assign) uint32_t batteryServiceHandler;
 
 // Connection Service
 @property (nonatomic, assign) uint32_t connPebbleKitHandler;

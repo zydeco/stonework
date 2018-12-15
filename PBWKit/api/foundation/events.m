@@ -12,6 +12,22 @@
 #import "../api.h"
 #import "PBWRuntime.h"
 
+#pragma mark - Battery Service
+uint32_t pbw_api_battery_state_service_subscribe(pbw_ctx ctx, uint32_t handler) {
+    ctx->runtime.batteryServiceHandler = handler;
+    return 0;
+}
+
+uint32_t pbw_api_battery_state_service_unsubscribe(pbw_ctx ctx) {
+    ctx->runtime.batteryServiceHandler = 0;
+    return 0;
+}
+
+uint32_t pbw_api_battery_state_service_peek(pbw_ctx ctx) {
+    return ctx->runtime.batteryChargeState;
+}
+
+
 #pragma mark - Connection Service
 
 uint32_t pbw_api_connection_service_peek_pebble_app_connection(pbw_ctx ctx) {
