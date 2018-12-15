@@ -59,11 +59,13 @@
 		28600D9321C2E32400375CB6 /* math.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9121C2E2DA00375CB6 /* math.m */; };
 		28600D9621C30FF700375CB6 /* PBWRuntime+WatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9521C30FF700375CB6 /* PBWRuntime+WatchOS.m */; };
 		28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9821C3100C00375CB6 /* PBWRuntime+iOS.m */; };
+		28600D9B21C5989A00375CB6 /* timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9A21C5989A00375CB6 /* timer.m */; };
 		287069A62197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A72197125300D20B89 /* storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A52197125300D20B89 /* storage.m */; };
 		287069A9219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
 		287069AA219728A000D20B89 /* events.m in Sources */ = {isa = PBXBuildFile; fileRef = 287069A8219728A000D20B89 /* events.m */; };
 		2887384A2190D22D00E24DC3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288738492190D22D00E24DC3 /* Interface.storyboard */; };
+		289A4FDE21C59C1C0098D618 /* timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28600D9A21C5989A00375CB6 /* timer.m */; };
 		28B1D94521B8500A00BE7C1F /* WatchfacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94421B8500A00BE7C1F /* WatchfacesViewController.m */; };
 		28B1D94821B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94721B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m */; };
 		28B1D94B21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94A21B9B79100BE7C1F /* WatchfacesCollectionViewLayout.m */; };
@@ -220,6 +222,7 @@
 		28600D9121C2E2DA00375CB6 /* math.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = math.m; sourceTree = "<group>"; };
 		28600D9521C30FF700375CB6 /* PBWRuntime+WatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PBWRuntime+WatchOS.m"; path = "PBWKit/PBWRuntime+WatchOS.m"; sourceTree = SOURCE_ROOT; };
 		28600D9821C3100C00375CB6 /* PBWRuntime+iOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PBWRuntime+iOS.m"; sourceTree = "<group>"; };
+		28600D9A21C5989A00375CB6 /* timer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timer.m; sourceTree = "<group>"; };
 		287069A52197125300D20B89 /* storage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = storage.m; sourceTree = "<group>"; };
 		287069A8219728A000D20B89 /* events.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = events.m; sourceTree = "<group>"; };
 		288738492190D22D00E24DC3 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
@@ -432,6 +435,7 @@
 				28600D9121C2E2DA00375CB6 /* math.m */,
 				28ED9E7321A214ED00E78FBF /* resources.m */,
 				287069A52197125300D20B89 /* storage.m */,
+				28600D9A21C5989A00375CB6 /* timer.m */,
 				28ED9E61219B800600E78FBF /* wall_time.m */,
 			);
 			path = foundation;
@@ -916,6 +920,7 @@
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
 				28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */,
 				28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */,
+				28600D9B21C5989A00375CB6 /* timer.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
 				28B1D95821BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m in Sources */,
 			);
@@ -928,6 +933,7 @@
 				2804A5FE2198DF8600853871 /* time.m in Sources */,
 				28132D2A2190BAFB00B36804 /* PBWGraphics.m in Sources */,
 				28ED9E66219B859B00E78FBF /* logging.m in Sources */,
+				289A4FDE21C59C1C0098D618 /* timer.m in Sources */,
 				284C92122180CE850080B3E1 /* thumb2.c in Sources */,
 				287069A72197125300D20B89 /* storage.m in Sources */,
 				284C9252218DD4D70080B3E1 /* api.m in Sources */,

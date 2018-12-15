@@ -160,6 +160,12 @@ PBW_API(persist_write_data, uint32_t key, uint32_t data, int32_t size);
 PBW_API(persist_write_string, uint32_t key, uint32_t cstring);
 PBW_API(persist_delete, uint32_t key);
 
+#pragma mark - Foundation / Timer
+PBW_API(psleep, uint32_t millis);
+PBW_API(app_timer_register, uint32_t timeout_ms, uint32_t callback, uint32_t callback_data);
+PBW_API(app_timer_reschedule, uint32_t timer, uint32_t new_timeout_ms);
+PBW_API(app_timer_cancel, uint32_t timer);
+
 #pragma mark - Foundation / Wall Time
 PBW_API(clock_is_24h_style);
 
