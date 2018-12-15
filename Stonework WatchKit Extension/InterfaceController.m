@@ -56,7 +56,9 @@
 
 - (void)didAppear {
     [self hideTimeLabel];
-    [self loadWatchface];
+    if (runtime == nil) {
+        [self loadWatchface];
+    }
 }
 
 - (void)loadWatchface {
@@ -86,16 +88,15 @@
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
-    [super willActivate];
-    if (runtime.running) {
-        [runtime tick:nil];
+    if ([WKExtension sharedExtension].applicationState == WKApplicationStateActive) {
+        [runtime resume];
     }
 }
 
 - (void)didDeactivate {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+    [runtime pause];
 }
 
 - (void)sessionReachabilityDidChange:(WCSession *)session {

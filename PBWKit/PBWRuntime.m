@@ -21,12 +21,6 @@
 @import ObjectiveC.runtime;
 @import UIKit;
 
-uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
-    pbw_cpu_stop(ctx->cpu, PBW_ERR_OK);
-    [ctx->runtime startEventLoop];
-    return 0;
-}
-
 uint32_t pbw_api_setlocale(pbw_ctx ctx, uint32_t category, uint32_t namePtr) {
     const char *name = pbw_ctx_get_pointer(ctx, namePtr);
     int mask = category ? (1 << category) : LC_ALL_MASK;
@@ -180,6 +174,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 }
 
 - (BOOL)run {
+    NSAssert(!_running, @"Runtime already running!");
     @try {
         [self initializeEmulator];
         
@@ -198,9 +193,35 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
 }
 
-- (void)stop {
+- (void)pause {
+    if (!_running) return;
+    NSLog(@"Runtime pausing");
     _running = NO;
+    [self stopTimers];
+}
+
+- (void)resume {
+    if (_running) return;
+    NSLog(@"Runtime resuming");
+    _running = YES;
+    [self resumeTimers];
+    [self startEventLoop];
+}
+
+- (void)stop {
+    if (!_running) return;
+    _running = NO;
+    [self stopTimers];
+}
+
+- (void)stopTimers {
     [tickTimer invalidate];
+}
+
+- (void)resumeTimers {
+    if (tickSerivceHandler) {
+        [self startTickTimerWithUnits:tickServiceUnits handler:tickSerivceHandler];
+    }
 }
 
 - (void)savePersistentStorage {
@@ -316,3 +337,9 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 }
 
 @end
+
+uint32_t pbw_api_app_event_loop(pbw_ctx ctx) {
+    pbw_cpu_stop(ctx->cpu, PBW_ERR_OK);
+    [ctx->runtime startEventLoop];
+    return 0;
+}
