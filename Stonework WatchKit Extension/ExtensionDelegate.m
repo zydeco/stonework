@@ -70,7 +70,6 @@
     NSURL *watchfaceURL = [documentsURL URLByAppendingPathComponent:@"watchface.pbw" isDirectory:NO];
     [fm removeItemAtURL:watchfaceURL error:NULL];
     [fm moveItemAtURL:file.fileURL toURL:watchfaceURL error:NULL];
-    [[NSUserDefaults standardUserDefaults] setObject:watchfaceURL.absoluteString forKey:@"WatchfaceURL"];
     
     // reload
     InterfaceController *interfaceController = (InterfaceController*)[WKExtension sharedExtension].rootInterfaceController;

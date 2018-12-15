@@ -63,10 +63,13 @@
     if (runtime) {
         [runtime stop];
         [runtime.screenView removeFromSuperview];
+        runtime = nil;
     }
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    PBWBundle *bundle = [PBWBundle bundleWithURL:[NSURL URLWithString:[defaults stringForKey:@"WatchfaceURL"]]];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *documentsURL = [fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
+    NSURL *watchfaceURL = [documentsURL URLByAppendingPathComponent:@"watchface.pbw" isDirectory:NO];
+    PBWBundle *bundle = [PBWBundle bundleWithURL:watchfaceURL];
     if (bundle == nil) return;
     PBWApp *app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeBasalt];
     if (app == nil) app = [[PBWApp alloc] initWithBundle:bundle platform:PBWPlatformTypeAplite];
