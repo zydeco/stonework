@@ -88,7 +88,13 @@ uint32_t pbw_api_window_set_user_data(pbw_ctx ctx, uint32_t wtag, uint32_t data)
 
 uint32_t pbw_api_window_get_user_data(pbw_ctx ctx, uint32_t wtag) {
     PBWWindow *window = ctx->runtime.objects[@(wtag)];
-    return window.userData;
+    if ([window isKindOfClass:[PBWWindow class]]) {
+        return window.userData;
+    } else if ([window isKindOfClass:[PBWLayer class]]) {
+        // should window be a subclass of layer?
+        return ((PBWLayer*)window).window.userData;
+    }
+    return 0;
 }
 
 uint32_t pbw_api_window_stack_push(pbw_ctx ctx, uint32_t wtag, uint32_t animated) {
