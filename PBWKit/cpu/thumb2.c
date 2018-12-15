@@ -610,12 +610,21 @@ void pbw_cpu_exec_thumb2(pbw_cpu cpu, uint32_t ins, uint32_t pc) {
                 CPU_BREAK(NOT_IMPLEMENTED);
                 break;
             case 0x16:
-                if (n == 0xf) {
-                    // MARK: BFC T1
-                    CPU_BREAK(NOT_IMPLEMENTED);
-                } else {
-                    // MARK: BFI T1
-                    CPU_BREAK(NOT_IMPLEMENTED);
+                // MARK: BFI T1
+                // MARK: BFC T1
+                if (d == 13 || d == 15 || n == 13) {
+                    CPU_BREAK(UNPREDICTABLE);
+                }
+                if (ConditionPassed()) {
+                    uint32_t bits = (n == 15) ? 0 : R[n];
+                    uint32_t msbit = ins & 0x1f;
+                    uint32_t lsbit = ((ins >> 10) & 0b111) | ((ins >> 6) & 0b11);
+                    int num_bits = msbit - lsbit + 1;
+                    if (num_bits > 0) {
+                        bits &= (0xffffffff >> (32 - num_bits));
+                        uint32_t mask = (0xffffffff >> (32 - num_bits)) << lsbit;
+                        R[d] = (R[d] & ~mask) | (bits << lsbit);
+                    }
                 }
                 break;
             case 0x18:
