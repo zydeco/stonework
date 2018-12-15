@@ -199,6 +199,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
                 _bytesPerRow = size.w;
                 break;
             case GBitmapFormat8BitCircular:
+                // TODO: implement
             default:
                 __builtin_trap();
                 break;
@@ -234,6 +235,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
 }
 
 - (instancetype)palettizedBitmapFrom1bit {
+    // TODO: implement
     __builtin_trap();
     return nil;
 }
@@ -260,6 +262,7 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
     CGContextDrawImage(decodeContext, CGRectMake(0, 0, width, height), image);
     CGImageRelease(image);
     // decode as 8-bit
+    // FIXME: use palette from PNG and set it as _palettePtr
     if (_freeDataOnDestroy) pbw_api_free(ctx, _dataPtr);
     _dataPtr = pbw_api_malloc(ctx, width * height);
     imageData = pbw_ctx_get_pointer(ctx, _dataPtr);
@@ -276,7 +279,9 @@ static const uint8_t PBWBitmapIdentityPalette[256] = {
     _bytesPerRow = width;
     _format = GBitmapFormat8Bit;
     _bounds = GRect(0, 0, width, height);
-    _palettePtr = 0;
+    _palettePtr = pbw_api_malloc(ctx, 256);
+    _freePaletteOnDestroy = YES;
+    memcpy(pbw_ctx_get_pointer(ctx, _palettePtr), PBWBitmapIdentityPalette, 256);
     _pixelPtr = _dataPtr;
 }
 
