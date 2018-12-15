@@ -259,8 +259,7 @@ uint32_t pbw_api_layer_get_unobstructed_bounds(pbw_ctx ctx, uint32_t retptr, uin
 }
 
 - (GRect)unobstructedBounds {
-    // TODO: implement this
-    return GRectZero;
+    return _bounds;
 }
 
 - (void)drawLayerHierarchyInContext:(PBWGraphicsContext*)pbwContext {
