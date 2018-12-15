@@ -72,8 +72,10 @@
     [fm moveItemAtURL:file.fileURL toURL:watchfaceURL error:NULL];
     
     // reload
-    InterfaceController *interfaceController = (InterfaceController*)[WKExtension sharedExtension].rootInterfaceController;
-    [interfaceController loadWatchface];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        InterfaceController *interfaceController = (InterfaceController*)[WKExtension sharedExtension].rootInterfaceController;
+        [interfaceController loadWatchface];
+    });
 }
 
 - (void)session:(nonnull WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(nullable NSError *)error {
