@@ -324,6 +324,15 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
 }
 
+#pragma mark - Accelerometer Service
+
+- (void)tap {
+    if (_running && _accelTapServiceHandler) {
+        // simulate +1 tap in Z axis
+        pbw_cpu_call(ctx.cpu, _accelTapServiceHandler, NULL, 2, 2, 1);
+    }
+}
+
 #pragma mark - Battery State Service
 
 - (void)batteryLevelOrStateDidChange:(NSNotification *)notification {

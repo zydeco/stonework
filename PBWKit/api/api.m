@@ -43,13 +43,13 @@ void pbw_api_call_impl(pbw_ctx ctx, pbw_api_impl implementation, int8_t numberOf
 #define PBW_API_UNIMPLEMENTED(name) {#name, YES, 0, NULL}
 
 static const struct pbw_api pblApi[] = {
-    PBW_API_UNIMPLEMENTED(accel_data_service_subscribe__deprecated),
-    PBW_API_UNIMPLEMENTED(accel_data_service_unsubscribe),
-    PBW_API_UNIMPLEMENTED(accel_service_peek),
-    PBW_API_UNIMPLEMENTED(accel_service_set_samples_per_update),
-    PBW_API_UNIMPLEMENTED(accel_service_set_sampling_rate),
-    PBW_API_UNIMPLEMENTED(accel_tap_service_subscribe),
-    PBW_API_UNIMPLEMENTED(accel_tap_service_unsubscribe),
+    PBW_API_STUB(accel_data_service_subscribe__deprecated),
+    PBW_API_STUB(accel_data_service_unsubscribe),
+    PBW_API_STUB(accel_service_peek, 0xffffffff),
+    PBW_API_STUB(accel_service_set_samples_per_update),
+    PBW_API_STUB(accel_service_set_sampling_rate),
+    PBW_API(accel_tap_service_subscribe, NO, 1),
+    PBW_API(accel_tap_service_unsubscribe, NO),
     PBW_API_UNIMPLEMENTED(action_bar_layer_legacy2_add_to_window),
     PBW_API_UNIMPLEMENTED(action_bar_layer_legacy2_clear_icon),
     PBW_API_UNIMPLEMENTED(action_bar_layer_legacy2_create),
@@ -360,7 +360,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(dict_size),
     PBW_API_UNIMPLEMENTED(graphics_text_layout_get_content_size),
     PBW_API_UNIMPLEMENTED(simple_menu_layer_get_menu_layer),
-    PBW_API_UNIMPLEMENTED(accel_data_service_subscribe),
+    PBW_API_STUB(accel_data_service_subscribe),
     PBW_API(calloc, YES, 2),
     PBW_API_UNIMPLEMENTED(bitmap_layer_get_bitmap),
     PBW_API_UNIMPLEMENTED(menu_layer_legacy2_set_callbacks),
@@ -369,7 +369,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API(realloc, YES, 2),
     PBW_API(gbitmap_create_blank_2bit, YES, 2),
     PBW_API_UNIMPLEMENTED(click_recognizer_is_repeating),
-    PBW_API_UNIMPLEMENTED(accel_raw_data_service_subscribe),
+    PBW_API_STUB(accel_raw_data_service_subscribe),
     PBW_API_UNIMPLEMENTED(app_worker_is_running),
     PBW_API_UNIMPLEMENTED(app_worker_kill),
     PBW_API_UNIMPLEMENTED(app_worker_launch),
@@ -690,11 +690,14 @@ uint32_t pbw_api_call(pbw_cpu cpu, void *userData, uint32_t addr, pbw_mem_op op,
         const struct pbw_api api = pblApi[apiNum];
         if (api.numberOfArguments == -1) {
             // API stub
+            NSLog(@"API stub: %s", api.name);
             if (api.returnsWord) pbw_cpu_reg_set(cpu, 0, api.returnValue);
         } else if (api.implementation == NULL) {
             // API not implemented
+            NSLog(@"API call not implemented: %s", api.name);
             pbw_cpu_stop(cpu, PBW_ERR_NOT_IMPLEMENTED);
         } else {
+            NSLog(@"API call: %s", api.name);
             pbw_api_call_impl(runtime.runtimeContext, api.implementation, api.numberOfArguments, api.returnsWord);
         }
     }

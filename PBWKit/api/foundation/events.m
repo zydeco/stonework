@@ -12,6 +12,18 @@
 #import "../api.h"
 #import "PBWRuntime.h"
 
+#pragma mark - Accelerometer Service
+
+uint32_t pbw_api_accel_tap_service_subscribe(pbw_ctx ctx, uint32_t handler) {
+    ctx->runtime.accelTapServiceHandler = handler;
+    return 0;
+}
+
+uint32_t pbw_api_accel_tap_service_unsubscribe(pbw_ctx ctx) {
+    ctx->runtime.accelTapServiceHandler = 0;
+    return 0;
+}
+
 #pragma mark - Battery Service
 uint32_t pbw_api_battery_state_service_subscribe(pbw_ctx ctx, uint32_t handler) {
     ctx->runtime.batteryServiceHandler = handler;

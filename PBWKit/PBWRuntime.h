@@ -47,6 +47,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,NSObject*> *persistentStorage;
 - (void)savePersistentStorage;
 
+// Accelerometer Service
+@property (nonatomic, assign) uint32_t accelTapServiceHandler;
+- (void)tap;
+
 // Battery Service
 @property (nonatomic, readonly) uint32_t batteryChargeState;
 @property (nonatomic, assign) uint32_t batteryServiceHandler;
