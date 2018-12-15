@@ -66,7 +66,9 @@ uint32_t pbw_api_app_timer_cancel(pbw_ctx ctx, uint32_t timer_tag) {
 
 - (void)fire {
     _hasFired = YES;
-    pbw_cpu_call(_runtime.runtimeContext->cpu, _callback, NULL, 1, _data);
+    if (_runtime.running) {
+        pbw_cpu_call(_runtime.runtimeContext->cpu, _callback, NULL, 1, _data);
+    }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self destroy];
     });
