@@ -23,6 +23,7 @@
 -(id)layer;
 -(void)addSubview:(id)subview;
 -(CGPoint)center;
+-(NSString*)timeText;
 @end
 
 @interface InterfaceController ()
@@ -34,21 +35,42 @@
     PBWRuntime *runtime;
 }
 
++ (void)load {
+    Class CLKTimeFormatter = NSClassFromString(@"CLKTimeFormatter");
+    if ([CLKTimeFormatter instancesRespondToSelector:@selector(timeText)]) {
+        Method m = class_getInstanceMethod(CLKTimeFormatter, @selector(timeText));
+        method_setImplementation(m, imp_implementationWithBlock(^NSString*(id self, SEL _cmd) { return @" "; }));
+    }
+}
+
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
 }
 
 - (void)hideTimeLabel {
-    /* Hack to make the digital time overlay disappear */
+    /* Hack to make the digital time overlay disappear (on watchOS 5) */
     id fullScreenView = [self fullScreenView];
-    [[[fullScreenView timeLabel] layer] setOpacity:0];
+    if ([fullScreenView respondsToSelector:@selector(timeLabel)]) {
+        [[[fullScreenView timeLabel] layer] setOpacity:0];
+    }
 }
 
 - (id)fullScreenView {
-    NSArray *views = [[[[[[[NSClassFromString(@"UIApplication") sharedApplication] keyWindow] rootViewController] viewControllers] firstObject] view] subviews];
-    for (NSObject *view in views) {
-        if ([view isKindOfClass:NSClassFromString(@"SPFullScreenView")]) {
+    id parentView = [[[[[[NSClassFromString(@"UIApplication") sharedApplication] keyWindow] rootViewController] viewControllers] firstObject] view];
+    id view = [self findDescendantViewOfClass:NSClassFromString(@"SPFullScreenView") inView:parentView]; // watchOS 5
+    if (view == nil) {
+        view = [self findDescendantViewOfClass:NSClassFromString(@"SPInterfaceRemoteView") inView:parentView]; // watchOS 6
+    }
+    return view;
+}
+
+- (id)findDescendantViewOfClass:(Class)viewClass inView:(id)parentView {
+    for (NSObject *view in [parentView subviews]) {
+        if ([view isKindOfClass:viewClass]) {
             return view;
+        } else {
+            id foundView = [self findDescendantViewOfClass:viewClass inView:view];
+            if (foundView != nil) return foundView;
         }
     }
     return nil;
