@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/zydeco/Documents/Projects/Pebble/Stonework/Stonework.xcodeproj">
+      location = "group:Stonework.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Stonework.xcodeproj">
    </FileRef>
 </Workspace>
