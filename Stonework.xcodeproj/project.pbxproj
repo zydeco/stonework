@@ -72,7 +72,6 @@
 		28B1D94E21BBEBF400BE7C1F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */; };
 		28B1D95021BBEC6900BE7C1F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B1D94F21BBEC6900BE7C1F /* WebKit.framework */; };
 		28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */; };
-		28B1D95821BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1D95721BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m */; };
 		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
 		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
 		28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D92173E0EC00C556D6 /* Assets.xcassets */; };
@@ -238,8 +237,6 @@
 		28B1D94F21BBEC6900BE7C1F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		28B1D95121BC5C7700BE7C1F /* WatchfaceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchfaceDetailViewController.h; sourceTree = "<group>"; };
 		28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchfaceDetailViewController.m; sourceTree = "<group>"; };
-		28B1D95621BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ExtendedAttributes.h"; sourceTree = "<group>"; };
-		28B1D95721BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ExtendedAttributes.m"; sourceTree = "<group>"; };
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -487,8 +484,6 @@
 				28B1D94D21BBEBF400BE7C1F /* StoreViewController.m */,
 				28B1D95121BC5C7700BE7C1F /* WatchfaceDetailViewController.h */,
 				28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */,
-				28B1D95621BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.h */,
-				28B1D95721BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m */,
 			);
 			path = Stonework;
 			sourceTree = "<group>";
@@ -922,7 +917,6 @@
 				28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */,
 				28600D9B21C5989A00375CB6 /* timer.m in Sources */,
 				284C92112180CE850080B3E1 /* thumb2.c in Sources */,
-				28B1D95821BDCDF400BE7C1F /* NSFileManager+ExtendedAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

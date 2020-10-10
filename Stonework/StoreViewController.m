@@ -9,7 +9,6 @@
 #import "StoreViewController.h"
 #import "AppDelegate.h"
 #import "PBWKit.h"
-#import "NSFileManager+ExtendedAttributes.h"
 
 static NSArray *observedWebViewKeys = nil;
 
@@ -172,7 +171,7 @@ static NSArray *observedWebViewKeys = nil;
                 NSFileManager *fm = [NSFileManager defaultManager];
                 NSError *installError = nil;
                 if ([fm moveItemAtURL:location toURL:installURL error:&installError]) {
-                    [fm setExtendedAttribute:@"net.namedfork.stonework.preview" value:screenshotData atPath:installURL.path traverseLink:NO mode:XAAnyMode error:NULL];
+                    [screenshotData writeToURL:[installURL URLByAppendingPathExtension:@".preview"] atomically:NO];
                     [self->downloadProgressController dismissViewControllerAnimated:YES completion:^{
                         [self.navigationController popViewControllerAnimated:YES];
                     }];

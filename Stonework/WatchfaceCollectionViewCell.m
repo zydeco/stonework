@@ -10,7 +10,6 @@
 #import "PBWBundle.h"
 #import "PBWApp.h"
 #import "PBWRuntime.h"
-#import "NSFileManager+ExtendedAttributes.h"
 
 @implementation WatchfaceCollectionViewCell
 {
@@ -35,7 +34,7 @@
     self.titleLabel.text = watchfaceBundle.shortName;
     self.subtitleLabel.text = watchfaceBundle.companyName;
     
-    NSData *previewData = [[NSFileManager defaultManager] extendedAttribute:@"net.namedfork.stonework.preview" atPath:_watchfaceBundle.bundleURL.path traverseLink:NO error:NULL];
+    NSData *previewData = [NSData dataWithContentsOfURL:[watchfaceBundle.bundleURL URLByAppendingPathExtension:@".preview"]];
     self.imageView.image = [UIImage imageWithData:previewData];
 }
 
