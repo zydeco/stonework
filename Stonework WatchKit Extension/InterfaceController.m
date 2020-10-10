@@ -24,6 +24,8 @@
 -(void)addSubview:(id)subview;
 -(CGPoint)center;
 -(NSString*)timeText;
+-(id)sharedPUICApplication;
+-(void)_setStatusBarTimeHidden:(BOOL)hidden animated:(BOOL)animated completion:(void (^)(void))completion;
 @end
 
 @interface InterfaceController ()
@@ -36,6 +38,7 @@
 }
 
 + (void)load {
+    /* Hack to make the digital time overlay disappear (on watchOS 6) */
     Class CLKTimeFormatter = NSClassFromString(@"CLKTimeFormatter");
     if ([CLKTimeFormatter instancesRespondToSelector:@selector(timeText)]) {
         Method m = class_getInstanceMethod(CLKTimeFormatter, @selector(timeText));
@@ -53,6 +56,12 @@
     if ([fullScreenView respondsToSelector:@selector(timeLabel)]) {
         [[[fullScreenView timeLabel] layer] setOpacity:0];
     }
+    /* Hack to make the digital time overlay disappear (on watchOS 7) */
+    Class PUICApplication = NSClassFromString(@"PUICApplication");
+    if ([PUICApplication instancesRespondToSelector:@selector(_setStatusBarTimeHidden:animated:completion:)]) {
+        [[PUICApplication sharedApplication] _setStatusBarTimeHidden:YES animated:NO completion:nil];
+    }
+
 }
 
 - (id)fullScreenView {
