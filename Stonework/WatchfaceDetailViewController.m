@@ -7,6 +7,7 @@
 //
 
 #import "WatchfaceDetailViewController.h"
+#import "WatchfacesViewController.h"
 #import "StoreViewController.h"
 #import "PBWKit.h"
 
@@ -66,17 +67,11 @@
 }
 
 - (IBAction)deleteWatchface:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to delete this watchface?" message:@"You cannot undo this action." preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSError *deleteError = nil;
-        if ([[NSFileManager defaultManager] removeItemAtURL:self.watchfaceBundle.bundleURL error:&deleteError]) {
+    [WatchfacesViewController confirmDeletionOfWatchface:self.watchfaceBundle fromViewController:self completion:^(NSError * _Nonnull error) {
+        if (error == nil) {
             [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            [self failWithTitle:@"Error deleting watchface" message:deleteError.localizedDescription handler:nil];
         }
-    }]];
-    [self presentViewController:alert animated:YES completion:nil];
+    }];
 }
 
 - (IBAction)activateWatchface:(id)sender {
@@ -110,8 +105,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[StoreViewController class]]) {
         StoreViewController *storeViewController = (StoreViewController*)segue.destinationViewController;
-        NSString *stringURL = [@"https://apps.rebble.io/en_US/search/watchfaces/?query=" stringByAppendingString:_watchfaceBundle.UUID.UUIDString.lowercaseString];
-        storeViewController.landingURL = [NSURL URLWithString:stringURL];
+        storeViewController.landingURL = [StoreViewController URLForSearchingStoreWithUUID:_watchfaceBundle.UUID];
     }
 }
 

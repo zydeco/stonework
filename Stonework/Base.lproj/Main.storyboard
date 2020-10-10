@@ -135,7 +135,7 @@
                                 </constraints>
                                 <size key="customSize" width="160" height="130"/>
                                 <connections>
-                                    <segue destination="cGy-qw-pYN" kind="show" id="soQ-iB-qH1"/>
+                                    <segue destination="cGy-qw-pYN" kind="show" identifier="store" id="soQ-iB-qH1"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

@@ -9,6 +9,7 @@
 #import "WatchfacesViewController.h"
 #import "WatchfaceCollectionViewCell.h"
 #import "WatchfaceDetailViewController.h"
+#import "StoreViewController.h"
 #import "PBWBundle.h"
 #import "AppDelegate.h"
 
@@ -18,7 +19,7 @@
 
 @implementation WatchfacesViewController
 {
-    NSArray<PBWBundle*> *watchfaces;
+    NSMutableArray<PBWBundle*> *watchfaces;
 }
 
 - (void)viewDidLoad {
@@ -26,7 +27,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    watchfaces = [self availableWathcfaces];
+    watchfaces = [self availableWathcfaces].mutableCopy;
     [self.collectionView reloadData];
 }
     
@@ -40,6 +41,10 @@
         WatchfaceDetailViewController *detailViewController = (WatchfaceDetailViewController*)segue.destinationViewController;
         PBWBundle *selectedWatchface = watchfaces[selectedIndexPath.item-1];
         detailViewController.watchfaceBundle = selectedWatchface;
+    } if ([segue.destinationViewController isKindOfClass:[StoreViewController class]] && [sender isKindOfClass:[PBWBundle class]]) {
+        StoreViewController *storeViewController = (StoreViewController*)segue.destinationViewController;
+        PBWBundle *watchfaceBundle = (PBWBundle*)sender;
+        storeViewController.landingURL = [StoreViewController URLForSearchingStoreWithUUID:watchfaceBundle.UUID];
     }
 }
 
@@ -65,33 +70,51 @@
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+- (UIContextMenuConfiguration *)collectionView:(UICollectionView *)collectionView contextMenuConfigurationForItemAtIndexPath:(NSIndexPath *)indexPath point:(CGPoint)point API_AVAILABLE(ios(13.0)) {
+    NSUInteger watchfaceIndex = indexPath.item - 1;
+    PBWBundle *watchfaceBundle = watchfaces[watchfaceIndex];
+    return [UIContextMenuConfiguration configurationWithIdentifier:nil previewProvider:nil actionProvider:^UIMenu * _Nullable(NSArray<UIMenuElement *> * _Nonnull suggestedActions) {
+        UIAction *shareAction = [UIAction actionWithTitle:@"Share" image:[UIImage systemImageNamed:@"square.and.arrow.up"] identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+            UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[watchfaceBundle.bundleURL] applicationActivities:nil];
+            [self presentViewController:activityViewController animated:YES completion:nil];
+        }];
+        UIAction *findInStoreAction = [UIAction actionWithTitle:@"Find in Store" image:[UIImage systemImageNamed:@"cart"] identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+            [self performSegueWithIdentifier:@"store" sender:watchfaceBundle];
+        }];
+        UIAction *deleteAction = [UIAction actionWithTitle:@"Delete" image:[UIImage systemImageNamed:@"trash"] identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+            [WatchfacesViewController confirmDeletionOfWatchface:watchfaceBundle fromViewController:self completion:^(NSError * _Nonnull error) {
+                if (error == nil) {
+                    [self->watchfaces removeObjectAtIndex:watchfaceIndex];
+                    [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+                }
+            }];
+        }];
+        deleteAction.attributes = UIMenuElementAttributesDestructive;
+        return [UIMenu menuWithTitle:@"" children:@[
+            shareAction, findInStoreAction, deleteAction
+        ]];
+    }];
 }
-*/
 
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
++ (void)confirmDeletionOfWatchface:(PBWBundle*)watchfaceBundle fromViewController:(UIViewController*)viewController completion:(void(^)(NSError *error))completion {
+    NSString *watchfaceName = watchfaceBundle.longName ?: watchfaceBundle.shortName ?: watchfaceBundle.bundleURL.lastPathComponent;
+    NSString *title = [NSString stringWithFormat:@"Do you want to delete watchface “%@”?", watchfaceName];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:@"This action cannot be undone." preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSError *deleteError = nil;
+        if ([[NSFileManager defaultManager] removeItemAtURL:watchfaceBundle.bundleURL error:&deleteError]) {
+            completion(nil);
+        } else {
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error deleting watchface" message:deleteError.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [viewController presentViewController:errorAlert animated:YES completion:^{
+                completion(deleteError);
+            }];
+        }
+    }]];
+    [viewController presentViewController:alert animated:YES completion:nil];
 }
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

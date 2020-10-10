@@ -24,6 +24,11 @@ static NSArray *observedWebViewKeys = nil;
     NSURL *watchfacesURL, *searchURL;
 }
 
++ (NSURL*)URLForSearchingStoreWithUUID:(NSUUID *)UUID {
+    NSString *stringURL = [@"https://apps.rebble.io/en_US/search/watchfaces/?query=" stringByAppendingString:UUID.UUIDString.lowercaseString];
+    return [NSURL URLWithString:stringURL];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.webView.navigationDelegate = self;

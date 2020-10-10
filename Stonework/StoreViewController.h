@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *backButton, *forwardButton, *actionButton;
 @property (nonatomic, retain) NSURL *landingURL;
 
++ (NSURL*)URLForSearchingStoreWithUUID:(NSUUID*)UUID;
+
 @end
 
 NS_ASSUME_NONNULL_END
