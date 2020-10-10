@@ -88,7 +88,7 @@ static const struct pbw_api pblApi[] = {
     PBW_API_UNIMPLEMENTED(_unknown42),
     PBW_API_UNIMPLEMENTED(app_sync_deinit),
     PBW_API_UNIMPLEMENTED(app_sync_get),
-    PBW_API_UNIMPLEMENTED(app_sync_init),
+    PBW_API_STUB(app_sync_init, NO),
     PBW_API_UNIMPLEMENTED(app_sync_set),
     PBW_API(app_timer_cancel, NO, 1),
     PBW_API(app_timer_register, YES, 3),
