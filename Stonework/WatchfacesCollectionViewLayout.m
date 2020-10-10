@@ -11,11 +11,13 @@
 @implementation WatchfacesCollectionViewLayout
 
 - (void)prepareLayout {
-    CGFloat availableWidth = self.collectionViewContentSize.width - 1;
+    CGFloat availableWidth = self.collectionViewContentSize.width;
     CGFloat columns = floor(availableWidth / 160.0);
-    self.itemSize = CGSizeMake(availableWidth / columns, 130.0);
-    self.minimumInteritemSpacing = 1.0;
-    self.minimumLineSpacing = 1.0;
+    CGFloat spacing = 1.0;
+    self.itemSize = CGSizeMake(floor((availableWidth - spacing * (columns - 1)) / columns), 130.0);
+    self.estimatedItemSize = self.itemSize;
+    self.minimumInteritemSpacing = spacing;
+    self.minimumLineSpacing = spacing;
 }
 
 - (void)prepareForInterfaceBuilder {
