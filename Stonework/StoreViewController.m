@@ -9,6 +9,7 @@
 #import "StoreViewController.h"
 #import "AppDelegate.h"
 #import "PBWKit.h"
+#import "PBWBundle+Preview.h"
 
 static NSArray *observedWebViewKeys = nil;
 
@@ -176,7 +177,7 @@ static NSArray *observedWebViewKeys = nil;
                 NSFileManager *fm = [NSFileManager defaultManager];
                 NSError *installError = nil;
                 if ([fm moveItemAtURL:location toURL:installURL error:&installError]) {
-                    [screenshotData writeToURL:[installURL URLByAppendingPathExtension:@".preview"] atomically:NO];
+                    [PBWBundle writePreviewData:screenshotData forBundleAtURL:installURL];
                     [self->downloadProgressController dismissViewControllerAnimated:YES completion:^{
                         [self.navigationController popViewControllerAnimated:YES];
                     }];

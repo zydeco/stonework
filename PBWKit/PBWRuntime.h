@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGSize screenSize;
 @property (nonatomic, readonly) NSObject<PBWScreenView> *screenView;
 @property (nonatomic, readonly) PBWGraphicsContext *graphicsContext;
+@property (nonatomic, readonly) id screenImage;
 
 // Window Stack
 - (void)pushWindow:(nullable PBWWindow*)window animated:(BOOL)animated;

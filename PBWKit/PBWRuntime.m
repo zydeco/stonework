@@ -287,6 +287,13 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
 }
 
+- (id)screenImage {
+    CGImageRef cgImage = CGBitmapContextCreateImage(_graphicsContext->cgContext);
+    UIImage *screenImage = [UIImage imageWithCGImage:cgImage scale:1.0 orientation:UIImageOrientationDownMirrored];
+    CGImageRelease(cgImage);
+    return screenImage;
+}
+
 # pragma mark - Accessors
 
 - (struct pbw_ctx *)runtimeContext {

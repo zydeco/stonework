@@ -8,6 +8,7 @@
 
 #import "WatchfaceCollectionViewCell.h"
 #import "PBWBundle.h"
+#import "PBWBundle+Preview.h"
 #import "PBWApp.h"
 #import "PBWRuntime.h"
 
@@ -33,9 +34,7 @@
     _watchfaceBundle = watchfaceBundle;
     self.titleLabel.text = watchfaceBundle.shortName;
     self.subtitleLabel.text = watchfaceBundle.companyName;
-    
-    NSData *previewData = [NSData dataWithContentsOfURL:[watchfaceBundle.bundleURL URLByAppendingPathExtension:@".preview"]];
-    self.imageView.image = [UIImage imageWithData:previewData];
+    self.imageView.image = [UIImage imageWithData:watchfaceBundle.previewData];
 }
 
 @end

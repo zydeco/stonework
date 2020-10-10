@@ -10,6 +10,7 @@
 #import "WatchfacesViewController.h"
 #import "StoreViewController.h"
 #import "PBWKit.h"
+#import "PBWBundle+Preview.h"
 
 @import WatchConnectivity;
 
@@ -40,6 +41,13 @@
     self.versionLabel.text = wf.versionLabel;
     
     [self startEmulator];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (!self.watchfaceBundle.hasPreview) {
+        // screen image is flipped; PNG representation doesn't preserve orientation
+        self.watchfaceBundle.previewData = UIImageJPEGRepresentation(runtime.screenImage, 1.0);
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
