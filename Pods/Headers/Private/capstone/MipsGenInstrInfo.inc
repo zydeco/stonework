@@ -1,1 +1,0 @@
-../../../capstone/arch/Mips/MipsGenInstrInfo.inc

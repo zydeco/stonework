@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019DD6BE9BCA139481F6ABA0 /* libPods-PBWCPUTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D47A6A8838C4070CE3DCC8B /* libPods-PBWCPUTests.a */; };
 		2804A5EE21985E6500853871 /* app_message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5ED21985E6500853871 /* app_message.m */; };
 		2804A5EF21985E6500853871 /* app_message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5ED21985E6500853871 /* app_message.m */; };
 		2804A5F22198C26100853871 /* PBWGraphicsContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5F12198C26100853871 /* PBWGraphicsContext.m */; };
@@ -47,7 +48,6 @@
 		284C92122180CE850080B3E1 /* thumb2.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C92102180CE850080B3E1 /* thumb2.c */; };
 		284C92132180CE850080B3E1 /* thumb2.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C92102180CE850080B3E1 /* thumb2.c */; };
 		284C92162189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
-		284C92172189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
 		284C92182189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 284C92152189053D0080B3E1 /* PBWRuntime+Disassembler.m */; };
 		284C924B218DD25D0080B3E1 /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
 		284C924C218DD25D0080B3E1 /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
@@ -125,10 +125,9 @@
 		28ED9F3221B2AC8B00E78FBF /* renaissance_18.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */; };
 		28ED9F3521B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
 		28ED9F3621B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
-		345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7374FBB82FE405E74479A401 /* libPods-Stonework.a */; };
-		7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */; };
-		EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */; };
-		FE11B5D8F62A3B053EC64D3F /* libPods-PBWCPUTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */; };
+		665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */; };
+		82615E94C7E59C93C4A5A90A /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8051A013DE64D7BB23EF8E4 /* libPods-Stonework.a */; };
+		832CF017A061A5DDB2B84FF3 /* libPods-Stonework WatchKit App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E794A91FD2FE100EBE72AD /* libPods-Stonework WatchKit App.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +155,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		28BF81A125338E0E007341A3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28E021052173E0ED00C556D6 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,8 +190,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		0F7FC9959BE76DB69E927E30 /* Pods-Stonework WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		104221A341CFEEF92F65F428 /* Pods-Stonework WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		10E794A91FD2FE100EBE72AD /* libPods-Stonework WatchKit App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2804A5ED21985E6500853871 /* app_message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = app_message.m; sourceTree = "<group>"; };
 		2804A5F02198C26100853871 /* PBWGraphicsContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWGraphicsContext.h; sourceTree = "<group>"; };
 		2804A5F12198C26100853871 /* PBWGraphicsContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWGraphicsContext.m; sourceTree = "<group>"; };
@@ -241,6 +251,8 @@
 		28BF80E32532620D007341A3 /* PBWBundle+Preview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBWBundle+Preview.h"; sourceTree = "<group>"; };
 		28BF80E42532620D007341A3 /* PBWBundle+Preview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PBWBundle+Preview.m"; sourceTree = "<group>"; };
 		28BF814F253329BB007341A3 /* Stonework.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stonework.entitlements; sourceTree = "<group>"; };
+		28BF818D25338E0C007341A3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		28BF818F25338E0C007341A3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -292,16 +304,15 @@
 		28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_18.pbf; path = renaissance/fonts/renaissance_18.pbf; sourceTree = SOURCE_ROOT; };
 		28ED9F3321B2E13400E78FBF /* PBWTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWTextLayer.h; sourceTree = "<group>"; };
 		28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWTextLayer.m; sourceTree = "<group>"; };
-		2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.release.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.release.xcconfig"; sourceTree = "<group>"; };
-		42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.debug.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7374FBB82FE405E74479A401 /* libPods-Stonework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
-		A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.debug.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.debug.xcconfig"; sourceTree = "<group>"; };
-		B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.release.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.release.xcconfig"; sourceTree = "<group>"; };
-		BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PBWCPUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBDBA222DE6273CFCB9AD4D /* Pods-Stonework WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		4D47A6A8838C4070CE3DCC8B /* libPods-PBWCPUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PBWCPUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F13E2FB9F2EC1A0032DDE5F /* Pods-Stonework WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit Extension/Pods-Stonework WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		672CE27D2838B73E98CC2F24 /* Pods-PBWCPUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.debug.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.debug.xcconfig"; sourceTree = "<group>"; };
+		83E17F7CF5BAF587EB66BCEB /* Pods-Stonework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.release.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.release.xcconfig"; sourceTree = "<group>"; };
+		8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework WatchKit Extension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E7E8D442E929D97890751A /* Pods-PBWCPUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBWCPUTests.release.xcconfig"; path = "Target Support Files/Pods-PBWCPUTests/Pods-PBWCPUTests.release.xcconfig"; sourceTree = "<group>"; };
+		B8051A013DE64D7BB23EF8E4 /* libPods-Stonework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stonework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31CB1AB547A527E6FDBCC80 /* Pods-Stonework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework.debug.xcconfig"; path = "Target Support Files/Pods-Stonework/Pods-Stonework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +320,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE11B5D8F62A3B053EC64D3F /* libPods-PBWCPUTests.a in Frameworks */,
+				019DD6BE9BCA139481F6ABA0 /* libPods-PBWCPUTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B1D95021BBEC6900BE7C1F /* WebKit.framework in Frameworks */,
-				345092B627F21B5161A0D400 /* libPods-Stonework.a in Frameworks */,
+				82615E94C7E59C93C4A5A90A /* libPods-Stonework.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF791B16BECA4D0E314323F7 /* libPods-Stonework WatchKit Extension.a in Frameworks */,
+				665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE734288F9A850E355FEBFF /* libPods-Stonework WatchKit App.a in Frameworks */,
+				832CF017A061A5DDB2B84FF3 /* libPods-Stonework WatchKit App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,14 +575,14 @@
 		2C1E402D43F74082565C20B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */,
-				B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */,
-				A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */,
-				2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */,
-				8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */,
-				10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */,
-				42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */,
-				A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */,
+				672CE27D2838B73E98CC2F24 /* Pods-PBWCPUTests.debug.xcconfig */,
+				A7E7E8D442E929D97890751A /* Pods-PBWCPUTests.release.xcconfig */,
+				D31CB1AB547A527E6FDBCC80 /* Pods-Stonework.debug.xcconfig */,
+				83E17F7CF5BAF587EB66BCEB /* Pods-Stonework.release.xcconfig */,
+				2BBDBA222DE6273CFCB9AD4D /* Pods-Stonework WatchKit App.debug.xcconfig */,
+				0F7FC9959BE76DB69E927E30 /* Pods-Stonework WatchKit App.release.xcconfig */,
+				4F13E2FB9F2EC1A0032DDE5F /* Pods-Stonework WatchKit Extension.debug.xcconfig */,
+				104221A341CFEEF92F65F428 /* Pods-Stonework WatchKit Extension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -580,10 +591,12 @@
 			isa = PBXGroup;
 			children = (
 				28B1D94F21BBEC6900BE7C1F /* WebKit.framework */,
-				BAD306F875F5A71FD8C140B4 /* libPods-PBWCPUTests.a */,
-				7374FBB82FE405E74479A401 /* libPods-Stonework.a */,
-				D0EA26C87E025C7816861298 /* libPods-Stonework WatchKit App.a */,
-				09713F2D91C33A7709A71FEF /* libPods-Stonework WatchKit Extension.a */,
+				28BF818D25338E0C007341A3 /* WidgetKit.framework */,
+				28BF818F25338E0C007341A3 /* SwiftUI.framework */,
+				4D47A6A8838C4070CE3DCC8B /* libPods-PBWCPUTests.a */,
+				B8051A013DE64D7BB23EF8E4 /* libPods-Stonework.a */,
+				10E794A91FD2FE100EBE72AD /* libPods-Stonework WatchKit App.a */,
+				8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -595,7 +608,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 284C9201217C85E20080B3E1 /* Build configuration list for PBXNativeTarget "PBWCPUTests" */;
 			buildPhases = (
-				3D1CBE8EAF102A1822E1B1BF /* [CP] Check Pods Manifest.lock */,
+				567FDA9A2CE3B0495B74A52F /* [CP] Check Pods Manifest.lock */,
 				284C91F6217C85E20080B3E1 /* Sources */,
 				284C91F7217C85E20080B3E1 /* Frameworks */,
 				284C91F8217C85E20080B3E1 /* Resources */,
@@ -614,11 +627,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28E0210A2173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework" */;
 			buildPhases = (
-				21F3EEF249C6211BB0333548 /* [CP] Check Pods Manifest.lock */,
+				0F85C9251B8FBD748795460F /* [CP] Check Pods Manifest.lock */,
 				28E020C92173E0EB00C556D6 /* Sources */,
 				28E020CA2173E0EB00C556D6 /* Frameworks */,
 				28E020CB2173E0EB00C556D6 /* Resources */,
 				28E021092173E0ED00C556D6 /* Embed Watch Content */,
+				28BF81A125338E0E007341A3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -634,7 +648,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28E021062173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit App" */;
 			buildPhases = (
-				CD6B770E3D87D4737F267351 /* [CP] Check Pods Manifest.lock */,
+				9EE20FD38A544DF3C7B0FA26 /* [CP] Check Pods Manifest.lock */,
 				28E020E12173E0EC00C556D6 /* Resources */,
 				28E021052173E0ED00C556D6 /* Embed App Extensions */,
 				4259EE64740C16BAEA209B84 /* Frameworks */,
@@ -653,7 +667,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28E021022173E0ED00C556D6 /* Build configuration list for PBXNativeTarget "Stonework WatchKit Extension" */;
 			buildPhases = (
-				0FFFF88254E87A94BDD7D064 /* [CP] Check Pods Manifest.lock */,
+				024335F230DB41952ED1E1F1 /* [CP] Check Pods Manifest.lock */,
 				28E020EE2173E0EC00C556D6 /* Sources */,
 				28E020EF2173E0EC00C556D6 /* Frameworks */,
 				28E020F02173E0EC00C556D6 /* Resources */,
@@ -673,6 +687,7 @@
 		28E020C52173E0EB00C556D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = namedfork;
 				TargetAttributes = {
@@ -769,7 +784,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0FFFF88254E87A94BDD7D064 /* [CP] Check Pods Manifest.lock */ = {
+		024335F230DB41952ED1E1F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -791,7 +806,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		21F3EEF249C6211BB0333548 /* [CP] Check Pods Manifest.lock */ = {
+		0F85C9251B8FBD748795460F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -813,7 +828,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3D1CBE8EAF102A1822E1B1BF /* [CP] Check Pods Manifest.lock */ = {
+		567FDA9A2CE3B0495B74A52F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -835,7 +850,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD6B770E3D87D4737F267351 /* [CP] Check Pods Manifest.lock */ = {
+		9EE20FD38A544DF3C7B0FA26 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -941,7 +956,6 @@
 				284C9252218DD4D70080B3E1 /* api.m in Sources */,
 				284C9204217C862C0080B3E1 /* cpu.c in Sources */,
 				28600D9321C2E32400375CB6 /* math.m in Sources */,
-				284C92172189053D0080B3E1 /* PBWRuntime+Disassembler.m in Sources */,
 				28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */,
 				28132D262190BA3500B36804 /* PBWLayer.m in Sources */,
 				28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */,
@@ -1014,7 +1028,7 @@
 /* Begin XCBuildConfiguration section */
 		284C9202217C85E20080B3E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73138D5831B6400186FC5ED9 /* Pods-PBWCPUTests.debug.xcconfig */;
+			baseConfigurationReference = 672CE27D2838B73E98CC2F24 /* Pods-PBWCPUTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1034,7 +1048,7 @@
 		};
 		284C9203217C85E20080B3E1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3D7D42CD339BFF6C2EC8E46 /* Pods-PBWCPUTests.release.xcconfig */;
+			baseConfigurationReference = A7E7E8D442E929D97890751A /* Pods-PBWCPUTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1166,7 +1180,7 @@
 		};
 		28E021032173E0ED00C556D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42D99C3FC37F9E045E502F3D /* Pods-Stonework WatchKit Extension.debug.xcconfig */;
+			baseConfigurationReference = 4F13E2FB9F2EC1A0032DDE5F /* Pods-Stonework WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -1194,7 +1208,7 @@
 		};
 		28E021042173E0ED00C556D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A31DB61470E5673DE0916DDB /* Pods-Stonework WatchKit Extension.release.xcconfig */;
+			baseConfigurationReference = 104221A341CFEEF92F65F428 /* Pods-Stonework WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -1222,7 +1236,7 @@
 		};
 		28E021072173E0ED00C556D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A4BFBA8112394206DE8C60D /* Pods-Stonework WatchKit App.debug.xcconfig */;
+			baseConfigurationReference = 2BBDBA222DE6273CFCB9AD4D /* Pods-Stonework WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1241,7 +1255,7 @@
 		};
 		28E021082173E0ED00C556D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10DD11BA9FB8AF39E05F0615 /* Pods-Stonework WatchKit App.release.xcconfig */;
+			baseConfigurationReference = 0F7FC9959BE76DB69E927E30 /* Pods-Stonework WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1260,7 +1274,7 @@
 		};
 		28E0210B2173E0ED00C556D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */;
+			baseConfigurationReference = D31CB1AB547A527E6FDBCC80 /* Pods-Stonework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;
@@ -1295,7 +1309,7 @@
 		};
 		28E0210C2173E0ED00C556D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */;
+			baseConfigurationReference = 83E17F7CF5BAF587EB66BCEB /* Pods-Stonework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;

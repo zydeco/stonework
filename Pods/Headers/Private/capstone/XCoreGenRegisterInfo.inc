@@ -1,1 +1,0 @@
-../../../capstone/arch/XCore/XCoreGenRegisterInfo.inc

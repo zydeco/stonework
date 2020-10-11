@@ -1,1 +1,0 @@
-../../../capstone/arch/Sparc/SparcGenAsmWriter.inc

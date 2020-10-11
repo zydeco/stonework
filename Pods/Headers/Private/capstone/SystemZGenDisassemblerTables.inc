@@ -1,1 +1,0 @@
-../../../capstone/arch/SystemZ/SystemZGenDisassemblerTables.inc
