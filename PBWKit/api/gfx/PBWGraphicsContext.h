@@ -13,7 +13,10 @@
 @class PBWWindow, UIColor, UIBezierPath;
 
 extern const uint32_t PBWGraphicsNativePalette[256];
-extern CGColorRef PBWGraphicsCGColor[256];
+extern _Nonnull CGColorRef PBWGraphicsCGColor[256];
+extern const char* _Nonnull PBWGraphicsColorName[64];
+
+#define COLOR_NAME(c) PBWGraphicsColorName[c & 0x3f]
 
 NS_ASSUME_NONNULL_BEGIN
 
