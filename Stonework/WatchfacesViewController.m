@@ -13,6 +13,14 @@
 #import "PBWBundle.h"
 #import "AppDelegate.h"
 
+#if TARGET_OS_MACCATALYST
+@interface NSObject (AppKit)
+- (id)sharedApplication;
+- (NSArray<id>*)windows;
+- (void)setMinSize:(CGSize)size;
+@end
+#endif
+
 @interface WatchfacesViewController ()
 
 @end
@@ -27,8 +35,20 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     watchfaces = [self availableWathcfaces].mutableCopy;
     [self.collectionView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+#if TARGET_OS_MACCATALYST
+    id app = [NSClassFromString(@"NSApplication") sharedApplication];
+    id window = [[app windows] lastObject];
+    if ([window respondsToSelector:@selector(setMinSize:)]) {
+        [window setMinSize:CGSizeMake(320.0, 480.0)];
+    }
+#endif
 }
     
 - (NSArray<PBWBundle*>*)availableWathcfaces {

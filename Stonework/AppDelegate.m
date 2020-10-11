@@ -32,6 +32,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self installBuiltInWatchfaces];
+#if TARGET_OS_MACCATALYST
+    for (UIWindowScene *scene in UIApplication.sharedApplication.connectedScenes) {
+        if ([scene isKindOfClass:[UIWindowScene class]]) {
+            scene.sizeRestrictions.minimumSize = CGSizeMake(320.0, 480.0);
+            scene.titlebar.titleVisibility = UITitlebarTitleVisibilityHidden;
+            scene.titlebar.toolbar = nil;
+        }
+    }
+#endif
     return YES;
 }
 
