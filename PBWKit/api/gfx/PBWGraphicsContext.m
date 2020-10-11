@@ -54,7 +54,7 @@ uint32_t pbw_api_gpath_draw_filled(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr)
     CGContextSetFillColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.fillColor.argb]);
     CGContextSetLineWidth(cg, 1.0);
-    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
+    CGPathRef path = CGPathCreateFromGuestGPath(ctx, pathPtr);
     CGContextAddPath(cg, path);
     CGContextClosePath(cg);
     CGContextDrawPath(cg, kCGPathFillStroke);
@@ -76,7 +76,7 @@ uint32_t pbw_api_gpath_draw_outline(pbw_ctx ctx, uint32_t gctx, uint32_t pathPtr
     CGContextRef cg = graphicsContext->cgContext;
     CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
-    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
+    CGPathRef path = CGPathCreateFromGuestGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
     CGContextAddPath(cg, path);
     CGContextClosePath(cg);
@@ -103,7 +103,7 @@ uint32_t pbw_api_gpath_draw_outline_open(pbw_ctx ctx, uint32_t gctx, uint32_t pa
     CGContextRef cg = graphicsContext->cgContext;
     CGContextSetStrokeColorWithColor(cg, PBWGraphicsCGColor[graphicsContext.strokeColor.argb]);
     CGContextSetLineWidth(cg, graphicsContext.strokeWidth);
-    CGPathRef path = CGPathCreateFromHostGPath(ctx, pathPtr);
+    CGPathRef path = CGPathCreateFromGuestGPath(ctx, pathPtr);
     CGContextBeginPath(cg);
     CGContextAddPath(cg, path);
     CGContextStrokePath(cg);

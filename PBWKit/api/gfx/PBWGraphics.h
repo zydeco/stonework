@@ -150,7 +150,7 @@ typedef enum GBitmapFormat {
 #define UNPACK_POINT(arg) GPoint(arg & 0xffff, arg >> 16)
 #define UNPACK_SIZE(arg) GSize(arg & 0xffff, arg >> 16)
 
-CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr);
+CGPathRef CGPathCreateFromGuestGPath(pbw_ctx ctx, uint32_t ptr);
 
 typedef enum GTextAlignment {
     GTextAlignmentLeft = 0,

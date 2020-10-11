@@ -284,7 +284,7 @@ uint32_t pbw_api_grect_inset(pbw_ctx ctx, uint32_t retptr, ARG_GRECT(rect)) {
     return 0;
 }
 
-CGPathRef CGPathCreateFromHostGPath(pbw_ctx ctx, uint32_t ptr) {
+CGPathRef CGPathCreateFromGuestGPath(pbw_ctx ctx, uint32_t ptr) {
     CGMutablePathRef path = CGPathCreateMutable();
     void *gpath = pbw_ctx_get_pointer(ctx, ptr);
     uint32_t numPoints = OSReadLittleInt32(gpath, 0);
