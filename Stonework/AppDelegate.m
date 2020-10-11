@@ -9,12 +9,21 @@
 #import "AppDelegate.h"
 #import "PBWKit.h"
 #import "WatchfaceDetailViewController.h"
+#import <objc/runtime.h>
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
++ (void)load
+{
+#if TARGET_OS_MACCATALYST
+    Method method = class_getInstanceMethod(objc_getClass("UINSSceneView"), NSSelectorFromString(@"scaleFactor"));
+    method_setImplementation(method, imp_implementationWithBlock(^{ return (CGFloat)1.0; }));
+#endif
+}
 
 + (instancetype)sharedInstance {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;

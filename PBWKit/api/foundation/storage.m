@@ -1,26 +1,23 @@
 //
-//  persist.m
+//  storage.m
 //  Stonework
 //
 //  Created by Jesús A. Álvarez on 10/11/2018.
 //  Copyright © 2018 namedfork. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "../../cpu/cpu.h"
-#import "../api.h"
 #import "PBWRuntime.h"
 
 #define PERSIST_DATA_MAX_LENGTH 256
 
 uint32_t pbw_api_persist_exists(pbw_ctx ctx, uint32_t key) {
-    return [ctx->runtime.persistentStorage objectForKey:@(key)] ? S_TRUE : S_FALSE;
+    return [ctx->runtime.persistentStorage objectForKey:@(key)] ? PBW_S_TRUE : PBW_S_FALSE;
 }
 
 uint32_t pbw_api_persist_get_size(pbw_ctx ctx, uint32_t key) {
     id value = [ctx->runtime.persistentStorage objectForKey:@(key)];
     if (value == nil) {
-        return E_DOES_NOT_EXIST;
+        return PBW_E_DOES_NOT_EXIST;
     } else if ([value isKindOfClass:[NSNumber class]]) {
         return 4;
     } else if ([value isKindOfClass:[NSString class]]) {
@@ -28,16 +25,16 @@ uint32_t pbw_api_persist_get_size(pbw_ctx ctx, uint32_t key) {
     } else if ([value isKindOfClass:[NSData class]]) {
         return (uint32_t)[value length];
     } else {
-        return E_ERROR;
+        return PBW_E_ERROR;
     }
 }
 
 uint32_t pbw_api_persist_read_bool(pbw_ctx ctx, uint32_t key) {
     id value = [ctx->runtime.persistentStorage objectForKey:@(key)];
     if ([value isKindOfClass:[NSNumber class]]) {
-        return [value boolValue] ? S_TRUE : S_FALSE;
+        return [value boolValue] ? PBW_S_TRUE : PBW_S_FALSE;
     } else {
-        return S_FALSE;
+        return PBW_S_FALSE;
     }
 }
 
@@ -64,7 +61,7 @@ uint32_t pbw_api_persist_read_data(pbw_ctx ctx, uint32_t key, uint32_t buffer, i
         buf[usedLength] = 0;
         return (uint32_t)usedLength;
     } else {
-        return E_DOES_NOT_EXIST;
+        return PBW_E_DOES_NOT_EXIST;
     }
 }
 
@@ -86,7 +83,7 @@ uint32_t pbw_api_persist_write_int(pbw_ctx ctx, uint32_t key, int32_t value) {
 
 uint32_t pbw_api_persist_write_data(pbw_ctx ctx, uint32_t key, uint32_t data, int32_t size) {
     if (size > PERSIST_DATA_MAX_LENGTH) {
-        return E_OUT_OF_STORAGE;
+        return PBW_E_OUT_OF_STORAGE;
     }
     NSData *value = [NSData dataWithBytes:pbw_ctx_get_pointer(ctx, data) length:size];
     [ctx->runtime.persistentStorage setObject:value forKey:@(key)];
@@ -98,7 +95,7 @@ uint32_t pbw_api_persist_write_string(pbw_ctx ctx, uint32_t key, uint32_t cstrin
     NSString *value = [NSString stringWithCString:pbw_ctx_get_pointer(ctx, cstring) encoding:NSUTF8StringEncoding];
     uint32_t size = 1 + (uint32_t)[value lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     if (size > PERSIST_DATA_MAX_LENGTH) {
-        return E_OUT_OF_STORAGE;
+        return PBW_E_OUT_OF_STORAGE;
     }
     [ctx->runtime.persistentStorage setObject:value forKey:@(key)];
     [ctx->runtime savePersistentStorage];
@@ -108,5 +105,5 @@ uint32_t pbw_api_persist_write_string(pbw_ctx ctx, uint32_t key, uint32_t cstrin
 uint32_t pbw_api_persist_delete(pbw_ctx ctx, uint32_t key) {
     [ctx->runtime.persistentStorage removeObjectForKey:@(key)];
     [ctx->runtime savePersistentStorage];
-    return S_SUCCESS;
+    return PBW_S_SUCCESS;
 }

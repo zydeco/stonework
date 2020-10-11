@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,7 +78,7 @@
 		28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D92173E0EC00C556D6 /* Assets.xcassets */; };
 		28E020DD2173E0EC00C556D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */; };
 		28E020E02173E0EC00C556D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020DF2173E0EC00C556D6 /* main.m */; };
-		28E020E42173E0EC00C556D6 /* Stonework WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */; };
+		28E020E42173E0EC00C556D6 /* Stonework WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 28E020E32173E0EC00C556D6 /* Stonework WatchKit App.app */; platformFilter = ios; };
 		28E020EC2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020EB2173E0EC00C556D6 /* Assets.xcassets */; };
 		28E020F32173E0EC00C556D6 /* Stonework WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28E020F92173E0EC00C556D6 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020F82173E0EC00C556D6 /* InterfaceController.m */; };
@@ -240,6 +240,7 @@
 		28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchfaceDetailViewController.m; sourceTree = "<group>"; };
 		28BF80E32532620D007341A3 /* PBWBundle+Preview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBWBundle+Preview.h"; sourceTree = "<group>"; };
 		28BF80E42532620D007341A3 /* PBWBundle+Preview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PBWBundle+Preview.m"; sourceTree = "<group>"; };
+		28BF814F253329BB007341A3 /* Stonework.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stonework.entitlements; sourceTree = "<group>"; };
 		28E020CD2173E0EB00C556D6 /* Stonework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stonework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E020D02173E0EB00C556D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28E020D12173E0EB00C556D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -470,6 +471,7 @@
 		28E020CF2173E0EB00C556D6 /* Stonework */ = {
 			isa = PBXGroup;
 			children = (
+				28BF814F253329BB007341A3 /* Stonework.entitlements */,
 				28E020D02173E0EB00C556D6 /* AppDelegate.h */,
 				28E020D12173E0EB00C556D6 /* AppDelegate.m */,
 				28E020D62173E0EB00C556D6 /* Main.storyboard */,
@@ -979,6 +981,7 @@
 		};
 		28E020E62173E0EC00C556D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 28E020E22173E0EC00C556D6 /* Stonework WatchKit App */;
 			targetProxy = 28E020E52173E0EC00C556D6 /* PBXContainerItemProxy */;
 		};
@@ -1260,6 +1263,7 @@
 			baseConfigurationReference = A69E3BC949A24A3B55823C37 /* Pods-Stonework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
 				ENABLE_BITCODE = NO;
@@ -1284,6 +1288,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1293,6 +1298,7 @@
 			baseConfigurationReference = 2C5B59D82D5FC6399271B1E8 /* Pods-Stonework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
 				ENABLE_BITCODE = NO;
@@ -1317,6 +1323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

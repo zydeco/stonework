@@ -34,6 +34,9 @@ static NSArray *observedWebViewKeys = nil;
     [super viewDidLoad];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
+#if TARGET_OS_MACCATALYST
+    self.webView.customUserAgent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/86.0.4240.77 Mobile/15E148 Safari/604.1";
+#endif
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         observedWebViewKeys = @[@"canGoBack", @"canGoForward", @"title", @"loading"];

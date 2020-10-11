@@ -35,39 +35,39 @@ typedef uint32_t (*pbw_api_impl)(pbw_ctx, uint32_t arg1, uint32_t arg2, uint32_t
 
 typedef enum : int32_t {
     //! Operation completed successfully.
-    S_SUCCESS = 0,
+    PBW_S_SUCCESS = 0,
     //! An error occurred (no description).
-    E_ERROR = -1,
+    PBW_E_ERROR = -1,
     //! No idea what went wrong.
-    E_UNKNOWN = -2,
+    PBW_E_UNKNOWN = -2,
     //! There was a generic internal logic error.
-    E_INTERNAL = -3,
+    PBW_E_INTERNAL = -3,
     //! The function was not called correctly.
-    E_INVALID_ARGUMENT = -4,
+    PBW_E_INVALID_ARGUMENT = -4,
     //! Insufficient allocatable memory available.
-    E_OUT_OF_MEMORY = -5,
+    PBW_E_OUT_OF_MEMORY = -5,
     //! Insufficient long-term storage available.
-    E_OUT_OF_STORAGE = -6,
+    PBW_E_OUT_OF_STORAGE = -6,
     //! Insufficient resources available.
-    E_OUT_OF_RESOURCES = -7,
+    PBW_E_OUT_OF_RESOURCES = -7,
     //! Argument out of range (may be dynamic).
-    E_RANGE = -8,
+    PBW_E_RANGE = -8,
     //! Target of operation does not exist.
-    E_DOES_NOT_EXIST = -9,
+    PBW_E_DOES_NOT_EXIST = -9,
     //! Operation not allowed (may depend on state).
-    E_INVALID_OPERATION = -10,
+    PBW_E_INVALID_OPERATION = -10,
     //! Another operation prevented this one.
-    E_BUSY = -11,
+    PBW_E_BUSY = -11,
     //! Operation not completed; try again.
-    E_AGAIN = -12,
+    PBW_E_AGAIN = -12,
     //! Equivalent of boolean true.
-    S_TRUE = 1,
+    PBW_S_TRUE = 1,
     //! Equivalent of boolean false.
-    S_FALSE = 0,
+    PBW_S_FALSE = 0,
     //! For list-style requests.  At end of list.
-    S_NO_MORE_ITEMS = 2,
+    PBW_S_NO_MORE_ITEMS = 2,
     //! No action was taken as none was required.
-    S_NO_ACTION_REQUIRED = 3,
+    PBW_S_NO_ACTION_REQUIRED = 3,
 } status_t;
 
 typedef enum {
