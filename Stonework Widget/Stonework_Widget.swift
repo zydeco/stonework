@@ -63,7 +63,7 @@ struct Provider: IntentTimelineProvider {
         // render times
         if let bundleURL = container?.appendingPathComponent("widget.pbw"),
            let bundle = PBWBundle(url: bundleURL),
-           let app = PBWApp(bundle: bundle, platform: .basalt) {
+           let app = PBWApp(bundle: bundle, platform: .basalt) ?? PBWApp(bundle: bundle, platform: .aplite) {
             let runtime = PBWRuntime(app: app)
             runtime.run()
             
