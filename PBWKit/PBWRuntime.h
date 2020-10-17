@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)removeWindow:(nullable PBWWindow*)window animated:(BOOL)animated;
 - (BOOL)containsWindow:(nullable PBWWindow*)window;
 - (nullable PBWWindow*)topWindow;
+- (void)drawScreenViewWithContext:(_Nullable CGContextRef)context;
 
 // OS Objects
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber*,__kindof PBWObject*> *objects;

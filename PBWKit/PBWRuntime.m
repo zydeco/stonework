@@ -31,13 +31,9 @@ uint32_t pbw_api_setlocale(pbw_ctx ctx, uint32_t category, uint32_t namePtr) {
 static Class PBWScreenView = nil;
 static void * PBWScreenViewRuntimeKey = &PBWScreenViewRuntimeKey;
 
-@interface PBWRuntime ()
-- (void)drawScreenView;
-@end
-
 static void PBWScreenView_drawRect(NSObject<PBWScreenView> *self, SEL _cmd, CGRect rect) {
     PBWRuntime *runtime = objc_getAssociatedObject(self, PBWScreenViewRuntimeKey);
-    [runtime drawScreenView];
+    [runtime drawScreenViewWithContext:UIGraphicsGetCurrentContext()];
 }
 
 void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_t handler);
@@ -281,15 +277,17 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     }
 }
 
-- (void)drawScreenView {
+- (void)drawScreenViewWithContext:(CGContextRef)context {
     PBWWindow *topWindow = self.topWindow;
     if (topWindow) {
         if (_running) {
             [_graphicsContext drawWindow:topWindow];
         }
-        CGImageRef image = CGBitmapContextCreateImage(_graphicsContext->cgContext);
-        CGContextDrawImage(UIGraphicsGetCurrentContext(), _screenView.bounds, image);
-        CGImageRelease(image);
+        if (_screenView && context) {
+            CGImageRef image = CGBitmapContextCreateImage(_graphicsContext->cgContext);
+            CGContextDrawImage(context, _screenView.bounds, image);
+            CGImageRelease(image);
+        }
         topWindow->dirty = NO;
     }
 }
