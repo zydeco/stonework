@@ -113,6 +113,15 @@
 		28C5EA1D2533AB80006ED01B /* time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804A5FC2198DF8600853871 /* time.m */; };
 		28C5EA1E2533AB80006ED01B /* weemalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 284C9249218DD25D0080B3E1 /* weemalloc.c */; };
 		28C5EA242533AB8F006ED01B /* PBWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 28156B30218F112700AC859A /* PBWObject.m */; };
+		28C5EA62253BA3D8006ED01B /* renaissance_24_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1B21B2AC8B00E78FBF /* renaissance_24_bold.pbf */; };
+		28C5EA63253BA3D8006ED01B /* renaissance_18.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */; };
+		28C5EA64253BA3D8006ED01B /* renaissance_28_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1E21B2AC8B00E78FBF /* renaissance_28_bold.pbf */; };
+		28C5EA65253BA3D8006ED01B /* renaissance_09.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1F21B2AC8B00E78FBF /* renaissance_09.pbf */; };
+		28C5EA66253BA3D8006ED01B /* renaissance_18_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1821B2AC8B00E78FBF /* renaissance_18_bold.pbf */; };
+		28C5EA67253BA3D8006ED01B /* renaissance_24.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1C21B2AC8B00E78FBF /* renaissance_24.pbf */; };
+		28C5EA68253BA3D8006ED01B /* renaissance_14_bold.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1A21B2AC8B00E78FBF /* renaissance_14_bold.pbf */; };
+		28C5EA69253BA3D8006ED01B /* renaissance_28.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1D21B2AC8B00E78FBF /* renaissance_28.pbf */; };
+		28C5EA6A253BA3D8006ED01B /* renaissance_14.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F1921B2AC8B00E78FBF /* renaissance_14.pbf */; };
 		28E020D22173E0EB00C556D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E020D12173E0EB00C556D6 /* AppDelegate.m */; };
 		28E020D82173E0EB00C556D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D62173E0EB00C556D6 /* Main.storyboard */; };
 		28E020DA2173E0EC00C556D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E020D92173E0EC00C556D6 /* Assets.xcassets */; };
@@ -849,6 +858,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C5EA62253BA3D8006ED01B /* renaissance_24_bold.pbf in Resources */,
+				28C5EA63253BA3D8006ED01B /* renaissance_18.pbf in Resources */,
+				28C5EA6A253BA3D8006ED01B /* renaissance_14.pbf in Resources */,
+				28C5EA65253BA3D8006ED01B /* renaissance_09.pbf in Resources */,
+				28C5EA67253BA3D8006ED01B /* renaissance_24.pbf in Resources */,
+				28C5EA69253BA3D8006ED01B /* renaissance_28.pbf in Resources */,
+				28C5EA66253BA3D8006ED01B /* renaissance_18_bold.pbf in Resources */,
+				28C5EA68253BA3D8006ED01B /* renaissance_14_bold.pbf in Resources */,
+				28C5EA64253BA3D8006ED01B /* renaissance_28_bold.pbf in Resources */,
 				28C5E97F2533A05D006ED01B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
