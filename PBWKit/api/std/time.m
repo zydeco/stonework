@@ -29,8 +29,9 @@ struct __attribute__((__packed__)) pebble_tm {
     char tm_zone[TZ_LEN]; /*!< Timezone abbreviation */
 };
 
+
 uint32_t pbw_api_time(pbw_ctx ctx, uint32_t time_ptr) {
-    time_t tv = time(NULL);
+    time_t tv = ctx->runtime.guestTime;
     if (time_ptr) {
         pbw_cpu_mem_write(ctx->cpu, time_ptr, PBW_MEM_WORD, (uint32_t)tv);
     }
@@ -119,7 +120,7 @@ uint32_t pbw_api_time_ms(pbw_ctx ctx, uint32_t timep, uint32_t msp) {
 }
 
 uint32_t pbw_api_time_start_of_today(pbw_ctx ctx) {
-    time_t t = time(NULL);
+    time_t t = ctx->runtime.guestTime;
     t -= (t % 86400);
     return (uint32_t)t;
 }

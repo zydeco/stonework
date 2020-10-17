@@ -49,7 +49,6 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     uint8_t *jumpTableSlice;
     uint32_t nextObject;
     NSTimer *tickTimer;
-    TimeUnits tickServiceUnits;
     uint32_t tickSerivceHandler;
     struct tm lastTickServiceTime;
     time_t lastTime;
@@ -221,8 +220,12 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 
 - (void)resumeTimers {
     if (tickSerivceHandler) {
-        [self startTickTimerWithUnits:tickServiceUnits handler:tickSerivceHandler];
+        [self startTickTimerWithUnits:_tickServiceUnits handler:tickSerivceHandler];
     }
+}
+
+- (time_t)guestTime {
+    return _timeOverride ? _timeOverride.timeIntervalSince1970 : time(NULL);
 }
 
 - (void)savePersistentStorage {
@@ -235,7 +238,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
 }
 
 - (void)startTickTimerWithUnits:(TimeUnits)timeUnits handler:(uint32_t)handler {
-    tickServiceUnits = timeUnits;
+    _tickServiceUnits = timeUnits;
     tickSerivceHandler = handler;
     if (handler == 0) {
         [tickTimer invalidate];
@@ -243,7 +246,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         return;
     }
     
-    time_t now = time(NULL);
+    time_t now = self.guestTime;
     localtime_r(&now, &lastTickServiceTime);
     NSTimeInterval thisTick = floor([NSDate timeIntervalSinceReferenceDate]);
     NSDate *nextFireDate = [NSDate dateWithTimeIntervalSinceReferenceDate:thisTick + 1.05];
@@ -253,9 +256,13 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     [self tick:nil];
 }
 
+- (void)tick {
+    [self tick:nil];
+}
+
 - (void)tick:(NSTimer *)timer {
     struct tm thisTick;
-    time_t now = time(NULL);
+    time_t now = self.guestTime;
     
     if ((timer == nil || now != lastTime) && tickSerivceHandler) {
         localtime_r(&now, &thisTick);
@@ -267,7 +274,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
         if (thisTick.tm_mon != lastTickServiceTime.tm_mon) changedUnits |= MONTH_UNIT;
         if (thisTick.tm_year != lastTickServiceTime.tm_year) changedUnits |= YEAR_UNIT;
         lastTickServiceTime = thisTick;
-        if (lastTime == 0 || timer == nil || changedUnits & tickServiceUnits) {
+        if (lastTime == 0 || timer == nil || changedUnits & _tickServiceUnits) {
             PBWRunTick(&ctx, &lastTickServiceTime, changedUnits, tickSerivceHandler);
         }
         lastTime = now;

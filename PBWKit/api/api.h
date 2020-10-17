@@ -70,7 +70,7 @@ typedef enum : int32_t {
     PBW_S_NO_ACTION_REQUIRED = 3,
 } status_t;
 
-typedef enum {
+typedef CF_OPTIONS(uint32_t, TimeUnits) {
     //! Flag to represent the "seconds" time unit
     SECOND_UNIT = 1 << 0,
     //! Flag to represent the "minutes" time unit
@@ -83,7 +83,7 @@ typedef enum {
     MONTH_UNIT = 1 << 4,
     //! Flag to represent the "years" time unit
     YEAR_UNIT = 1 << 5
-} TimeUnits;
+};
 
 #define TRIG_MAX_RATIO 0xffff
 #define TRIG_MAX_ANGLE 0x10000

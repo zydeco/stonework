@@ -69,7 +69,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) uint32_t connBluetoothHandler;
 
 // Tick Timer Service
+@property (nonatomic, readonly) TimeUnits tickServiceUnits;
 - (void)startTickTimerWithUnits:(TimeUnits)timeUnits handler:(uint32_t)handler;
+
+// Time Travel
+@property (nonatomic, copy, nullable) NSDate *timeOverride;
+@property (nonatomic, readonly) time_t guestTime;
+- (void)tick;
 
 // AppMessage
 @property (nonatomic, assign) uint32_t appMessageContext;
