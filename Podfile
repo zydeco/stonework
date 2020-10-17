@@ -17,3 +17,8 @@ target 'PBWCPUTests' do
   platform :ios, '12.0'
   pod 'capstone/ARM', podspec: 'capstone.podspec'
 end
+
+target 'Stonework WidgetExtension' do
+  platform :ios, '14.0'
+  pod 'Minizip'
+end

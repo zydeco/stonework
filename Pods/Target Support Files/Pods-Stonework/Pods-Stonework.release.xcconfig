@@ -1,7 +1,7 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Minizip" "${PODS_ROOT}/Headers/Public/capstone"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Minizip-iOS" "${PODS_CONFIGURATION_BUILD_DIR}/capstone"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Minizip-iOS" -l"capstone" -l"z"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Minizip-iOS12.0" "${PODS_CONFIGURATION_BUILD_DIR}/capstone"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Minizip-iOS12.0" -l"capstone" -l"z"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

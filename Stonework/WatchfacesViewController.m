@@ -61,6 +61,12 @@
         WatchfaceDetailViewController *detailViewController = (WatchfaceDetailViewController*)segue.destinationViewController;
         PBWBundle *selectedWatchface = watchfaces[selectedIndexPath.item-1];
         detailViewController.watchfaceBundle = selectedWatchface;
+        // copy to group
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *containerURL = [fileManager containerURLForSecurityApplicationGroupIdentifier:@"group.net.namedfork.stonework"];
+        NSURL *destinationURL = [containerURL URLByAppendingPathComponent:@"widget.pbw" isDirectory:NO];
+        [fileManager removeItemAtURL:destinationURL error:nil];
+        [fileManager copyItemAtURL:selectedWatchface.bundleURL toURL:destinationURL error:nil];
     } if ([segue.destinationViewController isKindOfClass:[StoreViewController class]] && [sender isKindOfClass:[PBWBundle class]]) {
         StoreViewController *storeViewController = (StoreViewController*)segue.destinationViewController;
         PBWBundle *watchfaceBundle = (PBWBundle*)sender;
