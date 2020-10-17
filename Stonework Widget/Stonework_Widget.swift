@@ -21,6 +21,36 @@ extension PBWRuntime {
     }
 }
 
+extension UIImage {
+    func averageColor(forEdge edge: UIRectEdge) -> UIColor? {
+        guard let inputImage = CIImage(image: self) else { return nil }
+        guard edge.rawValue.nonzeroBitCount == 1 else { return nil }
+        let extentVector: CIVector
+        let extent = inputImage.extent
+        switch edge {
+        case .top:
+            extentVector = CIVector(x: extent.minX, y: extent.minY, z: extent.width, w: 1.0)
+        case .left:
+            extentVector = CIVector(x: extent.minX, y: extent.minY, z: 1.0, w: extent.height)
+        case .bottom:
+            extentVector = CIVector(x: extent.minX + extent.width - 1.0, y: extent.minY, z: extent.width, w: 1.0)
+        case .right:
+            extentVector = CIVector(x: extent.minX, y: extent.minY + extent.height - 1.0, z: 1.0, w: extent.height)
+        default:
+            fatalError()
+        }
+
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull!])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
+}
+
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(),
@@ -45,7 +75,7 @@ struct Provider: IntentTimelineProvider {
         return SimpleEntry(
             date: date,
             image: image,
-            backgroundColor: Color.black,
+            backgroundColor: Color(image.averageColor(forEdge: .left) ?? .black),
             configuration: configuration
         )
     }
