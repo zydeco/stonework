@@ -83,12 +83,8 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
-        #if targetEnvironment(simulator)
-        let container: URL? = (URL(fileURLWithPath: "/Users/zydeco/Library/Developer/CoreSimulator/Devices/D1099B9F-FC60-4F35-8350-9671746A91C6/data/Containers/Shared/AppGroup/4F3401A6-B3C0-4BF4-9B24-2DFC972A7CC8/"))
-        #else
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.net.namedfork.stonework")
-        #endif
-        
+        let appGroups = Bundle.main.object(forInfoDictionaryKey: "ALTAppGroups") as! [String]
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroups[0])
         
         // render times
         if let bundleURL = container?.appendingPathComponent("widget.pbw"),

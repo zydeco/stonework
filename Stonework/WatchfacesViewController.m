@@ -63,7 +63,8 @@
         detailViewController.watchfaceBundle = selectedWatchface;
         // copy to group
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *containerURL = [fileManager containerURLForSecurityApplicationGroupIdentifier:@"group.net.namedfork.stonework"];
+        NSString *appGroup = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ALTAppGroups"] firstObject];
+        NSURL *containerURL = [fileManager containerURLForSecurityApplicationGroupIdentifier:appGroup];
         NSURL *destinationURL = [containerURL URLByAppendingPathComponent:@"widget.pbw" isDirectory:NO];
         [fileManager removeItemAtURL:destinationURL error:nil];
         [fileManager copyItemAtURL:selectedWatchface.bundleURL toURL:destinationURL error:nil];
