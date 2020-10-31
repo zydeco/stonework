@@ -83,12 +83,10 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
-        let appGroups = Bundle.main.object(forInfoDictionaryKey: "ALTAppGroups") as! [String]
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroups[0])
+        let availableWatchfaces = PBWManager.default().availableWatchfaces()
         
         // render times
-        if let bundleURL = container?.appendingPathComponent("widget.pbw"),
-           let bundle = PBWBundle(url: bundleURL),
+        if let bundle = availableWatchfaces.last, // FIXME: customize watchface
            let app = PBWApp(bundle: bundle, platform: .basalt) ?? PBWApp(bundle: bundle, platform: .aplite) {
             let runtime = PBWRuntime(app: app)
             runtime.run()

@@ -146,7 +146,7 @@ static NSArray *observedWebViewKeys = nil;
     
     // is it already installed?
     NSUUID *appUUID = [[NSUUID alloc] initWithUUIDString:app[@"uuid"]];
-    NSArray *installedUUIDs = [[AppDelegate sharedInstance].availableWatchfaces valueForKeyPath:@"@unionOfObjects.UUID"];
+    NSArray *installedUUIDs = [[PBWManager defaultManager].availableWatchfaces valueForKeyPath:@"@unionOfObjects.UUID"];
     if ([installedUUIDs containsObject:appUUID]) {
         [self failWithTitle:@"Already Installed" message:@"This application is already installed, please remove it to install again." handler:nil];
         return;
@@ -172,7 +172,7 @@ static NSArray *observedWebViewKeys = nil;
 - (void)downloadAppFromURL:(NSURL*)URL withUUID:(NSUUID*)appUUID screenshotURL:(NSURL*)screenshotURL {
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *fileName = [appUUID.UUIDString stringByAppendingPathExtension:@"pbw"];
-    NSURL *installURL = [[AppDelegate sharedInstance].documentsURL URLByAppendingPathComponent:fileName];
+    NSURL *installURL = [[PBWManager defaultManager].documentsURL URLByAppendingPathComponent:fileName];
     downloadTask = [session downloadTaskWithURL:URL completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error == nil && location) {
             NSData *screenshotData = [NSData dataWithContentsOfURL:screenshotURL];

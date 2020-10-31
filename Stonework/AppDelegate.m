@@ -70,21 +70,13 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (NSURL*)documentsURL {
-    return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
-}
-
-- (NSArray<PBWBundle*>*)availableWatchfaces {
-    return [PBWBundle bundlesAtURL:self.documentsURL];
-}
-
 - (void)installBuiltInWatchfaces {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSInteger builtInWatchfacesVersion = 1;
     NSInteger installedBuiltInWatchfaces = [userDefaults integerForKey:@"installedBuiltInWatchfaces"];
     if (installedBuiltInWatchfaces >= builtInWatchfacesVersion) return;
     NSURL *builtInWatchfacesURL = [[NSBundle mainBundle].resourceURL URLByAppendingPathComponent:@"Faces" isDirectory:YES];
-    NSURL *documentsURL = self.documentsURL;
+    NSURL *documentsURL = [PBWManager defaultManager].documentsURL;
     NSFileManager *fm = [NSFileManager defaultManager];
     NSArray<PBWBundle*> *builtInWatchfaces = [PBWBundle bundlesAtURL:builtInWatchfacesURL];
     for (PBWBundle *bundle in builtInWatchfaces) {
@@ -114,7 +106,7 @@
 - (BOOL)importFileToDocuments:(NSURL *)url copy:(BOOL)copy {
     if (url.fileURL) {
         // opening file
-        NSString *documentsPath = self.documentsURL.path;
+        NSString *documentsPath = [PBWManager defaultManager].documentsURL.path;
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSString *fileName = url.path.lastPathComponent;
         NSString *destinationPath = [documentsPath stringByAppendingPathComponent:fileName];
@@ -156,14 +148,8 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     if (url.fileURL) {
         // opening file
-        NSString *documentsPath = self.documentsURL.path;
-        NSString *inboxPath = [documentsPath stringByAppendingPathComponent:@"Inbox"];
-        if ([url.path.stringByStandardizingPath hasPrefix:inboxPath]) {
-            // pre-iOS 11 import through inbox
-            [url startAccessingSecurityScopedResource];
-            [self importFileToDocuments:url copy:NO];
-            [url stopAccessingSecurityScopedResource];
-        } else if ([url.path.stringByStandardizingPath hasPrefix:documentsPath]) {
+        NSString *documentsPath = [PBWManager defaultManager].documentsURL.path;
+        if ([url.path.stringByStandardizingPath hasPrefix:documentsPath]) {
             // already in documents - show
             PBWBundle *watchfaceBundle = [PBWBundle bundleWithURL:url];
             if (watchfaceBundle.isWatchFace) {

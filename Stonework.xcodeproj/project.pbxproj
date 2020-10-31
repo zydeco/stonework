@@ -174,6 +174,9 @@
 		28ED9F3221B2AC8B00E78FBF /* renaissance_18.pbf in Resources */ = {isa = PBXBuildFile; fileRef = 28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */; };
 		28ED9F3521B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
 		28ED9F3621B2E13400E78FBF /* PBWTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */; };
+		28F91BA2254D879D00A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
+		28F91BA3254D879D00A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
+		28F91BB4254D8B5400A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
 		57D235963D747AD9D9DE0A2F /* libPods-Stonework WidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA309753BC74AABE5222045E /* libPods-Stonework WidgetExtension.a */; };
 		665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */; };
 		82615E94C7E59C93C4A5A90A /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8051A013DE64D7BB23EF8E4 /* libPods-Stonework.a */; };
@@ -369,6 +372,8 @@
 		28ED9F2021B2AC8B00E78FBF /* renaissance_18.pbf */ = {isa = PBXFileReference; lastKnownFileType = file; name = renaissance_18.pbf; path = renaissance/fonts/renaissance_18.pbf; sourceTree = SOURCE_ROOT; };
 		28ED9F3321B2E13400E78FBF /* PBWTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWTextLayer.h; sourceTree = "<group>"; };
 		28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWTextLayer.m; sourceTree = "<group>"; };
+		28F91BA0254D879D00A79198 /* PBWManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWManager.h; sourceTree = "<group>"; };
+		28F91BA1254D879D00A79198 /* PBWManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWManager.m; sourceTree = "<group>"; };
 		2BBDBA222DE6273CFCB9AD4D /* Pods-Stonework WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		34E50C6F74D1D4B42A06011A /* Pods-Stonework WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-Stonework WidgetExtension/Pods-Stonework WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		4D47A6A8838C4070CE3DCC8B /* libPods-PBWCPUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PBWCPUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -645,6 +650,8 @@
 				2804A5F82198D69E00853871 /* PBWScreenView.h */,
 				2804A5F92198D69E00853871 /* PBWScreenView.m */,
 				289F0F522199FD49008B0554 /* PBWAddressSpace+Globals.h */,
+				28F91BA0254D879D00A79198 /* PBWManager.h */,
+				28F91BA1254D879D00A79198 /* PBWManager.m */,
 			);
 			path = PBWKit;
 			sourceTree = "<group>";
@@ -1067,6 +1074,7 @@
 				28C5E9E32533AB53006ED01B /* PBWBundle.m in Sources */,
 				28C5EA1E2533AB80006ED01B /* weemalloc.c in Sources */,
 				28C5E9FB2533AB68006ED01B /* resources.m in Sources */,
+				28F91BA3254D879D00A79198 /* PBWManager.m in Sources */,
 				28C5E9EE2533AB5D006ED01B /* thumb.c in Sources */,
 				28C5E9EC2533AB5D006ED01B /* exec.c in Sources */,
 				28C5E9ED2533AB5D006ED01B /* thumb2.c in Sources */,
@@ -1137,6 +1145,7 @@
 				28156B31218F112700AC859A /* PBWObject.m in Sources */,
 				28600D9221C2E2DA00375CB6 /* math.m in Sources */,
 				284C91DA2174FD170080B3E1 /* PBWPlatformType.m in Sources */,
+				28F91BA2254D879D00A79198 /* PBWManager.m in Sources */,
 				28B1D95321BC5C7700BE7C1F /* WatchfaceDetailViewController.m in Sources */,
 				28600D9921C3100C00375CB6 /* PBWRuntime+iOS.m in Sources */,
 				28600D9B21C5989A00375CB6 /* timer.m in Sources */,
@@ -1159,6 +1168,7 @@
 				28600D9321C2E32400375CB6 /* math.m in Sources */,
 				28156B2D218F0F1500AC859A /* PBWWindow.m in Sources */,
 				28132D262190BA3500B36804 /* PBWLayer.m in Sources */,
+				28F91BB4254D8B5400A79198 /* PBWManager.m in Sources */,
 				28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */,
 				28ED9F1221AB386600E78FBF /* PBWBitmap.m in Sources */,
 				28E020FC2173E0EC00C556D6 /* ExtensionDelegate.m in Sources */,

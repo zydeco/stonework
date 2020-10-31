@@ -11,7 +11,7 @@
 #import "WatchfaceDetailViewController.h"
 #import "StoreViewController.h"
 #import "PBWBundle.h"
-#import "AppDelegate.h"
+#import "PBWManager.h"
 
 #if TARGET_OS_MACCATALYST
 @interface NSObject (AppKit)
@@ -52,7 +52,7 @@
 }
     
 - (NSArray<PBWBundle*>*)availableWathcfaces {
-    return [AppDelegate sharedInstance].availableWatchfaces;
+    return [PBWManager defaultManager].availableWatchfaces;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -61,13 +61,6 @@
         WatchfaceDetailViewController *detailViewController = (WatchfaceDetailViewController*)segue.destinationViewController;
         PBWBundle *selectedWatchface = watchfaces[selectedIndexPath.item-1];
         detailViewController.watchfaceBundle = selectedWatchface;
-        // copy to group
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSString *appGroup = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ALTAppGroups"] firstObject];
-        NSURL *containerURL = [fileManager containerURLForSecurityApplicationGroupIdentifier:appGroup];
-        NSURL *destinationURL = [containerURL URLByAppendingPathComponent:@"widget.pbw" isDirectory:NO];
-        [fileManager removeItemAtURL:destinationURL error:nil];
-        [fileManager copyItemAtURL:selectedWatchface.bundleURL toURL:destinationURL error:nil];
     } if ([segue.destinationViewController isKindOfClass:[StoreViewController class]] && [sender isKindOfClass:[PBWBundle class]]) {
         StoreViewController *storeViewController = (StoreViewController*)segue.destinationViewController;
         PBWBundle *watchfaceBundle = (PBWBundle*)sender;

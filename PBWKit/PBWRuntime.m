@@ -9,6 +9,7 @@
 #import "PBWRuntime.h"
 #import "PBWApp.h"
 #import "PBWBundle.h"
+#import "PBWManager.h"
 #import "cpu.h"
 #import "weemalloc.h"
 #import "api/api.h"
@@ -131,7 +132,7 @@ void PBWRunTick(pbw_ctx ctx, struct tm *host_tm, TimeUnits unitsChanged, uint32_
     
     // persistent storage
     NSString *persistKey = [NSString stringWithFormat:@"PersistentStorage-%@-%@", _app.UUID.UUIDString, NSStringFromPBWPlatformType(_app.platform)];
-    NSDictionary *persistentStorage = [[NSUserDefaults standardUserDefaults] objectForKey:persistKey];
+    NSDictionary *persistentStorage = [[PBWManager defaultManager].sharedUserDefaults objectForKey:persistKey];
     if (persistentStorage == nil) {
         _persistentStorage = [NSMutableDictionary dictionaryWithCapacity:0];
     } else {

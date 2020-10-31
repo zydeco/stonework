@@ -13,5 +13,6 @@
 #import "PBWPlatformType.h"
 #import "PBWApp.h"
 #import "PBWRuntime.h"
+#import "PBWManager.h"
 
 #endif /* PBWKit_h */
