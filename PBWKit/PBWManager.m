@@ -43,4 +43,14 @@
     return [PBWBundle bundlesAtURL:self.documentsURL];
 }
 
+- (void)updateSharedDefaults {
+    NSArray<PBWBundle *> *availableWatchfaces = [self availableWatchfaces];
+    NSMutableDictionary<NSString*, NSDictionary<NSString*,id>*> *watchfacesMap = [NSMutableDictionary dictionaryWithCapacity:availableWatchfaces.count];
+    for (PBWBundle *bundle in availableWatchfaces) {
+        NSString *fileName = bundle.bundleURL.lastPathComponent;
+        [watchfacesMap setObject:bundle.infoDictionary forKey:fileName];
+    }
+    [_sharedUserDefaults setObject:watchfacesMap forKey:@"AvailableWatchfaces"];
+}
+
 @end

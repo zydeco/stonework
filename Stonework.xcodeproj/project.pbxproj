@@ -177,6 +177,9 @@
 		28F91BA2254D879D00A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
 		28F91BA3254D879D00A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
 		28F91BB4254D8B5400A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
+		28F91C36254D93CA00A79198 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F91C35254D93CA00A79198 /* IntentHandler.swift */; };
+		28F91C3A254D93CA00A79198 /* IntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28F91C33254D93CA00A79198 /* IntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28F91C5E254D946300A79198 /* Stonework_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97D2533A05B006ED01B /* Stonework_Widget.intentdefinition */; };
 		57D235963D747AD9D9DE0A2F /* libPods-Stonework WidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA309753BC74AABE5222045E /* libPods-Stonework WidgetExtension.a */; };
 		665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */; };
 		82615E94C7E59C93C4A5A90A /* libPods-Stonework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8051A013DE64D7BB23EF8E4 /* libPods-Stonework.a */; };
@@ -212,6 +215,13 @@
 			remoteGlobalIDString = 28E020F12173E0EC00C556D6;
 			remoteInfo = "Stonework WatchKit Extension";
 		};
+		28F91C38254D93CA00A79198 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28E020C52173E0EB00C556D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28F91C32254D93CA00A79198;
+			remoteInfo = IntentExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -221,6 +231,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				28F91C3A254D93CA00A79198 /* IntentExtension.appex in Embed App Extensions */,
 				28C5E9852533A05D006ED01B /* Stonework WidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -374,6 +385,10 @@
 		28ED9F3421B2E13400E78FBF /* PBWTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWTextLayer.m; sourceTree = "<group>"; };
 		28F91BA0254D879D00A79198 /* PBWManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBWManager.h; sourceTree = "<group>"; };
 		28F91BA1254D879D00A79198 /* PBWManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBWManager.m; sourceTree = "<group>"; };
+		28F91C33254D93CA00A79198 /* IntentExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IntentExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F91C35254D93CA00A79198 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		28F91C37254D93CA00A79198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28F91C3B254D93CA00A79198 /* IntentExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IntentExtension.entitlements; sourceTree = "<group>"; };
 		2BBDBA222DE6273CFCB9AD4D /* Pods-Stonework WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Stonework WatchKit App/Pods-Stonework WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		34E50C6F74D1D4B42A06011A /* Pods-Stonework WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stonework WidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-Stonework WidgetExtension/Pods-Stonework WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		4D47A6A8838C4070CE3DCC8B /* libPods-PBWCPUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PBWCPUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +436,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F91C30254D93CA00A79198 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +581,7 @@
 				28E020E72173E0EC00C556D6 /* Stonework WatchKit App */,
 				28E020F62173E0EC00C556D6 /* Stonework WatchKit Extension */,
 				28C5E97A2533A05B006ED01B /* Stonework Widget */,
+				28F91C34254D93CA00A79198 /* IntentExtension */,
 				28E020CE2173E0EB00C556D6 /* Products */,
 				2C1E402D43F74082565C20B2 /* Pods */,
 				3479A43CE16567273D08B6EA /* Frameworks */,
@@ -573,6 +596,7 @@
 				28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */,
 				284C91FA217C85E20080B3E1 /* PBWCPUTests.xctest */,
 				28C5E9772533A05B006ED01B /* Stonework WidgetExtension.appex */,
+				28F91C33254D93CA00A79198 /* IntentExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -672,6 +696,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		28F91C34254D93CA00A79198 /* IntentExtension */ = {
+			isa = PBXGroup;
+			children = (
+				28F91C3B254D93CA00A79198 /* IntentExtension.entitlements */,
+				28F91C35254D93CA00A79198 /* IntentHandler.swift */,
+				28F91C37254D93CA00A79198 /* Info.plist */,
+			);
+			path = IntentExtension;
+			sourceTree = "<group>";
+		};
 		2C1E402D43F74082565C20B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +794,7 @@
 			dependencies = (
 				28E020E62173E0EC00C556D6 /* PBXTargetDependency */,
 				28C5E9842533A05D006ED01B /* PBXTargetDependency */,
+				28F91C39254D93CA00A79198 /* PBXTargetDependency */,
 			);
 			name = Stonework;
 			productName = Stonework;
@@ -803,13 +838,30 @@
 			productReference = 28E020F22173E0EC00C556D6 /* Stonework WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		28F91C32254D93CA00A79198 /* IntentExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28F91C3C254D93CA00A79198 /* Build configuration list for PBXNativeTarget "IntentExtension" */;
+			buildPhases = (
+				28F91C2F254D93CA00A79198 /* Sources */,
+				28F91C30254D93CA00A79198 /* Frameworks */,
+				28F91C31254D93CA00A79198 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntentExtension;
+			productName = IntentExtension;
+			productReference = 28F91C33254D93CA00A79198 /* IntentExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		28E020C52173E0EB00C556D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = namedfork;
 				TargetAttributes = {
@@ -828,6 +880,9 @@
 					};
 					28E020F12173E0EC00C556D6 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					28F91C32254D93CA00A79198 = {
+						CreatedOnToolsVersion = 12.1;
 					};
 				};
 			};
@@ -849,6 +904,7 @@
 				28E020F12173E0EC00C556D6 /* Stonework WatchKit Extension */,
 				284C91F9217C85E20080B3E1 /* PBWCPUTests */,
 				28C5E9762533A05B006ED01B /* Stonework WidgetExtension */,
+				28F91C32254D93CA00A79198 /* IntentExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -921,6 +977,13 @@
 				28ED9F2621B2AC8B00E78FBF /* renaissance_14_bold.pbf in Resources */,
 				28ED9F2C21B2AC8B00E78FBF /* renaissance_28.pbf in Resources */,
 				28E020FE2173E0ED00C556D6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28F91C31254D93CA00A79198 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1196,6 +1259,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		28F91C2F254D93CA00A79198 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28F91C36254D93CA00A79198 /* IntentHandler.swift in Sources */,
+				28F91C5E254D946300A79198 /* Stonework_Widget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1219,6 +1291,11 @@
 			isa = PBXTargetDependency;
 			target = 28E020F12173E0EC00C556D6 /* Stonework WatchKit Extension */;
 			targetProxy = 28E020F42173E0EC00C556D6 /* PBXContainerItemProxy */;
+		};
+		28F91C39254D93CA00A79198 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28F91C32254D93CA00A79198 /* IntentExtension */;
+			targetProxy = 28F91C38254D93CA00A79198 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1622,6 +1699,56 @@
 			};
 			name = Release;
 		};
+		28F91C3D254D93CA00A79198 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = IntentExtension/IntentExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = IntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.IntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28F91C3E254D93CA00A79198 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = IntentExtension/IntentExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJXNDZ5TNU;
+				INFOPLIST_FILE = IntentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework.IntentExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1675,6 +1802,15 @@
 			buildConfigurations = (
 				28E0210B2173E0ED00C556D6 /* Debug */,
 				28E0210C2173E0ED00C556D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28F91C3C254D93CA00A79198 /* Build configuration list for PBXNativeTarget "IntentExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28F91C3D254D93CA00A79198 /* Debug */,
+				28F91C3E254D93CA00A79198 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

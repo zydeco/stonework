@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)defaultManager;
 - (NSArray<PBWBundle*>*)availableWatchfaces;
+- (void)updateSharedDefaults;
 
 @end
 
