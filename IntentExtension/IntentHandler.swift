@@ -29,12 +29,14 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
         }
     }
     
-    func urlForPreview(fileName: String) -> URL? {
+    func previewImage(watchfaceFileName: String) -> INImage? {
         guard let appGroup = appGroup,
-              let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+              let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?
+                .appendingPathComponent(watchfaceFileName)
+                .appendingPathExtension("preview") else {
             return nil
         }
-        return url.appendingPathComponent(fileName).appendingPathExtension("preview")
+        return INImage(url: url)
     }
     
     func provideWatchfaceOptionsCollection(for intent: ConfigurationIntent, with completion: @escaping (INObjectCollection<Watchface>?, Error?) -> Void) {
@@ -43,11 +45,14 @@ class IntentHandler: INExtension, ConfigurationIntentHandling {
         }
         
         completion(INObjectCollection(items: watchfaces.map({ (fileName: String, value: [String: Any]) -> Watchface in
-            let shortName = value["shortName"] as? String
-            let companyName = value["companyName"] as? String
-            let previewURL = urlForPreview(fileName: fileName)
-            let preview = (previewURL != nil) ? INImage(url:previewURL!) : nil
-            return Watchface(identifier: fileName, display: shortName ?? fileName, subtitle: companyName, image: preview)
+            return Watchface(identifier: fileName,
+                             display:
+                                (value["longName"] as? String) ??
+                                (value["shortName"] as? String) ??
+                                fileName,
+                             subtitle:
+                                value["companyName"] as? String,
+                             image: previewImage(watchfaceFileName: fileName))
         }).sorted(by: { $0.displayString.compare($1.displayString) == .orderedAscending })), nil)
     }
     

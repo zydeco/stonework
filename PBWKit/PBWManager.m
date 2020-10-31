@@ -48,7 +48,8 @@
     NSMutableDictionary<NSString*, NSDictionary<NSString*,id>*> *watchfacesMap = [NSMutableDictionary dictionaryWithCapacity:availableWatchfaces.count];
     for (PBWBundle *bundle in availableWatchfaces) {
         NSString *fileName = bundle.bundleURL.lastPathComponent;
-        [watchfacesMap setObject:bundle.infoDictionary forKey:fileName];
+        NSDictionary<NSString*,id> *compactInfoDictionary = [bundle.infoDictionary dictionaryWithValuesForKeys:@[@"shortName", @"longName", @"companyName"]];
+        [watchfacesMap setObject:compactInfoDictionary forKey:fileName];
     }
     [_sharedUserDefaults setObject:watchfacesMap forKey:@"AvailableWatchfaces"];
 }
