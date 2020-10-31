@@ -11,7 +11,7 @@
 @implementation PBWBundle (Preview)
 
 + (NSURL*)URLForPreviewForBundleAtURL:(NSURL *)bundleURL {
-    return [bundleURL URLByAppendingPathExtension:@".preview"];
+    return [bundleURL URLByAppendingPathExtension:@"preview"];
 }
 
 + (BOOL)writePreviewData:(NSData *)data forBundleAtURL:(NSURL *)bundleURL {
