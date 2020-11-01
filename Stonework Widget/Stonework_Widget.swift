@@ -136,7 +136,13 @@ struct Stonework_WidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
-        Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).scaledToFill()
+        let image = Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).resizable()
+        switch entry.configuration.scale {
+        case .fill:
+            image.scaledToFill()
+        default:
+            image.scaledToFit()
+        }
     }
 }
 
