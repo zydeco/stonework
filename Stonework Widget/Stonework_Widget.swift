@@ -136,12 +136,13 @@ struct Stonework_WidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
-        let image = Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).resizable()
+        let url = entry.configuration.watchface?.identifier.map({ URL(string: "stonework:\($0)")! })
+        let view = Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).resizable().widgetURL(url)
         switch entry.configuration.scale {
         case .fill:
-            image.scaledToFill()
+            view.scaledToFill()
         default:
-            image.scaledToFit()
+            view.scaledToFit()
         }
     }
 }

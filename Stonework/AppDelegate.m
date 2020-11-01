@@ -169,6 +169,13 @@
         } else {
             return [self importFileToDocuments:url copy:NO];
         }
+    } else if ([url.scheme isEqualToString:@"stonework"]) {
+        NSString *fileName = url.resourceSpecifier;
+        NSURL *watchfaceURL = [[PBWManager defaultManager].documentsURL URLByAppendingPathComponent:fileName];
+        PBWBundle *watchfaceBundle = [PBWBundle bundleWithURL:watchfaceURL];
+        if (watchfaceBundle && watchfaceBundle.isWatchFace) {
+            [self showDetailForBundle:watchfaceBundle];
+        }
     }
     return YES;
 }
