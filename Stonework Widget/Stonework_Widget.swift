@@ -99,7 +99,7 @@ struct Provider: IntentTimelineProvider {
             let now = Date()
             
             // the times
-            let canUpdateEverySecond = false
+            let canUpdateEverySecond = configuration.secondlyUpdates?.boolValue ?? false
             if runtime.tickServiceUnits.contains(.SECOND_UNIT) && canUpdateEverySecond {
                 // update every second
                 for secondOffset in 0 ..< 300 {
@@ -156,7 +156,7 @@ struct Stonework_Widget: Widget {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(entry.backgroundColor)
         }
-        .configurationDisplayName("Watchface Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Watchface")
+        .description("A widget displaying a Pebble watch face")
     }
 }
