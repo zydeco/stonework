@@ -158,5 +158,6 @@ struct Stonework_Widget: Widget {
         }
         .configurationDisplayName("Watchface")
         .description("A widget displaying a Pebble watch face")
+        .supportedFamilies([.systemLarge, .systemSmall])
     }
 }
