@@ -78,8 +78,8 @@
 		28C5E97C2533A05B006ED01B /* Stonework_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97B2533A05B006ED01B /* Stonework_Widget.swift */; };
 		28C5E97F2533A05D006ED01B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C5E97E2533A05D006ED01B /* Assets.xcassets */; };
 		28C5E9812533A05D006ED01B /* Stonework_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97D2533A05B006ED01B /* Stonework_Widget.intentdefinition */; };
-		28C5E9822533A05D006ED01B /* Stonework_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97D2533A05B006ED01B /* Stonework_Widget.intentdefinition */; };
-		28C5E9852533A05D006ED01B /* Stonework WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28C5E9772533A05B006ED01B /* Stonework WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28C5E9822533A05D006ED01B /* Stonework_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97D2533A05B006ED01B /* Stonework_Widget.intentdefinition */; platformFilter = ios; };
+		28C5E9852533A05D006ED01B /* Stonework WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28C5E9772533A05B006ED01B /* Stonework WidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28C5E9E12533AB53006ED01B /* PBWPlatformType.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0212A2173E14200C556D6 /* PBWPlatformType.m */; };
 		28C5E9E22533AB53006ED01B /* PBWApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021252173E14200C556D6 /* PBWApp.m */; };
 		28C5E9E32533AB53006ED01B /* PBWBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021232173E14200C556D6 /* PBWBundle.m */; };
@@ -178,7 +178,7 @@
 		28F91BA3254D879D00A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
 		28F91BB4254D8B5400A79198 /* PBWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91BA1254D879D00A79198 /* PBWManager.m */; };
 		28F91C36254D93CA00A79198 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F91C35254D93CA00A79198 /* IntentHandler.swift */; };
-		28F91C3A254D93CA00A79198 /* IntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28F91C33254D93CA00A79198 /* IntentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28F91C3A254D93CA00A79198 /* IntentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28F91C33254D93CA00A79198 /* IntentExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28F91C5E254D946300A79198 /* Stonework_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 28C5E97D2533A05B006ED01B /* Stonework_Widget.intentdefinition */; };
 		57D235963D747AD9D9DE0A2F /* libPods-Stonework WidgetExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA309753BC74AABE5222045E /* libPods-Stonework WidgetExtension.a */; };
 		665B961B3DC7477AFBBAB690 /* libPods-Stonework WatchKit Extension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCCD655C2DB06356B394F53 /* libPods-Stonework WatchKit Extension.a */; };
@@ -1278,6 +1278,7 @@
 		};
 		28C5E9842533A05D006ED01B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 28C5E9762533A05B006ED01B /* Stonework WidgetExtension */;
 			targetProxy = 28C5E9832533A05D006ED01B /* PBXContainerItemProxy */;
 		};
@@ -1294,6 +1295,7 @@
 		};
 		28F91C39254D93CA00A79198 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 28F91C32254D93CA00A79198 /* IntentExtension */;
 			targetProxy = 28F91C38254D93CA00A79198 /* PBXContainerItemProxy */;
 		};
