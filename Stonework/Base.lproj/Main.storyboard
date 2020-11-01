@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -294,10 +294,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Settings" id="Kws-fG-QBl">
+                            <tableViewSection headerTitle="Settings" footerTitle="Open the app on the Apple Watch to allow changing the active watchface." id="Kws-fG-QBl">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2Yo-pz-Dzw" style="IBUITableViewCellStyleDefault" id="x3m-yd-fWK">
-                                        <rect key="frame" x="0.0" y="547.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="555" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x3m-yd-fWK" id="L5k-gG-5aS">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
@@ -315,13 +315,13 @@
                                         <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oWR-dl-KHc">
-                                        <rect key="frame" x="0.0" y="591.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="599" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oWR-dl-KHc" id="frw-QQ-Jga">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnq-3d-KXo">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnq-3d-KXo">
                                                     <rect key="frame" x="104.5" y="7" width="166" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="eb7-aV-fdw"/>
@@ -333,16 +333,21 @@
                                                         <action selector="activateWatchface:" destination="VY4-UU-4Tr" eventType="touchUpInside" id="wUY-GO-oaE"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bBQ-Tp-DE1">
+                                                    <rect key="frame" x="177.5" y="12" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="jnq-3d-KXo" firstAttribute="centerY" secondItem="frw-QQ-Jga" secondAttribute="centerY" id="HTL-07-Vg0"/>
+                                                <constraint firstItem="bBQ-Tp-DE1" firstAttribute="centerX" secondItem="frw-QQ-Jga" secondAttribute="centerX" id="ZDY-5e-f77"/>
                                                 <constraint firstItem="jnq-3d-KXo" firstAttribute="centerX" secondItem="frw-QQ-Jga" secondAttribute="centerX" id="vTt-rr-RYP"/>
+                                                <constraint firstItem="bBQ-Tp-DE1" firstAttribute="centerY" secondItem="frw-QQ-Jga" secondAttribute="centerY" id="yco-Fi-5qJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="i9Q-fH-uR5">
-                                        <rect key="frame" x="0.0" y="635.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="643" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i9Q-fH-uR5" id="sgc-hq-K7v">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -377,6 +382,8 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="activateButton" destination="jnq-3d-KXo" id="W1z-tl-fJn"/>
+                        <outlet property="activateIndicator" destination="bBQ-Tp-DE1" id="oAE-v2-hv1"/>
                         <outlet property="developerLabel" destination="wdC-jA-wZY" id="rnQ-nC-xUX"/>
                         <outlet property="imageView" destination="1tu-Ki-j7L" id="x0R-a7-D21"/>
                         <outlet property="infoDeveloperLabel" destination="5nQ-gW-CTj" id="sin-NL-PKN"/>
@@ -465,7 +472,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="soQ-iB-qH1"/>
+        <segue reference="5s0-PQ-i5v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Get Watchfaces" width="50" height="50"/>

@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel, *developerLabel;
 @property (nonatomic, weak) IBOutlet UILabel *longNameLabel, *infoDeveloperLabel, *versionLabel;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activateIndicator;
+@property (nonatomic, weak) IBOutlet UIButton *activateButton;
+
 
 
 @end

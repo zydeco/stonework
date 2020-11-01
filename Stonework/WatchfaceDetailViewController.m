@@ -22,11 +22,29 @@
 {
     BOOL activatingWatchface;
     PBWRuntime *runtime;
+    WCSession *session;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareWatchface:)];
+    if ([WCSession isSupported]) {
+        session = [WCSession defaultSession];
+        session.delegate = self;
+        [session addObserver:self forKeyPath:@"reachable" options:0 context:NULL];
+    } else {
+        session = nil;
+    }
+}
+
+- (void)dealloc {
+    [session removeObserver:self forKeyPath:@"reachable"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (object == session && [keyPath isEqual:@"reachable"]) {
+        [self performSelectorOnMainThread:@selector(reloadActivateButton) withObject:nil waitUntilDone:NO];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,6 +59,10 @@
     self.versionLabel.text = wf.versionLabel;
     
     [self startEmulator];
+    if (session != nil && session.activationState != WCSessionActivationStateActivated) {
+        [session activateSession];
+    }
+    [self reloadActivateButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -52,7 +74,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    activatingWatchface = NO;
+    [self setInstallingWatchface:NO];
     [runtime stop];
     [runtime.screenView removeFromSuperview];
 }
@@ -83,19 +105,8 @@
 }
 
 - (IBAction)activateWatchface:(id)sender {
-    if (![WCSession isSupported]) {
-        [self failWithTitle:@"Not supported" message:@"Apple Watch connectivity is not supported on this device." handler:nil];
-        return;
-    }
-    
-    WCSession *session = [WCSession defaultSession];
-    session.delegate = self;
-    if (session.activationState != WCSessionActivationStateActivated) {
-        activatingWatchface = YES;
-        [session activateSession];
-    } else {
-        [session transferFile:_watchfaceBundle.bundleURL metadata:nil];
-    }
+    [self setInstallingWatchface:YES];
+    [self transferWatchface];
 }
 
 - (void)failWithTitle:(NSString*)title message:(NSString*)message handler:(void (^ __nullable)(UIAlertAction *action))handler {
@@ -120,28 +131,67 @@
 #pragma mark <WCSessionDelegate>
 
 - (void)session:(WCSession *)session activationDidCompleteWithState:(WCSessionActivationState)activationState error:(NSError *)error {
-    if (!activatingWatchface) return;
     if (error) {
         [self failWithTitle:@"Error" message:error.localizedDescription handler:nil];
         return;
-    }
-    if (activationState != WCSessionActivationStateActivated) {
+    } else if (activationState != WCSessionActivationStateActivated) {
         [self failWithTitle:@"Error" message:@"Could not connect to Apple Watch." handler:nil];
         return;
     }
+    if (activatingWatchface) {
+        [self transferWatchface];
+    }
+    [self performSelectorOnMainThread:@selector(reloadActivateButton) withObject:nil waitUntilDone:NO];
+}
+
+- (void)transferWatchface {
+    if (session.activationState != WCSessionActivationStateActivated) {
+        [session activateSession];
+        return;
+    }
+    [session.outstandingFileTransfers makeObjectsPerformSelector:@selector(cancel)];
     [session transferFile:_watchfaceBundle.bundleURL metadata:nil];
 }
 
 - (void)sessionDidBecomeInactive:(WCSession *)session {
-    
+    [self performSelectorOnMainThread:@selector(reloadActivateButton) withObject:nil waitUntilDone:NO];
 }
 
 - (void)sessionDidDeactivate:(WCSession *)session {
-    
+    [self performSelectorOnMainThread:@selector(reloadActivateButton) withObject:nil waitUntilDone:NO];
 }
 
 - (void)session:(WCSession *)session didFinishFileTransfer:(WCSessionFileTransfer *)fileTransfer error:(NSError *)error {
-    activatingWatchface = NO;
+    if (error) {
+        [self failWithTitle:@"Error activating watchface" message:error.localizedDescription handler:nil];
+    }
+    [self setInstallingWatchface:NO];
+}
+
+- (BOOL)canInstallWatchface {
+    return session != nil && session.activationState == WCSessionActivationStateActivated && session.reachable;
+}
+
+- (void)reloadActivateButton {
+    BOOL canInstall = [self canInstallWatchface];
+    _activateButton.enabled = canInstall;
+    _activateButton.alpha = canInstall ? 1.0 : 0.25;
+}
+
+- (void)setInstallingWatchface:(BOOL)installing {
+    activatingWatchface = installing;
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setInstallingWatchface:installing];
+        });
+        return;
+    }
+    _activateButton.hidden = installing;
+    if (installing) {
+        [_activateIndicator startAnimating];
+    } else {
+        [_activateIndicator stopAnimating];
+    }
 }
 
 #pragma mark <UITableViewDataSource>
@@ -149,13 +199,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger result = [super tableView:tableView numberOfRowsInSection:section];
     if (section == 1 /*&& !self.watchfaceBundle.configurable*/) {
+        // Hide configuration button
         result -= 1;
     }
     return result;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (/*!self.watchfaceBundle.configurable &&*/ indexPath.section == 1) {
+    if (indexPath.section == 1 /*&& !self.watchfaceBundle.configurable*/) {
+        // Hide configuration button
         indexPath = [NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section];
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
