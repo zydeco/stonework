@@ -1,6 +1,6 @@
 # Stonework
 
-Pebble emulator for running native Pebble watchfaces on Apple Watch.
+Pebble emulator for running native Pebble watchfaces on Apple devices.
 
 ## Features
 
@@ -15,6 +15,7 @@ Pebble emulator for running native Pebble watchfaces on Apple Watch.
 * Built-in [rebble store](https://apps.rebble.io) browser to install watchfaces
 * Install watchfaces from Files or other sources
 * Preview the running watchface on iOS before sending it to the watch
+* Show watchface as a widget on iOS 14
 
 ### To Do
 
@@ -30,5 +31,5 @@ Pebble emulator for running native Pebble watchfaces on Apple Watch.
 
 ## Requirements
 
-* iOS 12
-* WatchOS 5
+* iOS 12 or later
+* WatchOS 5 or later
