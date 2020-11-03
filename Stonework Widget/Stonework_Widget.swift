@@ -99,22 +99,13 @@ struct Provider: IntentTimelineProvider {
             let now = Date()
             
             // the times
-            let canUpdateEverySecond = configuration.secondlyUpdates?.boolValue ?? false
-            if runtime.tickServiceUnits.contains(.SECOND_UNIT) && canUpdateEverySecond {
-                // update every second
-                for secondOffset in 0 ..< 300 {
-                    let date = now.advanced(by: TimeInterval(secondOffset))
-                    entries.append(getEntry(for: configuration, date: date, runtime: runtime))
-                }
-            } else {
-                // update every minute
-                let second = Calendar.current.component(.second, from: now)
-                let minute = now.addingTimeInterval(TimeInterval(-second))
-                for minuteOffset in 0 ..< 10 {
-                    let secondOffset = 60.0 * TimeInterval(minuteOffset)
-                    let date = minute.advanced(by: secondOffset)
-                    entries.append(getEntry(for: configuration, date: date, runtime: runtime))
-                }
+            let maxUpdates = 60
+            let second = Calendar.current.component(.second, from: now)
+            let minute = now.addingTimeInterval(TimeInterval(-second))
+            for minuteOffset in 0 ..< maxUpdates {
+                let secondOffset = 60.0 * TimeInterval(minuteOffset)
+                let date = minute.advanced(by: secondOffset)
+                entries.append(getEntry(for: configuration, date: date, runtime: runtime))
             }
             
             runtime.stop()
