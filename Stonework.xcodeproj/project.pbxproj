@@ -137,6 +137,7 @@
 		28E0212E2173E14200C556D6 /* PBWBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021232173E14200C556D6 /* PBWBundle.m */; };
 		28E021302173E14200C556D6 /* PBWApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E021252173E14200C556D6 /* PBWApp.m */; };
 		28E021322173E14200C556D6 /* PBWPlatformType.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E0212A2173E14200C556D6 /* PBWPlatformType.m */; };
+		28E03E102551DE34005F2C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E03E0F2551DE34005F2C1B /* AppDelegate.swift */; };
 		28ED9E5F219B54FF00E78FBF /* string.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E5E219B54FF00E78FBF /* string.m */; };
 		28ED9E60219B54FF00E78FBF /* string.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E5E219B54FF00E78FBF /* string.m */; };
 		28ED9E62219B800600E78FBF /* wall_time.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ED9E61219B800600E78FBF /* wall_time.m */; };
@@ -359,6 +360,8 @@
 		28E021282173E14200C556D6 /* PBWRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWRuntime.h; sourceTree = "<group>"; };
 		28E021292173E14200C556D6 /* PBWApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWApp.h; sourceTree = "<group>"; };
 		28E0212A2173E14200C556D6 /* PBWPlatformType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWPlatformType.m; sourceTree = "<group>"; };
+		28E03E0E2551DE33005F2C1B /* Stonework-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stonework-Bridging-Header.h"; sourceTree = "<group>"; };
+		28E03E0F2551DE34005F2C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28ED9E5E219B54FF00E78FBF /* string.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = string.m; sourceTree = "<group>"; };
 		28ED9E61219B800600E78FBF /* wall_time.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wall_time.m; sourceTree = "<group>"; };
 		28ED9E64219B859B00E78FBF /* logging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = logging.m; sourceTree = "<group>"; };
@@ -607,6 +610,7 @@
 				28BF814F253329BB007341A3 /* Stonework.entitlements */,
 				28E020D02173E0EB00C556D6 /* AppDelegate.h */,
 				28E020D12173E0EB00C556D6 /* AppDelegate.m */,
+				28E03E0F2551DE34005F2C1B /* AppDelegate.swift */,
 				28E020D62173E0EB00C556D6 /* Main.storyboard */,
 				28E020D92173E0EC00C556D6 /* Assets.xcassets */,
 				28E020DB2173E0EC00C556D6 /* LaunchScreen.storyboard */,
@@ -624,6 +628,7 @@
 				28B1D95221BC5C7700BE7C1F /* WatchfaceDetailViewController.m */,
 				28BF80E32532620D007341A3 /* PBWBundle+Preview.h */,
 				28BF80E42532620D007341A3 /* PBWBundle+Preview.m */,
+				28E03E0E2551DE33005F2C1B /* Stonework-Bridging-Header.h */,
 			);
 			path = Stonework;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 					};
 					28E020CC2173E0EB00C556D6 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1210;
 					};
 					28E020E22173E0EC00C556D6 = {
 						CreatedOnToolsVersion = 10.0;
@@ -1172,6 +1178,7 @@
 				28ED9E7421A214ED00E78FBF /* resources.m in Sources */,
 				284C9251218DD4D70080B3E1 /* api.m in Sources */,
 				28ED9E5F219B54FF00E78FBF /* string.m in Sources */,
+				28E03E102551DE34005F2C1B /* AppDelegate.swift in Sources */,
 				28ED9F1121AB386600E78FBF /* PBWBitmap.m in Sources */,
 				28132D252190BA3500B36804 /* PBWLayer.m in Sources */,
 				28B1D94821B99A0B00BE7C1F /* WatchfaceCollectionViewCell.m in Sources */,
@@ -1325,6 +1332,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 672CE27D2838B73E98CC2F24 /* Pods-PBWCPUTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
@@ -1345,6 +1353,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A7E7E8D442E929D97890751A /* Pods-PBWCPUTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
@@ -1635,6 +1644,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
@@ -1661,6 +1671,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Stonework/Stonework-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1671,6 +1684,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stonework/Stonework.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJXNDZ5TNU;
@@ -1697,6 +1711,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.namedfork.Stonework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Stonework/Stonework-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
