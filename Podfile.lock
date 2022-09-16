@@ -7,7 +7,7 @@ DEPENDENCIES:
   - Minizip
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Minizip
 
 EXTERNAL SOURCES:
@@ -20,4 +20,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 952e04f283fc6a3fa66a6d66c5281230ef5c8405
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3
