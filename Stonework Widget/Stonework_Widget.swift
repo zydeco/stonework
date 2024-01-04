@@ -47,7 +47,7 @@ extension UIImage {
         let context = CIContext(options: [.workingColorSpace: kCFNull!])
         context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
 
-        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: 1.0)
     }
 }
 
@@ -125,15 +125,23 @@ struct SimpleEntry: TimelineEntry {
 
 struct Stonework_WidgetEntryView : View {
     var entry: Provider.Entry
-    
+
     var body: some View {
         let url = entry.configuration.watchface?.identifier.map({ URL(string: "stonework:\($0)")! })
-        let view = Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).resizable().widgetURL(url)
+        let view = withBackground(Image(uiImage: entry.image ?? UIImage(systemName: "xmark.octagon")!).resizable().widgetURL(url), color: entry.backgroundColor)
         switch entry.configuration.scale {
         case .fill:
             view.scaledToFill()
         default:
             view.scaledToFit()
+        }
+    }
+
+    func withBackground(_ view: some View, color: Color) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            return view.containerBackground(color, for: .widget)
+        } else {
+            return view
         }
     }
 }

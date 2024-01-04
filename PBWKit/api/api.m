@@ -697,7 +697,7 @@ uint32_t pbw_api_call(pbw_cpu cpu, void *userData, uint32_t addr, pbw_mem_op op,
             NSLog(@"API call not implemented: %s", api.name);
             pbw_cpu_stop(cpu, PBW_ERR_NOT_IMPLEMENTED);
         } else {
-            NSLog(@"API call: %s", api.name);
+            //NSLog(@"API call: %s", api.name);
             pbw_api_call_impl(runtime.runtimeContext, api.implementation, api.numberOfArguments, api.returnsWord);
         }
     }
