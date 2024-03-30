@@ -26,6 +26,7 @@
 -(NSString*)timeText;
 -(id)sharedPUICApplication;
 -(void)_setStatusBarTimeHidden:(BOOL)hidden animated:(BOOL)animated completion:(void (^)(void))completion;
+-(BOOL)prefersStatusBarHidden;
 @end
 
 @interface InterfaceController ()
@@ -43,6 +44,12 @@
     if ([CLKTimeFormatter instancesRespondToSelector:@selector(timeText)]) {
         Method m = class_getInstanceMethod(CLKTimeFormatter, @selector(timeText));
         method_setImplementation(m, imp_implementationWithBlock(^NSString*(id self, SEL _cmd) { return @" "; }));
+    }
+    /* hide status bar on watchOS 10 */
+    Class clsUIViewController = NSClassFromString(@"UIViewController");
+    if ([clsUIViewController instancesRespondToSelector:@selector(prefersStatusBarHidden)]) {
+        Method m = class_getInstanceMethod(clsUIViewController, @selector(prefersStatusBarHidden));
+        method_setImplementation(m, imp_implementationWithBlock(^BOOL(id self, SEL _cmd) { return YES; }));
     }
 }
 
