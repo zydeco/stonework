@@ -115,6 +115,9 @@ typedef struct GFontHashTableEntry {
 }
 
 - (BOOL)loadFont {
+    if (fontData == nil) {
+        return NO;
+    }
     const uint8_t *data = fontData.bytes;
     fontVersion = data[0];
     lineHeight = data[1];
