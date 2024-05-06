@@ -330,6 +330,10 @@ PBW_API(window_stack_contains_window, uint32_t window);
 #pragma mark - Standard C / Locale
 PBW_API(setlocale, uint32_t category, uint32_t namePtr);
 
+#pragma mark - Standard C / Math
+PBW_API(rand);
+PBW_API(srand, uint32_t seed);
+
 #pragma mark - Standard C / Memory
 PBW_API(malloc, uint32_t size);
 PBW_API(calloc, uint32_t count, uint32_t size);
